@@ -1,0 +1,440 @@
+/**Override des classes Bootstrap**/
+.form-control{
+  border-radius: 0px;
+}
+.btn{
+  border-radius: 0;
+}
+.btn-success{
+  border-radius: 0;
+}
+
+/**Style des pages*/
+
+
+html,
+body {
+  height: 100%;
+  font-family: "Sertig", sans-serif;;src: url("font/Sertig.otf");
+  font-weight: bold;
+}
+section{
+  margin-top: 20px;
+  padding-top: 10px;
+  background-color: #ECF0F1;
+}
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0px auto -150px;
+}
+#main{
+  /*padding-top: 20px;*/
+  text-align: center;
+  margin-bottom: 20px;
+}
+#push,
+#footer {
+  height: 150px;
+}
+#footer{
+  color: white;
+  background-color: #051C2C;
+  text-align: center;
+}
+#footer > div {
+  margin: 0
+}
+#footer > div > img{
+  height: 100px;
+}
+#footer a{
+  padding: 0px;
+}
+
+/*Label pour page de Co/Ins*/
+#visitdemand{
+  text-align: center;
+}
+#labelacces{
+  font-size: 0.66666666666666em;
+  border-radius: 0px;
+}
+#inscription{
+  border-radius: 0px;
+}
+
+/*Titres main*/
+#alaventure{
+  background-color: #051C2C;
+  padding: 5px;
+  color: white;
+  font-weight: lighter;
+  letter-spacing: 0.3em;
+}
+.titre1{
+  padding-top: 5px;
+  color: #051C2C;
+  text-decoration: underline;
+  font-weight: lighter;
+  letter-spacing: 0.3em;
+}
+/*Fin de label Co/Ins*/
+
+/*Mise en page création soirée lie+image*/
+#creerSoiree{
+    text-align: center;
+    padding-top: 10px;
+}
+#creerSoiree > div{
+  height: 200px;
+  width: inherit;
+  background-color: white;
+}
+#creerSoiree  img{
+  height: 200px;
+  width: inherit;
+  opacity: 0.5;
+  top:0px;
+  left: 0px;
+  z-index -1;
+}
+#creerSoiree > h3{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 5px;
+}
+#creerSoiree > h3 > a{
+  padding: 5px 30px 4px 40px;
+  height: inherit;
+  background-color: #337ab7;
+
+  color: white;
+  font-weight: lighter;
+  letter-spacing: 0.3em;
+}
+/* Fin création de soirée*/
+/*Mise en page création soirée lie+image*/
+#aventure > section{
+  position: relative;
+  margin-bottom: 20px;
+}
+#research img{
+  width: 100%;
+}
+.divider-vertical {
+  position: absolute;
+  height: 150px;
+  margin: 0 9px;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  border-left: 1px solid #F9F9F9;
+  border-right: 1px solid #AAA;
+  width: 1px;
+}
+#aventure h4{
+  color: #051C2C;
+  text-decoration: underline;
+  letter-spacing: 0.2em;
+}
+#aventure span{
+  padding: 5px 0;
+}
+
+.suggsoiree {
+  background-image: url('image/logo/logofinal.png');
+  font-size: 9px;
+  padding: 0;
+  position: relative;
+  height: 120px;
+}
+.suggsoiree>div:first-child{
+  height: inherit;
+  background-color: white;
+  opacity: 0.6;
+}
+.suggsoiree>div>h5{
+  font-weight: bold;
+}
+.suggsoiree>div:last-child{
+  position: absolute;
+  top: 0;
+  height: inherit;
+  letter-spacing: 0.1em;
+  color: #051C2C;
+}
+/* Fin création de soirée*/
+
+/*Nav style*/
+.navbar{
+  background-color: #6BB9F0;
+  border-radius: 0px;
+}
+.navbar a{
+  height: inherit;
+}
+.navbar img{
+  max-height: 42px;
+}
+.navbar-brand{
+  padding: 5px 5px;
+}
+.navbar > .container{
+  width: 100%;
+  padding-left: 40px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:focus {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #051C2C;
+  color: white;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #051C2C;
+  color: white;
+}
+
+.navbar-nav > li > .dropdown-menu{
+  border-radius: 0px;
+  background-color: #051C2C;
+}
+.navbar-nav > li > .dropdown-menu > li > a{
+  color: white;
+  white-space: inherit !important;
+}
+.navbar-nav > li > .dropdown-menu > li > a:hover{
+  background-color: #6BB9F0;
+}
+
+  /**Spécifique au @media xs**/
+.navbar-default .navbar-toggle{
+  border: 0px;
+  background-color: #1E8BC3;
+}
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover{
+  background-color: #051C2C;
+}
+.navbar-default .navbar-toggle .icon-bar{
+  background-color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+    color: white;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover{
+  color: #051C2C;
+}
+/*Fin nav*/
+/*Pour la recherche prestataire*/
+#rechercheprestataire{
+  border-radius: 0px;
+  background-color: #6BB9F0;
+  text-align: left;
+}
+#rechercheprestataire .form-group{
+  margin: 0px;
+  padding: 5px;
+}
+#rechercheprestataire .btn{
+  margin: 5px;
+  min-width:50px;
+  padding: 5px;
+  white-space: inherit !important;
+}
+#rechercheavance{
+  margin-top:5px;
+  padding: 5px;
+}
+#rechercheavance > a{
+  color:white;
+}
+#rechercheavance > a:hover{
+  text-decoration: none;
+}
+#showrechavan:hover,
+#showrechavan:visited{
+    text-decoration: none;
+}
+.starthidden{
+  display: none;
+}
+/*Fin recherche prestataire*/
+/*Carousel (le truc cool)*/
+.carousel {
+  height: 300px;
+  margin-bottom: 20px;
+}
+.carousel-caption {
+  z-index: 10;
+}
+.carousel .item {
+  height: 300px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 300px;
+}
+.carousel-caption > img{
+  width: 100%;
+}
+/*fin Carousel*/
+/*Page creersoiree*/
+#imagecreersoiree{
+  width: 100%;
+  height: 200px;
+  background-image: url(image/logo/logofinal.png);
+  background-size: cover;
+}
+#imagecreersoiree div{
+  width: inherit;
+  height: inherit;
+  background-color: white;
+  opacity: 0.6;
+}
+#etapecreersoiree{
+  margin: 0px 20px;
+  background-color: white;
+}
+.titreEtape{
+  color:  #6BB9F0;
+  padding: 10px;
+  border: 5px solid  #6BB9F0;
+  letter-spacing: 0.8em;
+  margin-bottom: 10px;
+}
+#etape1{
+  margin: 20px 0px;
+}
+
+#etape1>div{
+  margin: 10px 0px;
+}
+
+#etape1 > div > a > div{
+  position: relative;
+  padding: 0px;
+  background-image: url(image/logo/logofinal.png);
+  background-size: cover;
+  height: 200px;
+  border: 10px solid #051C2C;
+
+}
+
+#etape1>div>a>div>div{
+  height: 180px;
+  opacity: 0.6;
+  background-color: white;
+  padding: 10px;
+}
+#etape1>div>a>div>h1{
+  position: absolute;
+  color: #051C2C;
+  letter-spacing: 0.3em;
+  top:0;
+  left:0;
+  right: 0;
+  transform: translateY(130%);
+}
+
+.theme{
+  position: relative;
+  height: 150px;
+  border: 10px solid #051C2C;
+  margin-bottom: 10px;
+}
+.theme>label{
+  position: absolute;
+  background-color: #051C2C;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: -5px;
+}
+.theme>label>h5{
+  letter-spacing: 0.2em;
+  color: white;
+}
+.choixdefaut{
+  border: 5px solid #ED811F;
+  color: #ED811F;
+  letter-spacing: 0.2em;
+  padding: 10px 0px;
+}
+.choixdefaut:hover{
+  text-decoration: none;
+  color: #ED811F;
+}
+.formbtn{
+  color: white;
+  padding: 5px 0px;
+  margin-top: 20px;
+  width: 150px;
+  border-radius: 0;
+  background-color: #6BB9F0;
+  border: none;
+}
+#Finaliser{
+  background-color: #051C2C;
+}
+
+/*Fin page creersoiree*/
+#topnavbar {
+    margin: 0;
+    border: 0px;
+}
+#topnavbar.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#banner{
+  background-color: #051C2C;
+  height: 150px;
+  width: 100%;
+}
+#banner a{
+  padding: 0px;
+}
+
+/*Pour les smartphone*/
+@media screen and (max-width: 768px) {
+  #banner{
+    height: 100px
+  }
+  #banner img{
+    height: 100px;
+    max-width: 100%;
+  }
+  h1{
+    font-size: 1.5em!important;
+  }
+  h3{
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+  #creerSoiree > div{
+    height: 100px;
+  }
+  #creerSoiree img{
+    height: 100px;
+    max-width: 80%;
+  }
+
+}

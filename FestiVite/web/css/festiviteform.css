@@ -1,0 +1,51 @@
+/*Chevrons*/
+.numetape{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(80%);
+
+  font-size: 1.2em;
+  color: white;
+  letter-spacing: 0.2em;
+}
+.chevron,
+.chevronCurrent {
+  position: relative;
+  text-align: center;
+  margin-left: 20px;
+  padding: 12px;
+  height: 60px;
+  width: 200px;
+  z-index: -1;
+}
+.chevron::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 51%;
+  width: 100%;
+  background: #6BB9F0;
+  -webkit-transform: skew(36deg, 0deg);
+  -moz-transform: skew(36deg, 0deg);
+  -ms-transform: skew(36deg, 0deg);
+  -o-transform: skew(36deg, 0deg);
+  transform: skew(36deg, 0deg);
+}
+.chevron::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 50%;
+  width: 100%;
+  background: #6BB9F0;
+  -webkit-transform: skew(-36deg, 0deg);
+  -moz-transform: skew(-36deg, 0deg);
+  -ms-transform: skew(-36deg, 0deg);
+  -o-transform: skew(-36deg, 0deg);
+  transform: skew(-36deg, 0deg);
+}​
