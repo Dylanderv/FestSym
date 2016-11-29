@@ -1,3 +1,19 @@
-festi_vite_homepage:
+festi_vite_main:
     path:     /
-    defaults: { _controller: FestiViteBundle:Default:index }
+    defaults: { _controller: FestiViteBundle:Default:main }
+
+festi_vite_creersoiree:
+    path:     /creersoiree
+    defaults: { _controller: FestiViteBundle:Default:creersoiree }
+
+festi_vite_moncompte:
+    path:     /moncompte
+    defaults: { _controller: FestiViteBundle:Default:moncompte }
+
+festi_vite_accueil:
+    path:     /accueil
+    defaults: { _controller: FestiViteBundle:Default:accueil }
+
+festi_vite_recherche:
+    path:     /recherche
+    defaults: { _controller: FestiViteBundle:Default:recherche }
