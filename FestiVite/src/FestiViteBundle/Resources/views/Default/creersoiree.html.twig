@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FestiVite - Inscription/Connexion</title>
+
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
+    <style rel="stylesheet" text="text/css">
+      .chevronCurrent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 51%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(36deg, 0deg);
+        -moz-transform: skew(36deg, 0deg);
+        -ms-transform: skew(36deg, 0deg);
+        -o-transform: skew(36deg, 0deg);
+        transform: skew(36deg, 0deg);
+      }
+      .chevronCurrent::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(-36deg, 0deg);
+        -moz-transform: skew(-36deg, 0deg);
+        -ms-transform: skew(-36deg, 0deg);
+        -o-transform: skew(-36deg, 0deg);
+        transform: skew(-36deg, 0deg);
+      }​
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap">
+    <!-- Banniere -->
+      <div id="banner">
+          <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
+      </div>
+
+    <!-- Menu de navigation  -->
+      <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
+        <div class="container">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="main.html"><img src="css/image/btnhome.png" alt="Home" /></a>
+          </div>
+
+          <div class="navbar-collapse collapse" id="navbar" >
+            <ul class="nav navbar-nav">
+              <!--Mon compte-->
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Mes Infos</a></li>
+                <li><a href="#">Mon historique</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Contact</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+              </ul>
+              <!--/Mon compte-->
+
+              <!--Mes amis-->
+              <li><a href="#">Mes Amis</a></li>
+              <!--/Mes amis-->
+
+              <!--Mes soirées-->
+              <li><a href="#">Mes Soirées</a></li>
+              <!--/Mes soirées-->
+
+              <!--Partenaire-->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Partenaire<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="rechercheprestataire.html">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
+                </ul>
+              </li>
+              <!--/Partenaire-->
+            </ul>
+            <!--/fin des items de la navbar-->
+          </div><!--/.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    <!-- script utile ? -->
+      <script type="text/javascript">
+
+      </script>
+
+    <!-- Debut du corps -->
+      <div id="main">
+        <div class="hidden-xs"id="imagecreersoiree"><div></div></div>
+        <div  id="#myEtape" class="container">
+          <nav class="navbar navbar-static-top" id="etapecreersoiree">
+            <ul class="nav navbar-nav">
+              <li><div id="chevron1" class="chevronCurrent" >
+                <p class="numetape">
+                  Etape 1
+                </p>
+              </div></li>
+              <li><div id="chevron2" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 2
+                </p>
+              </div></li>
+              <li><div id="chevron3" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 3
+                </p>
+              </div></li>
+              <li><div id="chevron4" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 4
+                </p>
+              </div></li>
+              <li><div id="chevron5" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 5
+                </p>
+              </div></li>
+            </ul>
+          </nav>
+          <div id="etape1">
+            <div class="row formule">
+              <h1 class="titreEtape">Formules</h1>
+            </div>
+            <div id="formule1" class="row">
+              <a href="#">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                  <div></div>
+                  <h1 class="">CLASSIQUE</h1>
+                </div>
+              </a>
+            </div>
+
+            <div id="formule2" class="row">
+              <a href="#">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                  <div></div>
+                  <h1 class="">A L'AVENTURE</h1>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div id="etape2" class="starthidden text-center">
+            <h1 class="titreEtape">Thème</h1>
+            <div class="row">
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 1</h5></label>
+              </div>
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 2</h5></label>
+              </div>
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 3</h5></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 4</h5></label>
+              </div>
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 5</h5></label>
+              </div>
+              <div class="col-sm-3 col-sm-offset-1 theme">
+                <label for=""><h5>Thème 6</h5></label>
+              </div>
+            </div>
+            <div class="row">
+              <a href="#" class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Pas de Thème</a>
+            </div>
+          </div>
+          <div id="etape3" class="starthidden">3
+          </div>
+          <div id="etape4" class="starthidden">4
+          </div>
+          <div id="etape5" class="starthidden">5
+          </div>
+
+          <button id="etapePrecedente" type="button" class="starthidden formbtn">
+             <span class="glyphicon glyphicon-chevron-left"></span>
+             Précédent
+          </button>
+          <button id="etapeSuivante" type="button" class="formbtn">
+            Suivant
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+          <button id="Finaliser" type="button" class="starthidden formbtn" name="Finaliser">
+            Finaliser
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+
+            <script text="text/javascript">
+            $( "#etapeSuivante" ).click(function() {
+                if ($("#etape1").is(':visible')) {
+                  $( "#etape1").hide('medium');
+                  $("#chevron1").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape2").show('medium');
+                  $("#chevron2").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                  $( "#etapePrecedente").show('medium');
+                } else
+                if ($("#etape2").is(':visible')) {
+                  $( "#etape2").hide('medium');
+                  $("#chevron2").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape3").show('medium');
+                  $("#chevron3").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                } else
+                if ($("#etape3").is(':visible')) {
+                  $( "#etape3").hide('medium');
+                  $("#chevron3").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape4").show('medium');
+                  $("#chevron4").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                } else
+                if ($("#etape4").is(':visible')) {
+                  $( "#etape4").hide('medium');
+                  $("#chevron4").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape5").show('medium');
+                  $("#chevron5").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                  $( "#etapeSuivante").hide('medium');
+                  $( "#Finaliser").show('medium');
+                }
+            });
+            $( "#etapePrecedente" ).click(function() {
+                if ($("#etape5").is(':visible')) {
+                  $( "#Finaliser").hide('medium');
+                  $( "#etape5").hide('medium');
+                  $("#chevron5").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape4").show('medium');
+                  $("#chevron4").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                  $( "#etapeSuivante").show('medium');
+                } else
+                if ($("#etape4").is(':visible')) {
+                  $( "#etape4").hide('medium');
+                  $("#chevron4").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape3").show('medium');
+                  $("#chevron3").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                } else
+                if ($("#etape3").is(':visible')) {
+                  $( "#etape3").hide('medium');
+                  $("#chevron3").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape2").show('medium');
+                  $("#chevron2").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                } else
+                if ($("#etape2").is(':visible')) {
+                  $( "#etape2").hide('medium');
+                  $("#chevron2").removeClass("chevronCurrent").addClass("chevron hidden-xs");
+                  $( "#etape1").show('medium');
+                  $("#chevron1").removeClass("chevron hidden-xs").addClass("chevronCurrent");
+                  $( "#etapePrecedente").hide('medium');
+                }
+            });
+            $("#formule1").hover(function(){
+              $("#formule1").css({'height' :'110%'})
+              $("#formule2").css({'height' :'90%'})
+            });
+            $("#formule2").hover(function(){
+              $("#formule2").css({'height' :'110%;'});
+              $("formule1").css({'height' :'90%;'});
+            });
+            </script>
+
+        </div>
+        </div>
+        <div id="push">
+
+        </div>
+      </div>
+
+      <footer id="footer">
+        <div class="row">
+          <img src="css/image/logo/logo150.png" alt="FestiVite" />
+        </div>
+        <div class="row">
+          <h5>
+            <p>&copy; 2016 Festivite, Inc.</p>
+          </h5>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FestiVite - Inscription/Connexion</title>
+
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="wrap">
+    <!-- Banniere -->
+      <div id="banner">
+          <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
+      </div>
+
+    <!-- Menu de navigation  -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" id="topnavbar">
+      <div class="container">
+        <div class="navbar-header">
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Mot de passe" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Connexion</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <!-- script utile ? -->
+      <script type="text/javascript">
+      $('#topnavbar').affix({
+        offset: {
+          top: $('#banner').height()
+        }
+      });
+    </script>
+
+    <!-- Debut du corps -->
+      <div class="container" id="main">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10 hidden-xs ">
+            Bienvenue sur Festi'Vite !
+            Êtes-vous à la recherche de  [...]
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus bibendum condimentum ultrices. Nulla in mi imperdiet, euismod lectus vel,
+            feugiat mi. Nunc malesuada neque nisi, vitae varius leo ultricies non.
+            Donec ac scelerisque enim. Pellentesque consequat risus at vulputate consectetur. Vestibulum a quam diam.
+            </div>
+          </div>
+        </div>
+        <section class="row container">
+          <!-- Formulaire d'inscription-->
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+            <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <legend>Inscription</legend>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="text" class="col-lg-3 control-label">Nom : </label>
+                  <div class="col-lg-9">
+                    <input type="text" class="form-control" id="text" placeholder="Nom...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="textarea" class="col-lg-3 control-label">Prénom : </label>
+                  <div class="col-lg-9">
+                    <input type="textarea" class="form-control" id="textarea" placeholder="Prénom...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="textarea" class="col-lg-3 control-label">Email : </label>
+                  <div class="col-lg-9">
+                    <input type="email" class="form-control" id="textarea" placeholder="xyz@mail.com">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="textarea" class="col-lg-3 control-label">Date de naissance : </label>
+                  <div class="col-lg-9">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <select name="jour" class="form-control">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="..">...</option>
+                            <option value="31">31</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        <select name="mois" class="form-control">
+                          <option value="01">Janvier</option>
+                          <option value="02">Février</option>
+                          <option value="03">Mars</option>
+                          <option value="04">Avril</option>
+                          <option value="05">Mai</option>
+                          <option value="06">Juin</option>
+                          <option value="07">Juillet</option>
+                          <option value="08">Août</option>
+                          <option value="19">Septembre</option>
+                          <option value="10">Octobre</option>
+                          <option value="11">Novembre</option>
+                          <option value="12">Décembre</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <select name="annee" class="form-control">
+                          <option value="2016">2016</option>
+                          <option value="2015">2015</option>
+                          <option value="2014">2014</option>
+                          <option value="2013">2013</option>
+                          <option value="..">...</option>
+                          <!--...-->
+                          <option value="1900">1900</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button class="pull-right btn btn-success" id="inscription">S'inscrire</button>
+              </div>
+            </form>
+          </div>
+
+          <!--Visite et demande-->
+          <div class="col-lg-offset-2 col-lg-5 col-md-5 col-sm-6 col-xs-12" id="visitdemand">
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10">
+                <h1>
+                  <a href="main.html"><span class="label label-primary col-lg-12 col-md-12 col-sm-12 col-xs-12" id="labelacces">Simple visiteur</span></a>
+                </h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-offset-1 col-lg-10">
+                <h1>
+                  <a href="#"><span class="label label-primary col-lg-12 col-md-12 col-sm-12 col-xs-12" id="labelacces">Demande prestataire</span></a>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="row" id="push"></div>
+      </div>
+
+      <footer id="footer">
+        <div class="row">
+          <img src="css/image/logo/logo150.png" alt="FestiVite" />
+        </div>
+        <div class="row">
+          <h5>
+            <p>&copy; 2016 Festivite, Inc.</p>
+          </h5>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
