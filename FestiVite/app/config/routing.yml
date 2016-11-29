@@ -1,3 +1,7 @@
+festi_vite:
+    resource: "@FestiViteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

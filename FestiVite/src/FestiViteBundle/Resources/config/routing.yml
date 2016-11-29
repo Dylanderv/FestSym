@@ -1,0 +1,3 @@
+festi_vite_homepage:
+    path:     /
+    defaults: { _controller: FestiViteBundle:Default:index }
