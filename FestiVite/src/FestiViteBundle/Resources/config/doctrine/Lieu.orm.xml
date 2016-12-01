@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FestiViteBundle\Entity\Lieu" table="Lieu">
+    <id name="idlieu" type="decimal" column="IdLieu">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tarifhoraire" type="decimal" column="TarifHoraire" precision="6" scale="0" nullable="true"/>
+    <field name="prixInitial" type="decimal" column="Prix_Initial" precision="6" scale="0" nullable="true"/>
+    <field name="description" type="string" column="Description" length="8192" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,35 @@
+<?php
+
+namespace FestiViteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SelectLieu
+ *
+ * @ORM\Table(name="Select_Lieu")
+ * @ORM\Entity
+ */
+class SelectLieu
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idsoiree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IdLieu", type="decimal")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idlieu;
+
+
+}
+

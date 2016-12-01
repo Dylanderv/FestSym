@@ -1,0 +1,54 @@
+<?php
+
+namespace FestiViteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Offre
+ *
+ * @ORM\Table(name="Offre")
+ * @ORM\Entity
+ */
+class Offre
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=255, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Prix", type="integer", nullable=false)
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdProfessionnel", type="integer", nullable=true)
+     */
+    private $idprofessionnel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IdOffre", type="decimal")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idoffre;
+
+
+}
+

@@ -1,0 +1,35 @@
+<?php
+
+namespace FestiViteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Invite
+ *
+ * @ORM\Table(name="Invite")
+ * @ORM\Entity
+ */
+class Invite
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_mail", type="string", length=255)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $adresseMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idsoiree;
+
+
+}
+

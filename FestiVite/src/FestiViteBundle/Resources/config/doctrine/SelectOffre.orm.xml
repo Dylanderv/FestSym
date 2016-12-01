@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FestiViteBundle\Entity\SelectOffre" table="Select_Offre">
+    <id name="idsoiree" type="decimal" column="IdSoiree"/>
+    <id name="idoffre" type="decimal" column="IdOffre"/>
+  </entity>
+</doctrine-mapping>

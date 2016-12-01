@@ -1,0 +1,68 @@
+<?php
+
+namespace FestiViteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Soiree
+ *
+ * @ORM\Table(name="Soiree")
+ * @ORM\Entity
+ */
+class Soiree
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom", type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse", type="string", length=255, nullable=false)
+     */
+    private $adresse;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Prix", type="integer", nullable=true)
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=255, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Creation", type="date", nullable=false)
+     */
+    private $dateCreation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_mail", type="string", length=255, nullable=true)
+     */
+    private $adresseMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsoiree;
+
+
+}
+

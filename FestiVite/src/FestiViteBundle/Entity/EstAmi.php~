@@ -1,0 +1,35 @@
+<?php
+
+namespace FestiViteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EstAmi
+ *
+ * @ORM\Table(name="Est_Ami")
+ * @ORM\Entity
+ */
+class EstAmi
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_mail_1", type="string", length=255)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $adresseMail1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Adresse_mail_2", type="string", length=255)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $adresseMail2;
+
+
+}
+
