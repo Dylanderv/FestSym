@@ -318,38 +318,42 @@ section{
   letter-spacing: 0.8em;
   margin-bottom: 10px;
 }
-#etape1{
+#creerSoiree1{
   margin: 20px 0px;
 }
 
-#etape1>div{
+#creerSoiree1>div{
   margin: 10px 0px;
 }
 
-#etape1 > div > a > div{
+#creerSoiree1 > div > a > div{
   position: relative;
   padding: 0px;
   background-image: url(image/logo/logofinal.png);
   background-size: cover;
-  height: 200px;
+  height: 250px;
   border: 10px solid #051C2C;
 
 }
 
-#etape1>div>a>div>div{
-  height: 180px;
+#creerSoiree1>div>a>div>div{
+  position: relative;
+  height: 230px;
   opacity: 0.6;
   background-color: white;
   padding: 10px;
+  z-index: 1;
 }
 .centrerformulecontent{
   position: absolute;
   color: #051C2C;
   letter-spacing: 0.3em;
-  top:0;
-  left:0;
+  top:50%;
+  left: 0;
   right: 0;
-  transform: translateY(130%);
+  transform: translateY(-50%);
+  margin: 0px;
+  z-index: 2;
 }
 
 .theme{
