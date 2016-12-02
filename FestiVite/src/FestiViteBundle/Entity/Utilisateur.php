@@ -187,4 +187,18 @@ class Utilisateur
     {
         return $this->adresseMail;
     }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresseMail
+     *
+     * @return Utilisateur
+     */
+    public function setAdresseMail($adresseMail)
+    {
+        $this->adresseMail = $adresseMail;
+
+        return $this;
+    }
 }
