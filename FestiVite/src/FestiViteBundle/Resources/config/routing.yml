@@ -17,3 +17,7 @@ festi_vite_accueil:
 festi_vite_recherche:
     path:     /recherche
     defaults: { _controller: FestiViteBundle:Default:recherche }
+
+festi_test:
+    path:     /test
+    defaults: { _controller: FestiViteBundle:Default:test }
