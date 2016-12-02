@@ -24,7 +24,7 @@ class DefaultController extends Controller
 
     public function accueilAction()
     {
-        return $this->render('FestiViteBundle:Default:accueil.html.twig');
+        return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig');
     }
 
     public function rechercheAction()
