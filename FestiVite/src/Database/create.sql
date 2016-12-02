@@ -12,7 +12,7 @@ CREATE TABLE Utilisateur(
         Mot_de_passe Varchar (42) NOT NULL,
         Nom          Varchar (255) ,
         Prenom       Varchar (255) ,
-        DateNaissance    date NOT NULL,
+        Date_Naissance    date NOT NULL,
         Adresse      Varchar (255) ,
         PRIMARY KEY (Adresse_mail )
 )----ENGINE=InnoDB;
@@ -24,7 +24,7 @@ CREATE TABLE Utilisateur(
 --------------------------------------------------------------
 
 CREATE TABLE Utilisateur_professionnel(
-        IdProfessionnel     numeric(9) NOT NULL ,
+        IdProfessionnel     int NOT NULL,
         Mot_de_passe        Varchar (255) NOT NULL ,
         Adresse             Varchar (255) NOT NULL ,
         Numero_de_telephone Varchar (14) ,
@@ -34,18 +34,21 @@ CREATE TABLE Utilisateur_professionnel(
         PRIMARY KEY (IdProfessionnel )
 )--ENGINE=InnoDB;
 ;
-
+Image varchar(255),
 --------------------------------------------------------------
 -- Table: Soirée
 --------------------------------------------------------------
 
 CREATE TABLE Soiree(
-        IdSoiree   numeric(9) NOT NULL ,
+        IdSoiree  int NOT NULL ,
         Nom           Varchar (255) ,
         Adresse       Varchar (255) NOT NULL ,
-        Prix          Int ,
+        Prix          numeric(9) ,
         Type          Varchar (255) ,
+        Description varchar(1000),
         Date_Creation Date NOT NULL ,
+        Date_Soiree date NOT NULL,
+        Prix_Pers numeric(9),
         Adresse_mail  Varchar (255)
           CONSTRAINT FK_Soiree_Adresse_mail
           REFERENCES Utilisateur(Adresse_mail),
@@ -58,10 +61,11 @@ CREATE TABLE Soiree(
 --------------------------------------------------------------
 
 CREATE TABLE Offre(
-        IdOffre         numeric(9) NOT NULL ,
+        IdOffre        int NOT NULL,
         Type            Varchar (255) ,
-        Prix            Int NOT NULL ,
-        Description     Varchar NOT NULL ,
+        Prix            numeric(9) NOT NULL,
+        Description     Varchar(1000) NOT NULL,
+        Image varchar(255),
         IdProfessionnel Int
           CONSTRAINT FK_Offres_IdProfessionnel
           REFERENCES Utilisateur_professionnel(IdProfessionnel),
@@ -74,10 +78,11 @@ CREATE TABLE Offre(
 --------------------------------------------------------------
 
 CREATE TABLE Lieu(
-        IdLieu       numeric(9) NOT NULL ,
-        TarifHoraire numeric(6) ,
+        IdLieu      int NOT NULL ,
+        Tarif numeric(6) ,
         Prix_Initial numeric(6) ,
-        Description  Varchar(8192) ,
+        Description  Varchar(1000),
+        Image varchar(255),
         PRIMARY KEY (IdLieu )
 )--ENGINE=InnoDB;
 ;
@@ -86,13 +91,14 @@ CREATE TABLE Lieu(
 -- Table: Invité Classique
 --------------------------------------------------------------
 
-CREATE TABLE Invite(
+CREATE TABLE Participation(
         Adresse_mail Varchar (255) NOT NULL
           CONSTRAINT FK_Invite_Classique_Adresse_mail
           REFERENCES Utilisateur(Adresse_mail),
-        IdSoiree  numeric(9) NOT NULL
+        IdSoiree  int NOT NULL
           CONSTRAINT FK_Invite_Classique_IdClassique
           REFERENCES Soiree(IdSoiree),
+        Nb_Personnes int NOT NULL,
         PRIMARY KEY (Adresse_mail ,IdSoiree )
 )--ENGINE=InnoDB;
 ;
@@ -117,12 +123,13 @@ CREATE TABLE Est_Ami(
 --------------------------------------------------------------
 
 CREATE TABLE Select_Offre(
-        IdSoiree numeric(9) NOT NULL
+        IdSoiree int NOT NULL
           CONSTRAINT FK_Classique_Offre_IdClassique
           REFERENCES Soiree(IdSoiree),
-        IdOffre     numeric(9) NOT NULL
+        IdOffre     int NOT NULL
           CONSTRAINT FK_Classique_Offre_IdOffre
           REFERENCES Offre(IdOffre),
+        Quantite int NOT NULL,
         PRIMARY KEY (IdSoiree ,IdOffre )
 )--ENGINE=InnoDB;
 ;
@@ -134,12 +141,13 @@ CREATE TABLE Select_Offre(
 --------------------------------------------------------------
 
 CREATE TABLE Select_Lieu(
-        IdSoiree numeric(9) NOT NULL
+        IdSoiree int NOT NULL
           CONSTRAINT FK_Classique_Lieu_IdSoiree
           REFERENCES Soiree(IdSoiree),
-        IdLieu      numeric(9) NOT NULL
+        IdLieu      int NOT NULL
           CONSTRAINT FK_Select_Lieu_IdLieu
           REFERENCES Lieu(IdLieu),
+        Duree time NOT NULL,
         PRIMARY KEY (IdSoiree ,IdLieu )
 )--ENGINE=InnoDB;
 ;
