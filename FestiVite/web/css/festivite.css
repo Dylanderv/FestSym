@@ -327,13 +327,18 @@ section{
 }
 
 #creerSoiree1 > div > a > div{
-  position: relative;
   padding: 0px;
-  background-image: url(image/logo/logofinal.png);
-  background-size: cover;
   height: 250px;
   border: 10px solid #051C2C;
+}
 
+#formule1>a>div{
+  background-image: url(image/FestiVite2.png);
+  background-size:cover;
+}
+#formule2>a>div{
+  background-image: url(image/FestiVite.png);
+  background-size:cover;
 }
 
 #creerSoiree1>div>a>div>div{
@@ -344,15 +349,17 @@ section{
   padding: 10px;
   z-index: 1;
 }
+
 .centrerformulecontent{
   position: absolute;
-  color: #051C2C;
+  color: white;
   letter-spacing: 0.3em;
   top:50%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  margin: 0px;
+  margin:0px;
+  padding: 10px;
   z-index: 2;
 }
 
