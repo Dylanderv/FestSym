@@ -36,15 +36,12 @@ class DefaultController extends Controller
     {
         $utilisateur = new Utilisateur();
         $utilisateur->setNom("Dylan");
-        $utilisateur->setPrenom("Dylan");
-        $utilisateur->setDatenaissance("05/11/1996");
-        //$utilisateur->setAdresseMail("Dylan@aaa.fr");
+        $utilisateur->setPrenom("aaa");
 
         $doctrine = $this->getDoctrine()->getManager();
         $doctrine->persist($utilisateur);
         $doctrine->flush();
 
-
-        return $this->render('FestiViteBundle:Default:testDylan.html.twig', array('doctrine' => $doctrine));
+        return $this->render('FestiViteBundle:Default:testDylan.html.twig');
     }
 }
