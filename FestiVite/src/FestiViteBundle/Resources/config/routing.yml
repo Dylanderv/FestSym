@@ -1,5 +1,5 @@
 festi_vite_main:
-    path:     /
+    path:     /main
     defaults: { _controller: FestiViteBundle:Default:main }
 
 festi_vite_creersoiree:
