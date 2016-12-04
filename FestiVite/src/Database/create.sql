@@ -8,14 +8,14 @@
 ------------------------------------------------------------
 
 CREATE TABLE Utilisateur(
-        IdUtilisateur int NOT NULL,
+        IdUtilisateur integer PRIMARY KEY AUTOINCREMENT,
         Adresse_mail Varchar (255) NOT NULL ,
         Mot_de_passe Varchar (42) NOT NULL,
         Nom          Varchar (255) ,
         Prenom       Varchar (255) ,
         Date_Naissance    date NOT NULL,
-        Adresse      Varchar (255) ,
-        PRIMARY KEY (IdUtilisateur )
+        Adresse      Varchar (255)
+        --PRIMARY KEY (IdUtilisateur )
 )----ENGINE=InnoDB;
 ;
 
@@ -25,14 +25,13 @@ CREATE TABLE Utilisateur(
 --------------------------------------------------------------
 
 CREATE TABLE Utilisateur_professionnel(
-        IdProfessionnel     int NOT NULL,
+        IdProfessionnel     integer PRIMARY KEY AUTOINCREMENT,
         Mot_de_passe        Varchar (255) NOT NULL ,
         Adresse             Varchar (255) NOT NULL ,
         Numero_de_telephone Varchar (14) ,
         Nom_Societe         Varchar (255) NOT NULL ,
         Date_Creation       Date NOT NULL ,
-        Adresse_mail        Varchar (255) NOT NULL ,
-        PRIMARY KEY (IdProfessionnel )
+        Adresse_mail        Varchar (255) NOT NULL
 )--ENGINE=InnoDB;
 ;
 --Image varchar(255),
@@ -41,7 +40,7 @@ CREATE TABLE Utilisateur_professionnel(
 --------------------------------------------------------------
 
 CREATE TABLE Soiree(
-        IdSoiree  int NOT NULL ,
+        IdSoiree  integer PRIMARY KEY AUTOINCREMENT,
         Nom           Varchar (255) ,
         Adresse       Varchar (255) NOT NULL ,
         Prix          numeric(9) ,
@@ -52,8 +51,7 @@ CREATE TABLE Soiree(
         Prix_Pers numeric(9),
         Adresse_mail  Varchar (255)
           CONSTRAINT FK_Soiree_Adresse_mail
-          REFERENCES Utilisateur(Adresse_mail),
-        PRIMARY KEY (IdSoiree )
+          REFERENCES Utilisateur(Adresse_mail)
 )--ENGINE=InnoDB;
 ;
 
@@ -62,15 +60,14 @@ CREATE TABLE Soiree(
 --------------------------------------------------------------
 
 CREATE TABLE Offre(
-        IdOffre        int NOT NULL,
+        IdOffre        integer PRIMARY KEY AUTOINCREMENT,
         Type            Varchar (255) ,
         Prix            numeric(9) NOT NULL,
         Description     Varchar(1000) NOT NULL,
         Image varchar(255),
         IdProfessionnel Int
           CONSTRAINT FK_Offres_IdProfessionnel
-          REFERENCES Utilisateur_professionnel(IdProfessionnel),
-        PRIMARY KEY (IdOffre )
+          REFERENCES Utilisateur_professionnel(IdProfessionnel)
 )--ENGINE=InnoDB;
 ;
 
@@ -79,12 +76,11 @@ CREATE TABLE Offre(
 --------------------------------------------------------------
 
 CREATE TABLE Lieu(
-        IdLieu      int NOT NULL ,
+        IdLieu      integer PRIMARY KEY AUTOINCREMENT,
         Tarif numeric(6) ,
         Prix_Initial numeric(6) ,
         Description  Varchar(1000),
-        Image varchar(255),
-        PRIMARY KEY (IdLieu )
+        Image varchar(255)
 )--ENGINE=InnoDB;
 ;
 
@@ -96,7 +92,7 @@ CREATE TABLE Participation(
         Adresse_mail Varchar (255) NOT NULL
           CONSTRAINT FK_Invite_Classique_Adresse_mail
           REFERENCES Utilisateur(Adresse_mail),
-        IdSoiree  int NOT NULL
+        IdSoiree  integer
           CONSTRAINT FK_Invite_Classique_IdClassique
           REFERENCES Soiree(IdSoiree),
         Nb_Personnes int NOT NULL,
@@ -124,7 +120,7 @@ CREATE TABLE Est_Ami(
 --------------------------------------------------------------
 
 CREATE TABLE Select_Offre(
-        IdSoiree int NOT NULL
+        IdSoiree integer
           CONSTRAINT FK_Classique_Offre_IdClassique
           REFERENCES Soiree(IdSoiree),
         IdOffre     int NOT NULL
@@ -142,7 +138,7 @@ CREATE TABLE Select_Offre(
 --------------------------------------------------------------
 
 CREATE TABLE Select_Lieu(
-        IdSoiree int NOT NULL
+        IdSoiree integer
           CONSTRAINT FK_Classique_Lieu_IdSoiree
           REFERENCES Soiree(IdSoiree),
         IdLieu      int NOT NULL

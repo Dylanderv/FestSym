@@ -218,16 +218,4 @@ class Utilisateur
     {
         return $this->idutilisateur;
     }
-
-    /**
-     * Set idutilisateur
-     *
-     * @return integer
-     */
-    public function setIdutilisateur($idutilisateur)
-    {
-      $this->idutilisateur = $idutilisateur;
-
-      return $this;
-    }
 }
