@@ -5,13 +5,20 @@ namespace FestiViteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Invite
+ * Participation
  *
- * @ORM\Table(name="Invite")
+ * @ORM\Table(name="Participation")
  * @ORM\Entity
  */
-class Invite
+class Participation
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Nb_Personnes", type="integer", nullable=false)
+     */
+    private $nbPersonnes;
+
     /**
      * @var string
      *
@@ -22,9 +29,9 @@ class Invite
     private $adresseMail;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */

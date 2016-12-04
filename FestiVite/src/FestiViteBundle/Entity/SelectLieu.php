@@ -13,18 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
 class SelectLieu
 {
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="Duree", type="time", nullable=false)
+     */
+    private $duree;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idsoiree;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdLieu", type="decimal")
+     * @ORM\Column(name="IdLieu", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -33,9 +40,33 @@ class SelectLieu
 
 
     /**
+     * Set duree
+     *
+     * @param \DateTime $duree
+     *
+     * @return SelectLieu
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return \DateTime
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
      * Set idsoiree
      *
-     * @param string $idsoiree
+     * @param integer $idsoiree
      *
      * @return SelectLieu
      */
@@ -49,7 +80,7 @@ class SelectLieu
     /**
      * Get idsoiree
      *
-     * @return string
+     * @return integer
      */
     public function getIdsoiree()
     {
@@ -59,7 +90,7 @@ class SelectLieu
     /**
      * Set idlieu
      *
-     * @param string $idlieu
+     * @param integer $idlieu
      *
      * @return SelectLieu
      */
@@ -73,7 +104,7 @@ class SelectLieu
     /**
      * Get idlieu
      *
-     * @return string
+     * @return integer
      */
     public function getIdlieu()
     {

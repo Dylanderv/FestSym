@@ -27,9 +27,9 @@ class Soiree
     private $adresse;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="Prix", type="integer", nullable=true)
+     * @ORM\Column(name="Prix", type="decimal", precision=9, scale=0, nullable=true)
      */
     private $prix;
 
@@ -41,11 +41,32 @@ class Soiree
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=true)
+     */
+    private $description;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="Date_Creation", type="date", nullable=false)
      */
     private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Soiree", type="date", nullable=false)
+     */
+    private $dateSoiree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prix_Pers", type="decimal", precision=9, scale=0, nullable=true)
+     */
+    private $prixPers;
 
     /**
      * @var string
@@ -55,9 +76,9 @@ class Soiree
     private $adresseMail;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -116,7 +137,7 @@ class Soiree
     /**
      * Set prix
      *
-     * @param integer $prix
+     * @param string $prix
      *
      * @return Soiree
      */
@@ -130,7 +151,7 @@ class Soiree
     /**
      * Get prix
      *
-     * @return integer
+     * @return string
      */
     public function getPrix()
     {
@@ -162,6 +183,30 @@ class Soiree
     }
 
     /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Soiree
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set dateCreation
      *
      * @param \DateTime $dateCreation
@@ -183,6 +228,54 @@ class Soiree
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+    /**
+     * Set dateSoiree
+     *
+     * @param \DateTime $dateSoiree
+     *
+     * @return Soiree
+     */
+    public function setDateSoiree($dateSoiree)
+    {
+        $this->dateSoiree = $dateSoiree;
+
+        return $this;
+    }
+
+    /**
+     * Get dateSoiree
+     *
+     * @return \DateTime
+     */
+    public function getDateSoiree()
+    {
+        return $this->dateSoiree;
+    }
+
+    /**
+     * Set prixPers
+     *
+     * @param string $prixPers
+     *
+     * @return Soiree
+     */
+    public function setPrixPers($prixPers)
+    {
+        $this->prixPers = $prixPers;
+
+        return $this;
+    }
+
+    /**
+     * Get prixPers
+     *
+     * @return string
+     */
+    public function getPrixPers()
+    {
+        return $this->prixPers;
     }
 
     /**
@@ -212,7 +305,7 @@ class Soiree
     /**
      * Get idsoiree
      *
-     * @return string
+     * @return integer
      */
     public function getIdsoiree()
     {

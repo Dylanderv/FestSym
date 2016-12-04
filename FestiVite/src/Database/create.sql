@@ -8,13 +8,14 @@
 ------------------------------------------------------------
 
 CREATE TABLE Utilisateur(
+        IdUtilisateur int NOT NULL,
         Adresse_mail Varchar (255) NOT NULL ,
         Mot_de_passe Varchar (42) NOT NULL,
         Nom          Varchar (255) ,
         Prenom       Varchar (255) ,
         Date_Naissance    date NOT NULL,
         Adresse      Varchar (255) ,
-        PRIMARY KEY (Adresse_mail )
+        PRIMARY KEY (IdUtilisateur )
 )----ENGINE=InnoDB;
 ;
 
@@ -34,7 +35,7 @@ CREATE TABLE Utilisateur_professionnel(
         PRIMARY KEY (IdProfessionnel )
 )--ENGINE=InnoDB;
 ;
-Image varchar(255),
+--Image varchar(255),
 --------------------------------------------------------------
 -- Table: Soirée
 --------------------------------------------------------------

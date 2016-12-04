@@ -37,7 +37,12 @@ class DefaultController extends Controller
         $utilisateur = new Utilisateur();
         $utilisateur->setNom("Dylan");
         $utilisateur->setPrenom("aaa");
-
+        $utilisateur->setAdresseMail("adresseMail");
+        $utilisateur->setMotDePasse("545");
+        $utilisateur->setDateNaissance(new \DateTime("now"));
+        $utilisateur->setAdresse("AAA");
+        $utilisateur->setIdUtilisateur(12);
+        var_dump($utilisateur);
         $doctrine = $this->getDoctrine()->getManager();
         $doctrine->persist($utilisateur);
         $doctrine->flush();

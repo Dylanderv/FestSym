@@ -55,9 +55,9 @@ class UtilisateurProfessionnel
     private $adresseMail;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdProfessionnel", type="decimal")
+     * @ORM\Column(name="IdProfessionnel", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

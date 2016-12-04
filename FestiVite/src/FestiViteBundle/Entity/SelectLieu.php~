@@ -13,18 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
 class SelectLieu
 {
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="Duree", type="time", nullable=false)
+     */
+    private $duree;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idsoiree;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdLieu", type="decimal")
+     * @ORM\Column(name="IdLieu", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */

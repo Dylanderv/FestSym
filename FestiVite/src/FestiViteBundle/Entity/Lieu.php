@@ -15,9 +15,9 @@ class Lieu
     /**
      * @var string
      *
-     * @ORM\Column(name="TarifHoraire", type="decimal", precision=6, scale=0, nullable=true)
+     * @ORM\Column(name="Tarif", type="decimal", precision=6, scale=0, nullable=true)
      */
-    private $tarifhoraire;
+    private $tarif;
 
     /**
      * @var string
@@ -29,14 +29,21 @@ class Lieu
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=8192, nullable=true)
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="IdLieu", type="decimal")
+     * @ORM\Column(name="Image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdLieu", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -45,27 +52,27 @@ class Lieu
 
 
     /**
-     * Set tarifhoraire
+     * Set tarif
      *
-     * @param string $tarifhoraire
+     * @param string $tarif
      *
      * @return Lieu
      */
-    public function setTarifhoraire($tarifhoraire)
+    public function setTarif($tarif)
     {
-        $this->tarifhoraire = $tarifhoraire;
+        $this->tarif = $tarif;
 
         return $this;
     }
 
     /**
-     * Get tarifhoraire
+     * Get tarif
      *
      * @return string
      */
-    public function getTarifhoraire()
+    public function getTarif()
     {
-        return $this->tarifhoraire;
+        return $this->tarif;
     }
 
     /**
@@ -117,9 +124,33 @@ class Lieu
     }
 
     /**
-     * Get idlieu
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Lieu
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
      *
      * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Get idlieu
+     *
+     * @return integer
      */
     public function getIdlieu()
     {

@@ -27,9 +27,9 @@ class Soiree
     private $adresse;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="Prix", type="integer", nullable=true)
+     * @ORM\Column(name="Prix", type="decimal", precision=9, scale=0, nullable=true)
      */
     private $prix;
 
@@ -41,11 +41,32 @@ class Soiree
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=true)
+     */
+    private $description;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="Date_Creation", type="date", nullable=false)
      */
     private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Soiree", type="date", nullable=false)
+     */
+    private $dateSoiree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prix_Pers", type="decimal", precision=9, scale=0, nullable=true)
+     */
+    private $prixPers;
 
     /**
      * @var string
@@ -55,9 +76,9 @@ class Soiree
     private $adresseMail;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

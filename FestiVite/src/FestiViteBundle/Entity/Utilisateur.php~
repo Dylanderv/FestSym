@@ -15,6 +15,13 @@ class Utilisateur
     /**
      * @var string
      *
+     * @ORM\Column(name="Adresse_mail", type="string", length=255, nullable=false)
+     */
+    private $adresseMail;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Mot_de_passe", type="string", length=42, nullable=false)
      */
     private $motDePasse;
@@ -36,9 +43,9 @@ class Utilisateur
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="DateNaissance", type="date", nullable=false)
+     * @ORM\Column(name="Date_Naissance", type="date", nullable=false)
      */
-    private $datenaissance;
+    private $dateNaissance;
 
     /**
      * @var string
@@ -48,13 +55,13 @@ class Utilisateur
     private $adresse;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="Adresse_mail", type="string", length=255)
+     * @ORM\Column(name="IdUtilisateur", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $adresseMail;
+    private $idutilisateur;
 
 
 }

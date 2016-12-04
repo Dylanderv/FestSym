@@ -20,18 +20,25 @@ class Offre
     private $type;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="Prix", type="integer", nullable=false)
+     * @ORM\Column(name="Prix", type="decimal", precision=9, scale=0, nullable=false)
      */
     private $prix;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", nullable=false)
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=false)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @var integer
@@ -41,9 +48,9 @@ class Offre
     private $idprofessionnel;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdOffre", type="decimal")
+     * @ORM\Column(name="IdOffre", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -78,7 +85,7 @@ class Offre
     /**
      * Set prix
      *
-     * @param integer $prix
+     * @param string $prix
      *
      * @return Offre
      */
@@ -92,7 +99,7 @@ class Offre
     /**
      * Get prix
      *
-     * @return integer
+     * @return string
      */
     public function getPrix()
     {
@@ -124,6 +131,30 @@ class Offre
     }
 
     /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Offre
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Set idprofessionnel
      *
      * @param integer $idprofessionnel
@@ -150,7 +181,7 @@ class Offre
     /**
      * Get idoffre
      *
-     * @return string
+     * @return integer
      */
     public function getIdoffre()
     {

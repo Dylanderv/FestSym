@@ -13,18 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
 class SelectOffre
 {
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="Quantite", type="integer", nullable=false)
+     */
+    private $quantite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idsoiree;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdOffre", type="decimal")
+     * @ORM\Column(name="IdOffre", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */

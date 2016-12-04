@@ -13,18 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
 class SelectOffre
 {
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="Quantite", type="integer", nullable=false)
+     */
+    private $quantite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idsoiree;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdOffre", type="decimal")
+     * @ORM\Column(name="IdOffre", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -33,9 +40,33 @@ class SelectOffre
 
 
     /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return SelectOffre
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
      * Set idsoiree
      *
-     * @param string $idsoiree
+     * @param integer $idsoiree
      *
      * @return SelectOffre
      */
@@ -49,7 +80,7 @@ class SelectOffre
     /**
      * Get idsoiree
      *
-     * @return string
+     * @return integer
      */
     public function getIdsoiree()
     {
@@ -59,7 +90,7 @@ class SelectOffre
     /**
      * Set idoffre
      *
-     * @param string $idoffre
+     * @param integer $idoffre
      *
      * @return SelectOffre
      */
@@ -73,7 +104,7 @@ class SelectOffre
     /**
      * Get idoffre
      *
-     * @return string
+     * @return integer
      */
     public function getIdoffre()
     {

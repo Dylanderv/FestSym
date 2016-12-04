@@ -15,6 +15,13 @@ class Utilisateur
     /**
      * @var string
      *
+     * @ORM\Column(name="Adresse_mail", type="string", length=255, nullable=false)
+     */
+    private $adresseMail;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Mot_de_passe", type="string", length=42, nullable=false)
      */
     private $motDePasse;
@@ -36,9 +43,9 @@ class Utilisateur
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="DateNaissance", type="date", nullable=false)
+     * @ORM\Column(name="Date_Naissance", type="date", nullable=false)
      */
-    private $datenaissance;
+    private $dateNaissance;
 
     /**
      * @var string
@@ -48,15 +55,39 @@ class Utilisateur
     private $adresse;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="Adresse_mail", type="string", length=255)
+     * @ORM\Column(name="IdUtilisateur", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $adresseMail;
+    private $idutilisateur;
 
 
+
+    /**
+     * Set adresseMail
+     *
+     * @param string $adresseMail
+     *
+     * @return Utilisateur
+     */
+    public function setAdresseMail($adresseMail)
+    {
+        $this->adresseMail = $adresseMail;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseMail
+     *
+     * @return string
+     */
+    public function getAdresseMail()
+    {
+        return $this->adresseMail;
+    }
 
     /**
      * Set motDePasse
@@ -131,27 +162,27 @@ class Utilisateur
     }
 
     /**
-     * Set datenaissance
+     * Set dateNaissance
      *
-     * @param \DateTime $datenaissance
+     * @param \DateTime $dateNaissance
      *
      * @return Utilisateur
      */
-    public function setDatenaissance($datenaissance)
+    public function setDateNaissance($dateNaissance)
     {
-        $this->datenaissance = $datenaissance;
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
 
     /**
-     * Get datenaissance
+     * Get dateNaissance
      *
      * @return \DateTime
      */
-    public function getDatenaissance()
+    public function getDateNaissance()
     {
-        return $this->datenaissance;
+        return $this->dateNaissance;
     }
 
     /**
@@ -179,26 +210,24 @@ class Utilisateur
     }
 
     /**
-     * Get adresseMail
+     * Get idutilisateur
      *
-     * @return string
+     * @return integer
      */
-    public function getAdresseMail()
+    public function getIdutilisateur()
     {
-        return $this->adresseMail;
+        return $this->idutilisateur;
     }
 
     /**
-     * Set adresse
+     * Set idutilisateur
      *
-     * @param string $adresseMail
-     *
-     * @return Utilisateur
+     * @return integer
      */
-    public function setAdresseMail($adresseMail)
+    public function setIdutilisateur($idutilisateur)
     {
-        $this->adresseMail = $adresseMail;
+      $this->idutilisateur = $idutilisateur;
 
-        return $this;
+      return $this;
     }
 }

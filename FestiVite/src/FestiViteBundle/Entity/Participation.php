@@ -5,13 +5,20 @@ namespace FestiViteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Invite
+ * Participation
  *
- * @ORM\Table(name="Invite")
+ * @ORM\Table(name="Participation")
  * @ORM\Entity
  */
-class Invite
+class Participation
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Nb_Personnes", type="integer", nullable=false)
+     */
+    private $nbPersonnes;
+
     /**
      * @var string
      *
@@ -22,9 +29,9 @@ class Invite
     private $adresseMail;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="IdSoiree", type="decimal")
+     * @ORM\Column(name="IdSoiree", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -33,11 +40,35 @@ class Invite
 
 
     /**
+     * Set nbPersonnes
+     *
+     * @param integer $nbPersonnes
+     *
+     * @return Participation
+     */
+    public function setNbPersonnes($nbPersonnes)
+    {
+        $this->nbPersonnes = $nbPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPersonnes
+     *
+     * @return integer
+     */
+    public function getNbPersonnes()
+    {
+        return $this->nbPersonnes;
+    }
+
+    /**
      * Set adresseMail
      *
      * @param string $adresseMail
      *
-     * @return Invite
+     * @return Participation
      */
     public function setAdresseMail($adresseMail)
     {
@@ -59,9 +90,9 @@ class Invite
     /**
      * Set idsoiree
      *
-     * @param string $idsoiree
+     * @param integer $idsoiree
      *
-     * @return Invite
+     * @return Participation
      */
     public function setIdsoiree($idsoiree)
     {
@@ -73,7 +104,7 @@ class Invite
     /**
      * Get idsoiree
      *
-     * @return string
+     * @return integer
      */
     public function getIdsoiree()
     {
