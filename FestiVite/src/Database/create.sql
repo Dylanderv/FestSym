@@ -9,7 +9,7 @@
 
 CREATE TABLE Utilisateur(
         IdUtilisateur integer PRIMARY KEY AUTOINCREMENT,
-        Adresse_mail Varchar (255) NOT NULL ,
+        Adresse_mail Varchar (255) NOT NULL UNIQUE,
         Mot_de_passe Varchar (42) NOT NULL,
         Nom          Varchar (255) ,
         Prenom       Varchar (255) ,
