@@ -4,6 +4,18 @@ namespace FestiViteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FestiViteBundle\Entity\Utilisateur;
+use FestiViteBundle\Entity\Soiree;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+
 
 class DefaultController extends Controller
 {
@@ -47,5 +59,43 @@ class DefaultController extends Controller
         $doctrine->flush();
 
         return $this->render('FestiViteBundle:Default:testDylan.html.twig');
+    }
+
+    public function createsoireeAction(Request $request)
+    {
+        $soiree = new Soiree();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
+        $formBuilder
+            ->add('dateCreation', DateType::class)
+            ->add('dateSoiree', DateType::class)
+            ->add('nom', TextType::class)
+            ->add('adresse', TextType::class)
+            ->add('prix', MoneyType::class)
+            ->add('type', ChoiceType::class, array('choices'  => array('Aventure' => "Aventure",'Classique' => "Classique")))
+            ->add('valider', SubmitType::class)
+        ;
+        $form = $formBuilder->getForm();
+        //LAISSEZ LES COMMENTAIRES BANDE DE CHIBRE MOU
+        // Si la requête est en POST
+    if ($request->isMethod('POST')) {
+      // On fait le lien Requête <-> Formulaire
+      // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+      $form->handleRequest($request);
+      // On vérifie que les valeurs entrées sont correctes
+      // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+      if ($form->isValid()) {
+        // On enregistre notre objet $advert dans la base de données, par exemple
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($soiree);
+        $em->flush();
+        $request->getSession()->getFlashBag()->add('notice', 'Soirée bien enrengistrée');
+        // On redirige vers la page de visualisation de l'annonce nouvellement créée
+        return $this->redirectToRoute('festi_vite_main');
+      }
+    }
+
+
+        return $this->render('FestiViteBundle:Default:testCreationSoiree.html.twig',
+         array('form' => $form->createView()));
     }
 }
