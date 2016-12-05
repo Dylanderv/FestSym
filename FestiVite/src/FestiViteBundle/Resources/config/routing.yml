@@ -21,3 +21,7 @@ festi_vite_recherche:
 festi_test:
     path:     /test
     defaults: { _controller: FestiViteBundle:Default:test }
+
+festi_test_soiree:
+    path:     /test/createsoiree
+    defaults: { _controller: FestiViteBundle:Default:createsoiree }
