@@ -64,9 +64,10 @@ class DefaultController extends Controller
     public function createsoireeAction(Request $request)
     {
         $soiree = new Soiree();
+        $soiree->setDateCreation(new \DateTime());
+        $soiree->setDateSoiree(new \DateTime());
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
         $formBuilder
-            ->add('dateCreation', DateType::class)
             ->add('dateSoiree', DateType::class)
             ->add('nom', TextType::class)
             ->add('adresse', TextType::class)
