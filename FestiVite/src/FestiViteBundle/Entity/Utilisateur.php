@@ -3,6 +3,7 @@
 namespace FestiViteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Utilisateur
@@ -10,8 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Utilisateur")
  * @ORM\Entity
  */
-class Utilisateur implements UserInterface, \Serializable
-{
+class Utilisateur implements UserInterface, \Serializable{
     /**
      * @var string
      *
@@ -63,6 +63,12 @@ class Utilisateur implements UserInterface, \Serializable
      */
     private $idutilisateur;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="IsActive", type="boolean")
+     */
+    private $isActive;
 
 
     /**
@@ -72,10 +78,8 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setAdresseMail($adresseMail)
-    {
+    public function setAdresseMail($adresseMail){
         $this->adresseMail = $adresseMail;
-
         return $this;
     }
 
@@ -84,8 +88,7 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getAdresseMail()
-    {
+    public function getAdresseMail(){
         return $this->adresseMail;
     }
 
@@ -96,20 +99,17 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setMotDePasse($motDePasse)
-    {
+    public function setMotDePasse($motDePasse){
         $this->motDePasse = $motDePasse;
-
         return $this;
     }
 
     /**
-     * Get motDePasse
+     * Get motPassword
      *
      * @return string
      */
-    public function getMotDePasse()
-    {
+    public function getPassword(){
         return $this->motDePasse;
     }
 
@@ -120,10 +120,8 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom){
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -132,8 +130,7 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom(){
         return $this->nom;
     }
 
@@ -144,10 +141,8 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom){
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -156,8 +151,7 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getPrenom()
-    {
+    public function getPrenom(){
         return $this->prenom;
     }
 
@@ -168,10 +162,8 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setDateNaissance($dateNaissance)
-    {
+    public function setDateNaissance($dateNaissance){
         $this->dateNaissance = $dateNaissance;
-
         return $this;
     }
 
@@ -180,8 +172,7 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return \DateTime
      */
-    public function getDateNaissance()
-    {
+    public function getDateNaissance(){
         return $this->dateNaissance;
     }
 
@@ -192,10 +183,8 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return Utilisateur
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse){
         $this->adresse = $adresse;
-
         return $this;
     }
 
@@ -204,9 +193,45 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse(){
         return $this->adresse;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername(){
+        return $this->adresse;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getRoles(){
+        return array('ROLE_USER');
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt(){
+        return null;
+    }
+
+    /**
+     * Erase credentials
+     *
+     * @return Utilisateur
+     */
+    public function eraseCredentials(){
+        $this->Mot_de_passe;
+        return this;
     }
 
     /**
@@ -214,8 +239,36 @@ class Utilisateur implements UserInterface, \Serializable
      *
      * @return integer
      */
-    public function getIdutilisateur()
-    {
+    public function getIdutilisateur(){
         return $this->idutilisateur;
+    }
+
+    /**
+     * Serialize
+     *
+     * @return serialize
+     */
+    public function serialize(){
+        return serialize(array(
+            $this->idutilisateur,
+            $this->adresseMail,
+            $this->Mot_de_passe,
+            //$this->salt
+        ));
+    }
+
+    /**
+     * Unserialize
+     *
+     * @return Utilisateur
+     */
+    public function unserialize($serialized){
+        list (
+            $this->idutilisateur,
+            $this->adresseMail,
+            $this->Mot_de_passe,
+            // $this->salt
+        ) = unserialize($serialized);
+        return this;
     }
 }
