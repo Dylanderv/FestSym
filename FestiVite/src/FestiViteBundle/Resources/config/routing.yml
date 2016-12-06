@@ -25,3 +25,7 @@ festi_test:
 festi_test_soiree:
     path:     /test/createsoiree
     defaults: { _controller: FestiViteBundle:Default:createsoiree }
+
+festi_test_connection:
+    path:     /test/connection
+    defaults: { _controller: FestiViteBundle:Default:connection }
