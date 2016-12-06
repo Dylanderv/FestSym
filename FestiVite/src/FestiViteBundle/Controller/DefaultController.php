@@ -76,7 +76,7 @@ class DefaultController extends Controller
             ->add('valider', SubmitType::class)
         ;
         $form = $formBuilder->getForm();
-        //LAISSEZ LES COMMENTAIRES BANDE DE CHIBRE MOU
+        //LAISSEZ LES COMMENTAIRES BANDE DE CHIBRES MOUS
         // Si la requête est en POST
     if ($request->isMethod('POST')) {
       // On fait le lien Requête <-> Formulaire
