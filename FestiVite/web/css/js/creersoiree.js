@@ -1,5 +1,5 @@
 $("#formule1>a>div").hover(function(){
-  $("#formule1 h1").hide("slide",{direction: 'up'},500);
+  $("#formule1 h1").hide("slide",{direction: 'up'},500,function(){});
   $("#formule1 p").show("slide",{direction: 'down'},500);
 },function(){
   $("#formule1 p").hide("slide",{direction: 'down'},500);
