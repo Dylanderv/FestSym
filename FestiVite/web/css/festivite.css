@@ -178,7 +178,8 @@ section{
 .navbar a{
   height: inherit;
 }
-.navbar-header{
+.navbar-header #logorond{
+  display: none;
 }
 .navbar-nav{
   text-align: center;
@@ -440,6 +441,16 @@ section{
   padding: 0px;
 }
 
+@media screen and (max-width: 1000px) {
+  .navbar-header #logolarge{
+    display:none;
+  }
+  .navbar-header #logorond{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+  }
+}
 /*Pour les smartphone*/
 @media screen and (max-width: 768px) {
   #banner{
