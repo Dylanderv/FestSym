@@ -22,71 +22,60 @@
 
   <body>
     <div id="wrap">
-    <!-- Banniere -->
-      <div id="banner">
-          <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
-      </div>
 
-    <!-- Menu de navigation  -->
-      <nav class="navbar navbar-default navbar-static-top" role="navigation" id="topnavbar">
-        <div class="container">
 
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="main"><img src="css/image/btnhome.png" alt="Home" /></a>
-          </div>
+      <!-- Banniere / Menu de navigation -->
+        <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
+            <div class="container">
 
-          <div class="navbar-collapse collapse" id="navbar" >
-            <ul class="nav navbar-nav">
-              <!--Mon compte-->
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Mes Infos</a></li>
-                <li><a href="#">Mon historique</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Contact</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-              </ul>
-              <!--/Mon compte-->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="main"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
+              </div>
 
-              <!--Mes amis-->
-              <li><a href="#">Mes Amis</a></li>
-              <!--/Mes amis-->
+              <div class="navbar-collapse collapse" id="navbar" >
+                <ul class="nav navbar-nav">
+                  <!--Mon compte-->
+                  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Mon compte <span class="caret"></span></p></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Mes Infos</a></li>
+                    <li><a href="#">Mon historique</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Contact</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                  </ul>
+                  <!--/Mon compte-->
 
-              <!--Mes soirées-->
-              <li><a href="#">Mes Soirées</a></li>
-              <!--/Mes soirées-->
+                  <!--Mes amis-->
+                  <li><a href="#"><p>Mes Amis</p></a></li>
+                  <!--/Mes amis-->
 
-              <!--Partenaire-->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Partenaire<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="main">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
+                  <!--Mes soirées-->
+                  <li><a href="#"><p>Mes Soirées</p></a></li>
+                  <!--/Mes soirées-->
+
+                  <!--Partenaire-->
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Partenaire<span class="caret"></span></p></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
+                    </ul>
+                  </li>
+                  <!--/Partenaire-->
                 </ul>
-              </li>
-              <!--/Partenaire-->
-            </ul>
-            <!--/fin des items de la navbar-->
-          </div><!--/.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-    <!-- script utile ? -->
-      <script type="text/javascript">
-        $('#topnavbar').affix({
-          offset: {
-            top: $('#banner').height()
-          }
-        });
-      </script>
+                <!--/fin des items de la navbar-->
+              </div><!--/.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
 
       <!-- Debut du corps -->
       <div class="container" id="main">

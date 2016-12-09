@@ -41,7 +41,7 @@ class DefaultController extends Controller
 
     public function rechercheAction()
     {
-        return $this->render('FestiViteBundle:Default:recherche.html.twig');
+        return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig');
     }
 
     public function testAction()
