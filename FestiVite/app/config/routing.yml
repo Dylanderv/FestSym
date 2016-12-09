@@ -1,7 +1,3 @@
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 festi_vite:
     resource: "@FestiViteBundle/Resources/config/routing.yml"
     prefix:   /
