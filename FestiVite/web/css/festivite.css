@@ -178,7 +178,8 @@ section{
 .navbar a{
   height: inherit;
 }
-.navbar-header{
+.navbar-header #logorond{
+  display: none;
 }
 .navbar-nav{
   text-align: center;
@@ -336,6 +337,7 @@ section{
 }
 #creerSoiree1{
   margin: 20px 0px;
+  color: red;
 }
 
 #creerSoiree1>div{
@@ -346,6 +348,10 @@ section{
   padding: 0px;
   height: 250px;
   border: 10px solid #051C2C;
+}
+#creerSoiree1 h1,
+#creerSoiree1 p{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #formule1>a>div{
@@ -440,6 +446,16 @@ section{
   padding: 0px;
 }
 
+@media screen and (max-width: 1000px) {
+  .navbar-header #logolarge{
+    display:none;
+  }
+  .navbar-header #logorond{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+  }
+}
 /*Pour les smartphone*/
 @media screen and (max-width: 768px) {
   #banner{
@@ -457,7 +473,7 @@ section{
     transform: translateY(0%);
   }
   h1{
-    font-size: 1.5em!important;
+    font-size: 1.7em!important;
   }
   h3{
     font-weight: bold;

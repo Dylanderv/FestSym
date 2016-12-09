@@ -15,7 +15,7 @@ festi_vite_accueil:
     defaults: { _controller: FestiViteBundle:Security:login }
 
 festi_vite_recherche:
-    path:     /recherche
+    path:     /rechercheprestataire
     defaults: { _controller: FestiViteBundle:Default:recherche }
 
 festi_test:
