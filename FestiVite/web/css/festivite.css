@@ -170,6 +170,7 @@ section{
 /* Fin création de soirée*/
 
 /*Nav style*/
+
 .navbar{
   background-color: #051C2C;
   border-radius: 0px;
@@ -181,7 +182,7 @@ section{
 }
 .navbar-nav{
   text-align: center;
-  height: 110px;
+  height: 150px;
 }
 .navbar-nav > li{
   height: inherit;
@@ -202,9 +203,9 @@ section{
   top:50%;
   left: 0;
   right: 0;
-  transform: translateY(-50%);
   margin:0px;
   padding: 10px;
+  transform: translateY(-50%);
 }
 .navbar-default .navbar-nav > li > a:focus {
   color: white;
