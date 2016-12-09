@@ -171,25 +171,40 @@ section{
 
 /*Nav style*/
 .navbar{
-  background-color: #6BB9F0;
+  background-color: #051C2C;
   border-radius: 0px;
 }
 .navbar a{
   height: inherit;
 }
-.navbar img{
-  max-height: 42px;
+.navbar-header{
+}
+.navbar-nav{
+  text-align: center;
+  height: 110px;
+}
+.navbar-nav > li{
+  height: inherit;
 }
 .navbar-brand{
-  padding: 5px 5px;
+  padding: 0px;
 }
 .navbar > .container{
   width: 100%;
-  padding-left: 40px;
 }
 
 .navbar-default .navbar-nav > li > a {
   color: white;
+}
+
+.navbar-default .navbar-nav > li > a > p{
+  position: relative;
+  top:50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin:0px;
+  padding: 10px;
 }
 .navbar-default .navbar-nav > li > a:focus {
   color: white;
@@ -432,6 +447,13 @@ section{
   #banner img{
     height: 100px;
     max-width: 100%;
+  }
+  .navbar-nav{
+    text-align: left;
+    height: auto;
+  }
+  .navbar-default .navbar-nav > li > a > p{
+    transform: translateY(0%);
   }
   h1{
     font-size: 1.5em!important;
