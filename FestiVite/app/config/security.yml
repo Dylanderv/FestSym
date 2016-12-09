@@ -4,6 +4,9 @@ security:
 
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
         
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
@@ -19,7 +22,7 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            anonymous: true
             form_login:
                login_path: login
                check_path: login
@@ -32,3 +35,6 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+        access_control:
+            #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
