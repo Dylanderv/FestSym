@@ -18,7 +18,7 @@ class SecurityController extends Controller{
 
         return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError(),
+            'error'         => $authenticationUtils->getLastAuthenticationError()
         ));
     }
 }

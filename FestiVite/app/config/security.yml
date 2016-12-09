@@ -24,9 +24,10 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
+                default_target_path: festi_vite_main
             logout:
                 path:       logout
                 target:     /accueil
 
     access_control:
-        #- { path: ^/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
