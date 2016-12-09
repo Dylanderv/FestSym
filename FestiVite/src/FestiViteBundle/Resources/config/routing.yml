@@ -12,15 +12,11 @@ festi_vite_moncompte:
 
 festi_vite_accueil:
     path:     /accueil
-    defaults: { _controller: FestiViteBundle:Default:accueil }
+    defaults: { _controller: FestiViteBundle:Security:login }
 
 festi_vite_recherche:
     path:     /recherche
     defaults: { _controller: FestiViteBundle:Default:recherche }
-
-festi_vite_login:
-    path:     /login
-    defaults: { _controller: UserBundle:Security:login}
 
 festi_test:
     path:     /test

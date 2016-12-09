@@ -34,11 +34,6 @@ class DefaultController extends Controller
         return $this->render('FestiViteBundle:Default:moncompte.html.twig');
     }
 
-    public function accueilAction()
-    {
-        return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig');
-    }
-
     public function rechercheAction()
     {
         return $this->render('FestiViteBundle:Default:recherche.html.twig');

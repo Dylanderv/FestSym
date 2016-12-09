@@ -1,7 +1,7 @@
 <?php
-// src/OC/UserBundle/Controller/SecurityController.php;
+// src/FestiViteBundle/Controller/SecurityController.php;
 
-namespace UserBundle\Controller;
+namespace FestiViteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -16,7 +16,7 @@ class SecurityController extends Controller{
         // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        return $this->render('UserBundle:Security:login.html.twig', array(
+        return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(),
         ));

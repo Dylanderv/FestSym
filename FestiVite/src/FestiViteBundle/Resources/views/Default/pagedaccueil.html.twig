@@ -34,14 +34,17 @@
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          {% if error %}
+             <div class="alert alert-danger">{{ error.message }}</div>
+          {% endif %}
+          <form class="navbar-form navbar-right" action="{{ path('login_check') }}" method="post">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" id="username" name="_username" placeholder="Email" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Mot de passe" class="form-control">
+              <input type="password" id="password" name="_password" placeholder="Mot de passe" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Connexion</button>
+            <button type="submit" value="Connexion" class="btn btn-success">Connexion</button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>

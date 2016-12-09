@@ -7,9 +7,9 @@ app:
     type:     annotation
 
 login:
-    path: /login
+    path: /accueil
     defaults:
-        _controller: UserBundle:Security:login
+        _controller: FestiViteBundle:Security:login
 
 login_check:
     path: /login_check
