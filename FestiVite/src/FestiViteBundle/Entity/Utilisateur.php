@@ -4,14 +4,14 @@ namespace FestiViteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * Utilisateur
  *
  * @ORM\Table(name="Utilisateur")
  * @ORM\Entity
  */
-class Utilisateur{
+class Utilisateur implements UserInterface
+{
     /**
      * @var string
      *
@@ -22,9 +22,9 @@ class Utilisateur{
     /**
      * @var string
      *
-     * @ORM\Column(name="Mot_de_passe", type="string", length=42, nullable=false)
+     * @ORM\Column(name="Password", type="string", length=42, nullable=false)
      */
-    private $motDePasse;
+    private $password;
 
     /**
      * @var string
@@ -55,6 +55,20 @@ class Utilisateur{
     private $adresse;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Roles", type="string", length=255, nullable=true)
+     */
+    private $roles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="IdUtilisateur", type="integer")
@@ -63,12 +77,6 @@ class Utilisateur{
      */
     private $idutilisateur;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="IsActive", type="boolean")
-     */
-    private $isActive;
 
 
     /**
@@ -78,8 +86,10 @@ class Utilisateur{
      *
      * @return Utilisateur
      */
-    public function setAdresseMail($adresseMail){
+    public function setAdresseMail($adresseMail)
+    {
         $this->adresseMail = $adresseMail;
+
         return $this;
     }
 
@@ -88,29 +98,33 @@ class Utilisateur{
      *
      * @return string
      */
-    public function getAdresseMail(){
+    public function getAdresseMail()
+    {
         return $this->adresseMail;
     }
 
     /**
-     * Set motDePasse
+     * Set password
      *
-     * @param string $motDePasse
+     * @param string $password
      *
      * @return Utilisateur
      */
-    public function setMotDePasse($motDePasse){
-        $this->motDePasse = $motDePasse;
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
         return $this;
     }
 
     /**
-     * Get motDePasse
+     * Get password
      *
      * @return string
      */
-    public function getMotDePasse(){
-        return $this->motDePasse;
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     /**
@@ -120,8 +134,10 @@ class Utilisateur{
      *
      * @return Utilisateur
      */
-    public function setNom($nom){
+    public function setNom($nom)
+    {
         $this->nom = $nom;
+
         return $this;
     }
 
@@ -130,7 +146,8 @@ class Utilisateur{
      *
      * @return string
      */
-    public function getNom(){
+    public function getNom()
+    {
         return $this->nom;
     }
 
@@ -141,8 +158,10 @@ class Utilisateur{
      *
      * @return Utilisateur
      */
-    public function setPrenom($prenom){
+    public function setPrenom($prenom)
+    {
         $this->prenom = $prenom;
+
         return $this;
     }
 
@@ -151,7 +170,8 @@ class Utilisateur{
      *
      * @return string
      */
-    public function getPrenom(){
+    public function getPrenom()
+    {
         return $this->prenom;
     }
 
@@ -162,8 +182,10 @@ class Utilisateur{
      *
      * @return Utilisateur
      */
-    public function setDateNaissance($dateNaissance){
+    public function setDateNaissance($dateNaissance)
+    {
         $this->dateNaissance = $dateNaissance;
+
         return $this;
     }
 
@@ -172,7 +194,8 @@ class Utilisateur{
      *
      * @return \DateTime
      */
-    public function getDateNaissance(){
+    public function getDateNaissance()
+    {
         return $this->dateNaissance;
     }
 
@@ -183,8 +206,10 @@ class Utilisateur{
      *
      * @return Utilisateur
      */
-    public function setAdresse($adresse){
+    public function setAdresse($adresse)
+    {
         $this->adresse = $adresse;
+
         return $this;
     }
 
@@ -193,26 +218,51 @@ class Utilisateur{
      *
      * @return string
      */
-    public function getAdresse(){
+    public function getAdresse()
+    {
         return $this->adresse;
     }
 
     /**
-     * Get username
+     * Set roles
      *
-     * @return string
+     * @param string $roles
+     *
+     * @return Utilisateur
      */
-    public function getUsername(){
-        return $this->adresse;
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     /**
-     * Get username
+     * Get roles
      *
-     * @return string
+     * @return array
      */
-    public function getRoles(){
-        return array('ROLE_USER');
+    public function getRoles()
+    {
+        $decoupe = explode('|',$this->roles);
+        foreach ($decoupe as $key => $value) {
+          $value = trim($value);
+        }
+        return $decoupe;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Utilisateur
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
     }
 
     /**
@@ -220,18 +270,9 @@ class Utilisateur{
      *
      * @return string
      */
-    public function getSalt(){
-        return null;
-    }
-
-    /**
-     * Erase credentials
-     *
-     * @return Utilisateur
-     */
-    public function eraseCredentials(){
-        $this->Mot_de_passe;
-        return this;
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
     /**
@@ -239,36 +280,16 @@ class Utilisateur{
      *
      * @return integer
      */
-    public function getIdutilisateur(){
+    public function getIdutilisateur()
+    {
         return $this->idutilisateur;
     }
 
-    /**
-     * Serialize
-     *
-     * @return serialize
-     */
-    public function serialize(){
-        return serialize(array(
-            $this->idutilisateur,
-            $this->adresseMail,
-            $this->Mot_de_passe,
-            //$this->salt
-        ));
+    public function getUsername(){
+      return $this->adresseMail;
     }
 
-    /**
-     * Unserialize
-     *
-     * @return Utilisateur
-     */
-    public function unserialize($serialized){
-        list (
-            $this->idutilisateur,
-            $this->adresseMail,
-            $this->Mot_de_passe,
-            // $this->salt
-        ) = unserialize($serialized);
-        return this;
+    public function eraseCredentials(){
+
     }
 }

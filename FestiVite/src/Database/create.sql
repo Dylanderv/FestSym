@@ -10,11 +10,13 @@
 CREATE TABLE Utilisateur(
         IdUtilisateur integer PRIMARY KEY AUTOINCREMENT,
         Adresse_mail Varchar (255) NOT NULL UNIQUE,
-        Mot_de_passe Varchar (42) NOT NULL,
+        Password Varchar (42) NOT NULL,
         Nom          Varchar (255) ,
         Prenom       Varchar (255) ,
         Date_Naissance    date NOT NULL,
-        Adresse      Varchar (255)
+        Adresse      Varchar (255),
+        Roles         Varchar(255),
+        salt         Varchar(255)
         --PRIMARY KEY (IdUtilisateur )
 )----ENGINE=InnoDB;
 ;

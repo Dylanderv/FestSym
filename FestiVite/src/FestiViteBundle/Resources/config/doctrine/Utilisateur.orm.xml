@@ -9,7 +9,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="motDePasse" type="string" column="Mot_de_passe" length="42" nullable="false">
+    <field name="password" type="string" column="Password" length="42" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -26,6 +26,16 @@
     </field>
     <field name="dateNaissance" type="date" column="Date_Naissance" nullable="false"/>
     <field name="adresse" type="string" column="Adresse" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="roles" type="string" column="Roles" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="salt" type="string" column="salt" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

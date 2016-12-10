@@ -25,9 +25,10 @@ class SecurityController extends Controller{
         $newCompte = new Utilisateur();
 
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $newCompte);
+        $newCompte->setRoles('ROLE_USER');
         $formBuilder
             ->add('adresseMail', EmailType::class)
-            ->add('motDePasse', PasswordType::class)
+            ->add('password', PasswordType::class)
             ->add('dateNaissance', BirthdayType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)

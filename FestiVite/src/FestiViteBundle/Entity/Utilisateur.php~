@@ -22,9 +22,9 @@ class Utilisateur
     /**
      * @var string
      *
-     * @ORM\Column(name="Mot_de_passe", type="string", length=42, nullable=false)
+     * @ORM\Column(name="Password", type="string", length=42, nullable=false)
      */
-    private $motDePasse;
+    private $password;
 
     /**
      * @var string
@@ -53,6 +53,20 @@ class Utilisateur
      * @ORM\Column(name="Adresse", type="string", length=255, nullable=true)
      */
     private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Roles", type="string", length=255, nullable=true)
+     */
+    private $roles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
 
     /**
      * @var integer
