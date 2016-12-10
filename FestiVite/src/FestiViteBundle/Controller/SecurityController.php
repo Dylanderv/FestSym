@@ -4,6 +4,13 @@
 namespace FestiViteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use FestiViteBundle\Entity\Utilisateur;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SecurityController extends Controller{
     public function loginAction(Request $request){
@@ -15,10 +22,47 @@ class SecurityController extends Controller{
         // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
         // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
+        $newCompte = new Utilisateur();
+
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $newCompte);
+        $formBuilder
+            ->add('adresseMail', EmailType::class)
+            ->add('motDePasse', PasswordType::class)
+            ->add('dateNaissance', BirthdayType::class)
+            ->add('nom', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('valider', SubmitType::class)
+        ;
+
+        $form = $formBuilder->getForm();
+
+        // Si la requête est en POST
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $advert dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($newCompte);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add('notice', 'L\'utilisateur est bien enrengistré');
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig', array(
+                    'last_username' => $authenticationUtils->getLastUsername(),
+                    'error'         => $authenticationUtils->getLastAuthenticationError(),
+                    'form'          => $form->createView(),
+                    'enreg'         => "Vous êtes bien enregistré, veuillez vous connecter."
+                  ));
+            }
+        }
 
         return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError()
-        ));
+            'error'         => $authenticationUtils->getLastAuthenticationError(),
+            'form'          => $form->createView()
+          ));
     }
 }

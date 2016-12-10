@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="Utilisateur")
  * @ORM\Entity
  */
-class Utilisateur implements UserInterface, \Serializable{
+class Utilisateur{
     /**
      * @var string
      *
@@ -105,11 +105,11 @@ class Utilisateur implements UserInterface, \Serializable{
     }
 
     /**
-     * Get motPassword
+     * Get motDePasse
      *
      * @return string
      */
-    public function getPassword(){
+    public function getMotDePasse(){
         return $this->motDePasse;
     }
 
