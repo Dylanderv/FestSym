@@ -41,18 +41,17 @@ class DefaultController extends Controller
 
     public function testAction()
     {
-        $utilisateur = new Utilisateur();
-        $utilisateur->setNom("Dylan");
-        $utilisateur->setPrenom("aaa");
-        $utilisateur->setAdresseMail("adresseMail");
-        $utilisateur->setMotDePasse("545");
-        $utilisateur->setDateNaissance(new \DateTime("now"));
-        $utilisateur->setAdresse("AAA");
-        var_dump($utilisateur);
-        $doctrine = $this->getDoctrine()->getManager();
-        $doctrine->persist($utilisateur);
-        $doctrine->flush();
-
+        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Utilisateur');
+        $utils = $repository->findAll();
+        /*
+        $repository->findBy(
+        array $critere,
+        array $orderBy,
+        $limit,
+        $offset
+        )
+        */
+        var_dump($utils);
         return $this->render('FestiViteBundle:Default:testDylan.html.twig');
     }
 
