@@ -38,5 +38,76 @@ class SelectOffre
     private $idoffre;
 
 
-}
 
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return SelectOffre
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set idsoiree
+     *
+     * @param integer $idsoiree
+     *
+     * @return SelectOffre
+     */
+    public function setIdsoiree($idsoiree)
+    {
+        $this->idsoiree = $idsoiree;
+
+        return $this;
+    }
+
+    /**
+     * Get idsoiree
+     *
+     * @return integer
+     */
+    public function getIdsoiree()
+    {
+        return $this->idsoiree;
+    }
+
+    /**
+     * Set idoffre
+     *
+     * @param integer $idoffre
+     *
+     * @return SelectOffre
+     */
+    public function setIdoffre($idoffre)
+    {
+        $this->idoffre = $idoffre;
+
+        return $this;
+    }
+
+    /**
+     * Get idoffre
+     *
+     * @return integer
+     */
+    public function getIdoffre()
+    {
+        return $this->idoffre;
+    }
+}

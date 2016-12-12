@@ -57,13 +57,18 @@ class UtilisateurProfessionnel
     /**
      * @var integer
      *
-     * @ORM\Column(name="IdProfessionnel", type="integer")
+     * @ORM\Column(name="idprofessionnel", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idprofessionnel;
 
-
+    /**
+    *
+    *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="UtilisateurProfessionnel")
+    *
+    */
+    private $offres;
 
     /**
      * Set motDePasse
@@ -217,5 +222,43 @@ class UtilisateurProfessionnel
     public function getIdprofessionnel()
     {
         return $this->idprofessionnel;
+    }
+
+
+    public function addOffre(Offre $offre)
+    {
+    $this->offres[] = $offre;
+    // On lie l'annonce à la candidature
+    $offre->setUtilisateurProfessionnel($this);
+    return $this;
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->offres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Remove offre
+     *
+     * @param \FestiViteBundle\Entity\Offre $offre
+     */
+    public function removeOffre(\FestiViteBundle\Entity\Offre $offre)
+    {
+        $this->offres->removeElement($offre);
+    }
+
+    /**
+     * Get offres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOffres()
+    {
+        return $this->offres;
     }
 }

@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use FestiViteBundle\Repository\OffreRepository;
+use FestiViteBundle\Entity\UtilisateurProfessionnel;
+use FestiViteBundle\Entity\Offre;
 
 
 
@@ -41,8 +44,8 @@ class DefaultController extends Controller
 
     public function testAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Utilisateur');
-        $utils = $repository->findAll();
+        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
+        //$utils = $repository->findAll();
         /*
         $repository->findBy(
         array $critere,
@@ -51,7 +54,48 @@ class DefaultController extends Controller
         $offset
         )
         */
+        //$utils = $repository->createQueryBuilder('a')->getQuery()->getResult();
+        //$repository2 = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
+        //$repository2->createQueryBuilder('prof');
+        $utils = $repository
+          ->createQueryBuilder('a')
+          ->leftJoin('a.idprofessionnel', 'prof')
+          ->addSelect('prof')
+          ->getQuery()
+          ->getResult();
         var_dump($utils);
+
+          /*$uti = new UtilisateurProfessionnel();
+          $uti->setMotDePasse("123456789");
+          $uti->setAdresse("3 rue des pommiers");
+          $uti->setNumeroDeTelephone("041424258475");
+          $uti->setNomSociete("Entreprise 1");
+          $uti->setDateCreation(new \DateTime("now"));
+          $uti->setAdresseMail("aaa@entreprise1.fr");
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($uti);
+          $em->flush();*/
+
+          /*$uti = new Offre();
+          $uti->setType("TypeA");
+          $uti->setPrix("123456789");
+          $uti->setDescription("aaa");
+          $uti->setImage("Entreprise 3");
+
+          $utils = $repository->findAll();
+          $utils[0]->addOffre($uti);
+          //var_dump($utils[0]->getOffres());
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($uti);
+          $em->flush();*/
+
+        /*$utils = $repository->findAll();
+        var_dump($utils[0]);
+        $aaa = $utils[0]->getOffres();
+        var_dump($aaa);*/
+        //$utils = OffreRepository::getOffreWithUtilProf();
+        /*var_dump($uti);
+        var_dump($utils[0]);*/
         return $this->render('FestiViteBundle:Default:testDylan.html.twig');
     }
 

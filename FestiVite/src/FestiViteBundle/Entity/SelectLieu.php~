@@ -38,5 +38,76 @@ class SelectLieu
     private $idlieu;
 
 
-}
 
+    /**
+     * Set duree
+     *
+     * @param \DateTime $duree
+     *
+     * @return SelectLieu
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return \DateTime
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * Set idsoiree
+     *
+     * @param integer $idsoiree
+     *
+     * @return SelectLieu
+     */
+    public function setIdsoiree($idsoiree)
+    {
+        $this->idsoiree = $idsoiree;
+
+        return $this;
+    }
+
+    /**
+     * Get idsoiree
+     *
+     * @return integer
+     */
+    public function getIdsoiree()
+    {
+        return $this->idsoiree;
+    }
+
+    /**
+     * Set idlieu
+     *
+     * @param integer $idlieu
+     *
+     * @return SelectLieu
+     */
+    public function setIdlieu($idlieu)
+    {
+        $this->idlieu = $idlieu;
+
+        return $this;
+    }
+
+    /**
+     * Get idlieu
+     *
+     * @return integer
+     */
+    public function getIdlieu()
+    {
+        return $this->idlieu;
+    }
+}

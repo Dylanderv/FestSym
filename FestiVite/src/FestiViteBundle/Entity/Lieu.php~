@@ -50,5 +50,110 @@ class Lieu
     private $idlieu;
 
 
-}
 
+    /**
+     * Set tarif
+     *
+     * @param string $tarif
+     *
+     * @return Lieu
+     */
+    public function setTarif($tarif)
+    {
+        $this->tarif = $tarif;
+
+        return $this;
+    }
+
+    /**
+     * Get tarif
+     *
+     * @return string
+     */
+    public function getTarif()
+    {
+        return $this->tarif;
+    }
+
+    /**
+     * Set prixInitial
+     *
+     * @param string $prixInitial
+     *
+     * @return Lieu
+     */
+    public function setPrixInitial($prixInitial)
+    {
+        $this->prixInitial = $prixInitial;
+
+        return $this;
+    }
+
+    /**
+     * Get prixInitial
+     *
+     * @return string
+     */
+    public function getPrixInitial()
+    {
+        return $this->prixInitial;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Lieu
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Lieu
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Get idlieu
+     *
+     * @return integer
+     */
+    public function getIdlieu()
+    {
+        return $this->idlieu;
+    }
+}

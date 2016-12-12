@@ -41,11 +41,10 @@ class Offre
     private $image;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="IdProfessionnel", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="FestiViteBundle\Entity\UtilisateurProfessionnel", inversedBy="offres")
+     * @ORM\JoinColumn(nullable=false, name="UtilisateurProfessionnel", referencedColumnName="idprofessionnel")
      */
-    private $idprofessionnel;
+    private $UtilisateurProfessionnel;
 
     /**
      * @var integer
@@ -57,5 +56,149 @@ class Offre
     private $idoffre;
 
 
-}
 
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Offre
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param string $prix
+     *
+     * @return Offre
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Offre
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Offre
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Get idoffre
+     *
+     * @return integer
+     */
+    public function getIdoffre()
+    {
+        return $this->idoffre;
+    }
+
+    public function setUtilisateuProfessionnel($UtilisateuProfessionnel)
+    {
+        $this->UtilisateuProfessionnel = $UtilisateuProfessionnel;
+
+        return $this;
+    }
+
+    public function getUtilisateuProfessionnel()
+    {
+        return $this->UtilisateuProfessionnel;
+    }
+
+
+
+    /**
+     * Set utilisateurProfessionnel
+     *
+     * @param \FestiViteBundle\Entity\UtilisateurProfessionnel $utilisateurProfessionnel
+     *
+     * @return Offre
+     */
+    public function setUtilisateurProfessionnel(\FestiViteBundle\Entity\UtilisateurProfessionnel $utilisateurProfessionnel)
+    {
+        $this->UtilisateurProfessionnel = $utilisateurProfessionnel;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurProfessionnel
+     *
+     * @return \FestiViteBundle\Entity\UtilisateurProfessionnel
+     */
+    public function getUtilisateurProfessionnel()
+    {
+        return $this->UtilisateurProfessionnel;
+    }
+}

@@ -41,11 +41,10 @@ class Offre
     private $image;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="IdProfessionnel", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="FestiViteBundle\Entity\UtilisateurProfessionnel", inversedBy="offres")
+     * @ORM\JoinColumn(nullable=false, name="utilisateurprofessionnel", referencedColumnName="idprofessionnel")
      */
-    private $idprofessionnel;
+    private $utilisateurprofessionnel;
 
     /**
      * @var integer
@@ -154,29 +153,6 @@ class Offre
         return $this->image;
     }
 
-    /**
-     * Set idprofessionnel
-     *
-     * @param integer $idprofessionnel
-     *
-     * @return Offre
-     */
-    public function setIdprofessionnel($idprofessionnel)
-    {
-        $this->idprofessionnel = $idprofessionnel;
-
-        return $this;
-    }
-
-    /**
-     * Get idprofessionnel
-     *
-     * @return integer
-     */
-    public function getIdprofessionnel()
-    {
-        return $this->idprofessionnel;
-    }
 
     /**
      * Get idoffre
@@ -186,5 +162,29 @@ class Offre
     public function getIdoffre()
     {
         return $this->idoffre;
+    }
+
+    /**
+     * Set utilisateurProfessionnel
+     *
+     * @param \FestiViteBundle\Entity\UtilisateurProfessionnel $utilisateurProfessionnel
+     *
+     * @return Offre
+     */
+    public function setUtilisateurProfessionnel(\FestiViteBundle\Entity\UtilisateurProfessionnel $utilisateurProfessionnel)
+    {
+        $this->utilisateurprofessionnel = $utilisateurProfessionnel;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurProfessionnel
+     *
+     * @return \FestiViteBundle\Entity\UtilisateurProfessionnel
+     */
+    public function getUtilisateurProfessionnel()
+    {
+        return $this->utilisateurprofessionnel;
     }
 }

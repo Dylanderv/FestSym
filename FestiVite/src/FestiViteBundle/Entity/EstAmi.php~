@@ -31,5 +31,52 @@ class EstAmi
     private $adresseMail2;
 
 
-}
 
+    /**
+     * Set adresseMail1
+     *
+     * @param string $adresseMail1
+     *
+     * @return EstAmi
+     */
+    public function setAdresseMail1($adresseMail1)
+    {
+        $this->adresseMail1 = $adresseMail1;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseMail1
+     *
+     * @return string
+     */
+    public function getAdresseMail1()
+    {
+        return $this->adresseMail1;
+    }
+
+    /**
+     * Set adresseMail2
+     *
+     * @param string $adresseMail2
+     *
+     * @return EstAmi
+     */
+    public function setAdresseMail2($adresseMail2)
+    {
+        $this->adresseMail2 = $adresseMail2;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseMail2
+     *
+     * @return string
+     */
+    public function getAdresseMail2()
+    {
+        return $this->adresseMail2;
+    }
+}
