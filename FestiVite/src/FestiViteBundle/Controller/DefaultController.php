@@ -44,7 +44,7 @@ class DefaultController extends Controller
 
     public function testAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
+        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         //$utils = $repository->findAll();
         /*
         $repository->findBy(
@@ -59,7 +59,7 @@ class DefaultController extends Controller
         //$repository2->createQueryBuilder('prof');
         $utils = $repository
           ->createQueryBuilder('a')
-          ->leftJoin('a.utilisateurprofessionnel', 'prof')
+          ->leftJoin('a.offres', 'prof')
           ->addSelect('prof')
           ->getQuery()
           ->getResult();

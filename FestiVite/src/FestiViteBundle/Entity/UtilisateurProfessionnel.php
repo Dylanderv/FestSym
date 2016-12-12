@@ -65,7 +65,7 @@ class UtilisateurProfessionnel
 
     /**
     *
-    *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="UtilisateurProfessionnel")
+    *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="utilisateurprofessionnel")
     *
     */
     private $offres;
