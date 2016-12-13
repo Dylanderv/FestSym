@@ -44,7 +44,7 @@ class DefaultController extends Controller
 
     public function testAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
+        $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
         //$utils = $repository->findAll();
         /*
         $repository->findBy(
@@ -57,13 +57,13 @@ class DefaultController extends Controller
         //$utils = $repository->createQueryBuilder('a')->getQuery()->getResult();
         //$repository2 = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         //$repository2->createQueryBuilder('prof');
-        $utils = $repository
+        /*$utils = $repository
           ->createQueryBuilder('a')
-          ->leftJoin('a.offres', 'prof')
+          ->leftJoin('a.utilisateurprofessionnel', 'prof')
           ->addSelect('prof')
           ->getQuery()
           ->getResult();
-        var_dump($utils);
+        var_dump($utils);*/
 
           /*$uti = new UtilisateurProfessionnel();
           $uti->setMotDePasse("123456789");
@@ -81,14 +81,16 @@ class DefaultController extends Controller
           $uti->setPrix("123456789");
           $uti->setDescription("aaa");
           $uti->setImage("Entreprise 3");
-
+*/
           $utils = $repository->findAll();
-          $utils[0]->addOffre($uti);
+          var_dump($utils);
+         /*s $utils[0]->addOffre($uti);
           //var_dump($utils[0]->getOffres());
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
           $em->flush();*/
-
+          unset($utils);
+          unset($repository);
         /*$utils = $repository->findAll();
         var_dump($utils[0]);
         $aaa = $utils[0]->getOffres();
