@@ -170,7 +170,11 @@ section{
 /* Fin création de soirée*/
 
 /*Nav style*/
-
+ #topnavbar{
+     position: fixed;
+     left: 0;
+     right: 0;
+ }
 .navbar{
   background-color: #051C2C;
   border-radius: 0px;
@@ -178,12 +182,15 @@ section{
 .navbar a{
   height: inherit;
 }
+.navbar-header img{
+  height: 110px;
+}
 .navbar-header #logorond{
   display: none;
 }
 .navbar-nav{
   text-align: center;
-  height: 150px;
+  height: 110px;
 }
 .navbar-nav > li{
   height: inherit;
@@ -294,7 +301,8 @@ section{
   margin-bottom: 20px;
 }
 .carousel-caption {
-  z-index: 10;
+  z-index: 10;        <div id="myCarousel" class="carousel slide hidden-xs" data-ride="carousel">
+
 }
 .carousel .item {
   height: 300px;
@@ -451,8 +459,8 @@ section{
     display:none;
   }
   .navbar-header #logorond{
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     display: inline-block;
   }
 }
