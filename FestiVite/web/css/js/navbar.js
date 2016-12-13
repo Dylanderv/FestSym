@@ -1,7 +1,14 @@
-$("html").bind('scroll', function () {
-    if ($("html").scrollTop() > 110) {
-        $('.navbar-header img').height(50);
-    } else {
-        $('.navbar-header img').css({ 'height: 50 px' });
+var x = true;
+$(document).on('scroll', function () {
+    if ($(document).scrollTop() > 110 && x) {
+        $('#cpabo').show();
+        $('#topnavbar').hide();
+        $('#topnavbar').addClass('fixedtop');
+        $('#topnavbar').show('blind','fast');
+        x = false;
+    } else if($(document).scrollTop() == 0){
+        $('#cpabo').hide();
+        $('#topnavbar').removeClass('fixedtop');
+        x = true;
     }
 });

@@ -170,9 +170,14 @@ section{
 /* Fin création de soirée*/
 
 /*Nav style*/
- #topnavbar{
+#cpabo{
+    display: none;
+    height: 70px;
+}
+ .fixedtop{
      position: fixed;
      left: 0;
+     top: 0;
      right: 0;
  }
 .navbar{
@@ -183,14 +188,14 @@ section{
   height: inherit;
 }
 .navbar-header img{
-  height: 110px;
+  height: 70px;
 }
 .navbar-header #logorond{
   display: none;
 }
 .navbar-nav{
   text-align: center;
-  height: 110px;
+  height: 70px;
 }
 .navbar-nav > li{
   height: inherit;
