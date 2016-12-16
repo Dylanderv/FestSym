@@ -2,6 +2,7 @@ security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
         FestiViteBundle\Entity\Utilisateur: plaintext
+        FestiViteBundle\Entity\UtilisateurProfessionnel: plaintext
 
     role_hierarchy:
         ROLE_ADMIN:       [ROLE_USER, ROLE_PREST]
@@ -10,7 +11,7 @@ security:
     providers:
         main:
           entity:
-            class:  FestiViteBundle\Entity\Utilisateur
+            class:  [FestiViteBundle\Entity\Utilisateur,FestiViteBundle\Entity\UtilisateurProfessionnel]
             property: adresseMail
 
     firewalls:
