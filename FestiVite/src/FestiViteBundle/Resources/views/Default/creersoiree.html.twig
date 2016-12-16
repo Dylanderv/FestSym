@@ -15,8 +15,6 @@
     <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
     <link href="css/festivite.css" rel="stylesheet">
     <link href="css/festiviteform.css" rel="stylesheet">
@@ -56,72 +54,66 @@
   <body>
     <div id="wrap">
     <!-- Banniere -->
-      <div id="banner">
-          <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
-      </div>
+    <div id="cpabo">
 
-    <!-- Menu de navigation  -->
-      <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
-        <div class="container">
+    </div>
+    <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
+      <div class="container">
 
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="main"><img src="css/image/btnhome.png" alt="Home" /></a>
-          </div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="main"><img id="logolarge" src="css/image/logo/logo150.png" alt="FestiVite" /><img id="logorond" src="css/image/logo/logoround.png" alt="FestiVite" /></a>
+        </div>
 
-          <div class="navbar-collapse collapse" id="navbar" >
-            <ul class="nav navbar-nav">
-              <!--Mon compte-->
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Mes Infos</a></li>
-                <li><a href="#">Mon historique</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Contact</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-              </ul>
-              <!--/Mon compte-->
-
-              <!--Mes amis-->
-              <li><a href="#">Mes Amis</a></li>
-              <!--/Mes amis-->
-
-              <!--Mes soirées-->
-              <li><a href="#">Mes Soirées</a></li>
-              <!--/Mes soirées-->
-
-              <!--Partenaire-->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Partenaire<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
-                </ul>
-              </li>
-              <!--/Partenaire-->
+        <div class="navbar-collapse collapse" id="navbar" >
+          <ul class="nav navbar-nav">
+            <!--Mon compte-->
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Mon compte <span class="caret"></span></p></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Mes Infos</a></li>
+              <li><a href="#">Mon historique</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Contact</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
             </ul>
-            <!--/fin des items de la navbar-->
-          </div><!--/.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-    <!-- script utile ? -->
-      <script type="text/javascript">
+            <!--/Mon compte-->
 
-      </script>
+            <!--Mes amis-->
+            <li><a href="#"><p>Mes Amis</p></a></li>
+            <!--/Mes amis-->
 
+            <!--Mes soirées-->
+            <li><a href="#"><p>Mes Soirées</p></a></li>
+            <!--/Mes soirées-->
+
+            <!--Partenaire-->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Partenaire<span class="caret"></span></p></a>
+              <ul class="dropdown-menu">
+                <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
+              </ul>
+            </li>
+            <!--/Partenaire-->
+          </ul>
+          <!--/fin des items de la navbar-->
+        </div><!--/.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
     <!-- Debut du corps -->
       <div id="main">
         <div class="hidden-xs"id="imagecreersoiree"><div></div></div>
         <div  id="#myEtape" class="container">
-          <nav class="navbar navbar-static-top" id="etapecreersoiree">
+            <!--Chevrons etape-->
+        <nav class="navbar navbar-static-top" id="etapecreersoiree">
             <ul class="nav navbar-nav">
               <li><div id="chevron1" class="chevron chevronCurrent" >
                 <p class="numetape">
@@ -150,39 +142,32 @@
               </div></li>
             </ul>
           </nav>
-          <div id="etape1">
-            <div class="row formule">
-              <h1 class="titreEtape">Formules</h1>
+            <!--FIN Chevrons etape-->
+        <!--Deubut formulaire-->
+            <div id="etape1"> <!--Choix du titre soiree -->
+                <div class="row formule">
+                    <h1 class="titreEtape">Titre de votre soirée</h1>
+                    <div id="champtitre">
+                        <div></div>
+                        <input type="text" name="name" value="" placeholder="Titre Soirée">
+                        <div></div>
+                    </div>
+                </div>
+            </div> <!--FIN Choix du titre soiree -->
+
+            <div id="etape2" class="starthidden text-center">
+                <h1 class="titreEtape">Besoin de quelqu'un ?</h1>
+                <div class="row col-xs-8 col-xs-offset-2">
+                    <div class="col-xs-12"></div>
+                    <span class="starthidden"></span>
+                    <a href="#" class="col-xs-12">Ajouter des PNJ</a>
+                    <span class="starthidden"></span>
+                    <div class="col-xs-12"></div>
+                </div>
+                <div class="row">
+                    <p class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Je suis fort tout seul</p>
+                </div>
             </div>
-          </div>
-          <div id="etape2" class="starthidden text-center">
-            <h1 class="titreEtape">Thème</h1>
-            <div class="row">
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 1</h5></label>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 2</h5></label>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 3</h5></label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 4</h5></label>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 5</h5></label>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1 theme">
-                <label for=""><h5>Thème 6</h5></label>
-              </div>
-            </div>
-            <div class="row">
-              <a href="#" class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Pas de Thème</a>
-            </div>
-          </div>
           <div id="etape3" class="starthidden">3
           </div>
           <div id="etape4" class="starthidden">4
@@ -202,7 +187,6 @@
             Finaliser
             <span class="glyphicon glyphicon-chevron-right"></span>
           </button>
-          <script src="css/js/formsoiree.js"></script>
         </div>
         </div>
         <div id="push">
@@ -227,9 +211,13 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
     <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="css/js/creersoiree.js"></script>
+        <script src="css/js/formsoiree.js"></script>
+        <script src="css/js/navbar.js"></script>
   </body>
 </html>

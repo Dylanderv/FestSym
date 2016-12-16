@@ -327,7 +327,7 @@ section{
 /*Page creersoiree*/
 #imagecreersoiree{
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-image: url(image/logo/logofinal.png);
   background-size: cover;
 }
@@ -337,17 +337,7 @@ section{
   background-color: white;
   opacity: 0.6;
 }
-#etapecreersoiree{
-  margin: 0px 20px;
-  background-color: white;
-}
-.titreEtape{
-  color:  #6BB9F0;
-  padding: 10px;
-  border: 5px solid  #6BB9F0;
-  letter-spacing: 0.8em;
-  margin-bottom: 10px;
-}
+
 #creerSoiree1{
   margin: 20px 0px;
   color: red;
@@ -416,16 +406,7 @@ section{
   letter-spacing: 0.2em;
   color: white;
 }
-.choixdefaut{
-  border: 5px solid #ED811F;
-  color: #ED811F;
-  letter-spacing: 0.2em;
-  padding: 10px 0px;
-}
-.choixdefaut:hover{
-  text-decoration: none;
-  color: #ED811F;
-}
+
 .formbtn{
   color: white;
   padding: 5px 0px;
@@ -464,8 +445,8 @@ section{
     display:none;
   }
   .navbar-header #logorond{
-    width: 110px;
-    height: 110px;
+    width: 70px;
+    height: 70px;
     display: inline-block;
   }
 }

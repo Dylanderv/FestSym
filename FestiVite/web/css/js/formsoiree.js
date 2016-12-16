@@ -1,4 +1,4 @@
-$( "#etapeSuivante" ).click(function() {
+$("#etapeSuivante").click(function() {
   var divform = ['#etape1','#etape2','#etape3','#etape4','#etape5'];
   var chevron = ['#chevron1','#chevron2','#chevron3','#chevron4','#chevron5'];
   var i = 0;
@@ -20,7 +20,7 @@ $( "#etapeSuivante" ).click(function() {
     i++;
   }
 });
-$( "#etapePrecedente" ).click(function() {
+$("#etapePrecedente").click(function() {
   var divform = ['#etape1','#etape2','#etape3','#etape4','#etape5'];
   var chevron = ['#chevron1','#chevron2','#chevron3','#chevron4','#chevron5'] ;
   var i = 1;
@@ -42,4 +42,16 @@ $( "#etapePrecedente" ).click(function() {
     i++;
   }
 
+});
+var ajoutepnj = true;
+$("#etape2 > div > a").hover(function(){
+    if (ajoutepnj){
+        $("#etape2 > div > span:first-of-type").show("drop","fast");
+        $("#etape2 > div > span:last-of-type").show("drop","fast");
+    }
+    ajoutepnj = false;
+},function(){
+    $("#etape2 > div > span:first-of-type").hide("drop","fast");
+    $("#etape2 > div > span:last-of-type").hide("drop","fast");
+    ajoutepnj = true;
 });

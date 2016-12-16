@@ -11,6 +11,20 @@
   color: white;
   letter-spacing: 0.2em;
 }
+.titreEtape{
+  color:  #6BB9F0;
+  padding: 10px;
+  border: 5px solid  #6BB9F0;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+}
+
+#etapecreersoiree{
+  margin: 0px 20px;
+  background-color: white;
+  z-index: -1;
+}
+
 .chevron,
 .chevronCurrent {
   position: relative;
@@ -20,6 +34,154 @@
   height: 60px;
   width: 200px;
   z-index: -1;
+}
+
+#champtitre{
+    position: relative;
+    margin: 50px 0px;
+    border-bottom: 120px solid #051C2C;
+    border-right: 150px solid transparent;
+    height: 0;
+}
+#champtitre > div:first-child {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    border-bottom: 20px solid white;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 114%;
+}
+#champtitre > div:last-child {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    border-top: 120px solid #EB7F20;
+    border-right: 120px solid transparent;
+    height: 0;
+    width: 120%;
+    z-index: -1;
+}
+#champtitre > input{
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    height: 50px;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+#etape2 > div:first-of-type {
+    position: relative;
+    height: 60px;
+    margin-bottom: 20px;
+}
+#etape2 > div > div:first-child{
+    position: absolute;
+    background-color: #051C2C;
+    -webkit-transform: skew(-20deg, 0deg);
+    -moz-transform: skew(-20deg, 0deg);
+    -o-transform: skew(-20deg, 0deg);
+    transform: skew(-20deg, 0deg);
+    top:0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: -1;
+}
+#etape2 > div > a{
+    position: absolute;
+    font-size: 1.3em;
+    color: white;
+    letter-spacing: 0.2em;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+#etape2 > div > a:hover{
+  text-decoration: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#etape2 > div >div:last-child{
+    position: absolute;
+    background-color: #EB7F20;
+    -webkit-transform: skew(40deg, 0deg);
+    -moz-transform: skew(40deg, 0deg);
+    -o-transform: skew(40deg, 0deg);
+    transform: skew(40deg, 0deg);
+    top:10px;
+    left: -25px;
+    right: 0;
+    height: 17px;
+    width: 110%;
+    z-index: -2;
+}
+#etape2 > div > span:first-of-type{
+    position: absolute;
+    background-color: white;
+    -webkit-transform: skew(-20deg, 0deg);
+    -moz-transform: skew(-20deg, 0deg);
+    -o-transform: skew(-20deg, 0deg);
+    transform: skew(-20deg, 0deg);
+    top:5px;
+    left: 0;
+    width: 90%;
+    height: 5px;
+}
+#etape2 > div > span:last-of-type{
+    position: absolute;
+    background-color: white;
+    -webkit-transform: skew(-20deg, 0deg);
+    -moz-transform: skew(-20deg, 0deg);
+    -o-transform: skew(-20deg, 0deg);
+    transform: skew(-20deg, 0deg);
+    bottom:5px;
+    right: 0;
+    width: 90%;
+    height: 5px;
+}
+.choixdefaut{
+  border: 5px solid #EB7F20;
+  color: #EB7F20;
+  letter-spacing: 0.2em;
+  padding: 10px 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 1201px){
+    .numetape{
+        transform: translateY(80%);
+        font-size: 1.2em;
+        letter-spacing: 0.2em;
+    }
+
+    .chevron,
+    .chevronCurrent{
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 990px){
+    .numetape{
+        transform: translateY(80%);
+        right: -10px;
+        font-size: 1.15em;
+        letter-spacing: 0.2em;
+    }
+
+    .chevron,
+    .chevronCurrent{
+        width: 110px;
+    }
 }
 .chevron::before {
   content: '';
