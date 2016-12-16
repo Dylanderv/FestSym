@@ -16,9 +16,7 @@ class SecurityController extends Controller{
     public function loginAction(Request $request){
         //CONNEXION
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.authorization_checker')->isGranted('ROLE_PREST')) {
-            return $this->redirectToRoute('festi_vite_prestataire');
-        } else if($this->get('security.authorization_checker')->isGranted('ROLE_USER')){
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('festi_vite_main');
         }
 
