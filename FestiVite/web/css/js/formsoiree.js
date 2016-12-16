@@ -43,15 +43,9 @@ $("#etapePrecedente").click(function() {
   }
 
 });
-var ajoutepnj = true;
-$("#etape2 > div > a").hover(function(){
-    if (ajoutepnj){
-        $("#etape2 > div > span:first-of-type").show("drop","fast");
-        $("#etape2 > div > span:last-of-type").show("drop","fast");
-    }
-    ajoutepnj = false;
-},function(){
-    $("#etape2 > div > span:first-of-type").hide("drop","fast");
-    $("#etape2 > div > span:last-of-type").hide("drop","fast");
-    ajoutepnj = true;
+$('#etape2 > div > a > span').hover(function() {
+      $(this).stop().animate({ fontSize : '60px' });
+},
+function() {
+      $(this).stop().animate({ fontSize : '50px' });
 });

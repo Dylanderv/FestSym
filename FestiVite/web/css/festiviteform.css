@@ -94,7 +94,7 @@
     height: 60px;
     z-index: -1;
 }
-#etape2 > div > a{
+#etape2 > div > p{
     position: absolute;
     font-size: 1.3em;
     color: white;
@@ -105,9 +105,9 @@
     transform: translateY(-50%);
     z-index: 1;
 }
-#etape2 > div > a:hover{
-  text-decoration: none;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+#etape2 > div > a > span {
+    font-size: 50px;
+    color: #051C2C;
 }
 #etape2 > div >div:last-child{
     position: absolute;
@@ -116,37 +116,14 @@
     -moz-transform: skew(40deg, 0deg);
     -o-transform: skew(40deg, 0deg);
     transform: skew(40deg, 0deg);
-    top:10px;
+    top:20px;
     left: -25px;
     right: 0;
-    height: 17px;
+    height: 15px;
     width: 110%;
     z-index: -2;
 }
-#etape2 > div > span:first-of-type{
-    position: absolute;
-    background-color: white;
-    -webkit-transform: skew(-20deg, 0deg);
-    -moz-transform: skew(-20deg, 0deg);
-    -o-transform: skew(-20deg, 0deg);
-    transform: skew(-20deg, 0deg);
-    top:5px;
-    left: 0;
-    width: 90%;
-    height: 5px;
-}
-#etape2 > div > span:last-of-type{
-    position: absolute;
-    background-color: white;
-    -webkit-transform: skew(-20deg, 0deg);
-    -moz-transform: skew(-20deg, 0deg);
-    -o-transform: skew(-20deg, 0deg);
-    transform: skew(-20deg, 0deg);
-    bottom:5px;
-    right: 0;
-    width: 90%;
-    height: 5px;
-}
+
 .choixdefaut{
   border: 5px solid #EB7F20;
   color: #EB7F20;

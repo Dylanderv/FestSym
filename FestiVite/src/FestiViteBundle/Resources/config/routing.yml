@@ -3,8 +3,12 @@ festi_vite_main:
     defaults: { _controller: FestiViteBundle:Default:main }
 
 festi_vite_creersoiree:
-    path:     /creersoiree
-    defaults: { _controller: FestiViteBundle:Default:creersoiree }
+    path:     /creersoireeclassique
+    defaults: { _controller: FestiViteBundle:Default:creersoireeclassique }
+
+festi_vite_creersoiree:
+    path:     /creersoireeaventure
+    defaults: { _controller: FestiViteBundle:Default:creersoireeaventure }
 
 festi_vite_moncompte:
     path:     /moncompte
