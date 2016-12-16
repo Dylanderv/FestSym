@@ -11,7 +11,7 @@ security:
     providers:
         main:
           entity:
-            class:  [FestiViteBundle\Entity\Utilisateur,FestiViteBundle\Entity\UtilisateurProfessionnel]
+            class:  FestiViteBundle\Entity\Utilisateur
             property: adresseMail
 
     firewalls:
