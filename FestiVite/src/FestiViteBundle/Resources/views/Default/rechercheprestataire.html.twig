@@ -1,3 +1,5 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,61 +24,8 @@
 
   <body>
     <div id="wrap">
-
-
-      <!-- Banniere / Menu de navigation -->
-        <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
-            <div class="container">
-
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="main"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
-              </div>
-
-              <div class="navbar-collapse collapse" id="navbar" >
-                <ul class="nav navbar-nav">
-                  <!--Mon compte-->
-                  <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Mon compte <span class="caret"></span></p></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Mes Infos</a></li>
-                    <li><a href="#">Mon historique</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Contact</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                  </ul>
-                  <!--/Mon compte-->
-
-                  <!--Mes amis-->
-                  <li><a href="#"><p>Mes Amis</p></a></li>
-                  <!--/Mes amis-->
-
-                  <!--Mes soirées-->
-                  <li><a href="#"><p>Mes Soirées</p></a></li>
-                  <!--/Mes soirées-->
-
-                  <!--Partenaire-->
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Partenaire<span class="caret"></span></p></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
-                    </ul>
-                  </li>
-                  <!--/Partenaire-->
-                </ul>
-                <!--/fin des items de la navbar-->
-              </div><!--/.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-
+{% endblock %}
+{% block apr %}
       <!-- Debut du corps -->
       <div class="container" id="main">
         <!--Barre de recherche-->
@@ -145,18 +94,8 @@
       </div><!--Corps-->
       <div id="push"></div>
     </div>
-    <!--un commentaire-->
-
-      <footer id="footer">
-        <div class="row">
-          <img src="css/image/logo/logo150.png" alt="FestiVite" />
-        </div>
-        <div class="row">
-          <h5>
-            <p>&copy; 2016 Festivite, Inc.</p>
-          </h5>
-        </div>
-      </footer>
+{% endblock %}
+{% block script %}
     </div>
 
 
@@ -172,3 +111,4 @@
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+{% endblock %}

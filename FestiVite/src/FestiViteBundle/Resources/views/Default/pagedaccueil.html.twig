@@ -1,3 +1,5 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,29 +29,8 @@
           <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
       </div>
 
-    <!-- Menu de navigation  -->
-      <nav class="navbar navbar-default navbar-static-top" role="navigation" id="topnavbar">
-      <div class="container">
-        <div class="navbar-header">
-
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          {% if error %}
-             <div class="alert alert-danger">{{ error.message }}</div>
-          {% endif %}
-
-          <form class="navbar-form navbar-right" action="{{ path('login_check') }}" method="post">
-            <div class="form-group">
-              <input type="text" id="username" name="_username" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" id="password" name="_password" placeholder="Mot de passe" class="form-control">
-            </div>
-            <button type="submit" value="Connexion" class="btn btn-success">Connexion</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+{% endblock %}
+{% block apr %}
 
     <!-- Debut du corps -->
       <div class="container" id="main">
@@ -133,7 +114,7 @@
                 {{ form_widget(form.valider, {'attr': {'class': 'pull-right btn btn-success'}}) }}
               </div>
             {{ form_end(form)}}
-        </div>    
+        </div>
           </div>
 
           <!--Visite et demande-->
@@ -156,18 +137,9 @@
         </section>
         <div class="row" id="push"></div>
       </div>
-
-      <footer id="footer">
-        <div class="row">
-          <img src="css/image/logo/logo150.png" alt="FestiVite" />
-        </div>
-        <div class="row">
-          <h5>
-            <p>&copy; 2016 Festivite, Inc.</p>
-          </h5>
-        </div>
-      </footer>
     </div>
+{% endblock %}
+{% block script %}
 
 
     <!-- Bootstrap core JavaScript
@@ -180,3 +152,4 @@
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+{% endblock %}

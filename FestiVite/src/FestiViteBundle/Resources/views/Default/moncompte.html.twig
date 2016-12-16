@@ -1,3 +1,5 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,41 +27,8 @@
       <div id="banner">
           <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
       </div>
-
-    <!-- Menu de navigation  -->
-      <nav class="navbar navbar-default navbar-static-top" role="navigation" id="topnavbar">
-        <div class="container">
-
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-      <a class="navbar-brand" href="#"><img src="css/image/btnhome.png" alt="Home" /></a>
-          </div>
-
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="moncompte.html">Mon compte<span class="sr-only">(current)</span></a></li>
-              <li><a href="main">Mes amis</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="main">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-        </li>
-      </ul>
-          </div><!--/.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+{% endblock %}
+{% block apr %}
     <!-- script utile ? -->
       <script type="text/javascript">
       $('#topnavbar').affix({
@@ -73,19 +42,9 @@
       <div class="container" id="main">
 
       </div>
-
-      <footer id="footer">
-        <div class="row">
-          <img src="css/image/logo/logo150.png" alt="FestiVite" />
-        </div>
-        <div class="row">
-          <h5>
-            <p>&copy; 2016 Festivite, Inc.</p>
-          </h5>
-        </div>
-      </footer>
-    </div>
-
+  </div>
+{% endblock %}
+{% block script %}
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -97,3 +56,4 @@
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+{% endblock %}
