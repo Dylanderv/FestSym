@@ -3,6 +3,7 @@
 namespace FestiViteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * UtilisateurProfessionnel
@@ -10,14 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Utilisateur_professionnel")
  * @ORM\Entity
  */
-class UtilisateurProfessionnel
+class UtilisateurProfessionnel implements UserInterface
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="Mot_de_passe", type="string", length=255, nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
-    private $motDePasse;
+    private $password;
 
     /**
      * @var string
@@ -57,42 +58,32 @@ class UtilisateurProfessionnel
     /**
      * @var integer
      *
-     * @ORM\Column(name="IdProfessionnel", type="integer")
+     * @ORM\Column(name="idprofessionnel", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idprofessionnel;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Roles", type="string", length=255, nullable=true)
+     */
+    private $roles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+
+    /**
     *
-    *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="UtilisateurProfessionnel")
+    *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="utilisateurprofessionnel")
     *
     */
     private $offres;
-
-    /**
-     * Set motDePasse
-     *
-     * @param string $motDePasse
-     *
-     * @return UtilisateurProfessionnel
-     */
-    public function setMotDePasse($motDePasse)
-    {
-        $this->motDePasse = $motDePasse;
-
-        return $this;
-    }
-
-    /**
-     * Get motDePasse
-     *
-     * @return string
-     */
-    public function getMotDePasse()
-    {
-        return $this->motDePasse;
-    }
 
     /**
      * Set adresse
@@ -229,16 +220,122 @@ class UtilisateurProfessionnel
     {
     $this->offres[] = $offre;
     // On lie l'annonce à la candidature
-    $offre->setUtilisateuProfessionnel($this);
+    $offre->setUtilisateurProfessionnel($this);
     return $this;
     }
 
-  public function removeApplication(Offre $offre)
-  {
-    $this->offres->removeElement($offre);
-    // Et si notre relation était facultative (nullable=true, ce qui n'est pas notre cas ici attention) :
-    // $application->setAdvert(null);
-  }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->offres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Remove offre
+     *
+     * @param \FestiViteBundle\Entity\Offre $offre
+     */
+    public function removeOffre(\FestiViteBundle\Entity\Offre $offre)
+    {
+        $this->offres->removeElement($offre);
+    }
+
+    /**
+     * Get offres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOffres()
+    {
+        return $this->offres;
+    }
+
+
+    /**
+    * Set roles
+    *
+    * @param string $roles
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setRoles($roles)
+   {
+       $this->roles = $roles;
+
+       return $this;
+   }
+
+   /**
+    * Get roles
+    *
+    * @return array
+    */
+   public function getRoles()
+   {
+       $decoupe = explode('|',$this->roles);
+       foreach ($decoupe as $key => $value) {
+         $value = trim($value);
+       }
+       return $decoupe;
+   }
+
+   /**
+    * Set salt
+    *
+    * @param string $salt
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setSalt($salt)
+   {
+       $this->salt = $salt;
+
+       return $this;
+   }
+
+   /**
+    * Get salt
+    *
+    * @return string
+    */
+   public function getSalt()
+   {
+       return $this->salt;
+   }
+
+   public function eraseCredentials(){
+
+   }
+
+   /**
+    * Set password
+    *
+    * @param string $password
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setPassword($password)
+   {
+       $this->password = $password;
+
+       return $this;
+   }
+
+   /**
+    * Get password
+    *
+    * @return string
+    */
+   public function getPassword()
+   {
+       return $this->password;
+   }
+
+   public function getUsername(){
+     return $this->adresseMail;
+   }
 
 }
