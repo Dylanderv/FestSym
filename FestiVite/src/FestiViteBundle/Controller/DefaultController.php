@@ -160,7 +160,14 @@ class DefaultController extends Controller
     }
 
     public function redirectAction(){
-      $usr= $this->get('security.context')->getToken()->getUser();
+      $usr = $this->get('security.token_storage')->getToken()->getUser();
+      var_dump($usr->getRoles());
+      if($usr->getRoles()[0] == "ROLE_PREST"){
+        return $this->redirectToRoute('festi_vite_prestataire');
+      } else if ($usr->getRoles()[0] == "ROLE_USER"){
+        return $this->redirectToRoute('festi_vite_main');
+      }
+      return $this->render('FestiViteBundle:Default:testRedirect.html.twig', array("user" => $usr));
     }
 
 
