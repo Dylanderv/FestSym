@@ -133,6 +133,13 @@
   margin-bottom: 10px;
 }
 
+#etape3 > div article{
+    background-color: #051C2C;
+}
+
+#etape3 > div article > select{
+
+}
 
 @media screen and (max-width: 1201px){
     .numetape{
