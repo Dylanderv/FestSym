@@ -27,9 +27,14 @@ class DefaultController extends Controller
         return $this->render('FestiViteBundle:Default:main.html.twig');
     }
 
-    public function creersoireeAction()
+    public function creersoireeclassiqueAction()
     {
-        return $this->render('FestiViteBundle:Default:creersoiree.html.twig');
+        return $this->render('FestiViteBundle:Default:creersoireeclassique.html.twig');
+    }
+
+    public function creersoireeaventureAction()
+    {
+        return $this->render('FestiViteBundle:Default:creersoireeaventure.html.twig');
     }
 
     public function moncompteAction()
