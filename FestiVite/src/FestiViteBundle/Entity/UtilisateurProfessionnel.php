@@ -3,6 +3,7 @@
 namespace FestiViteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * UtilisateurProfessionnel
@@ -10,14 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Utilisateur_professionnel")
  * @ORM\Entity
  */
-class UtilisateurProfessionnel
+class UtilisateurProfessionnel implements UserInterface
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="Mot_de_passe", type="string", length=255, nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
-    private $motDePasse;
+    private $password;
 
     /**
      * @var string
@@ -64,35 +65,25 @@ class UtilisateurProfessionnel
     private $idprofessionnel;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Roles", type="string", length=255, nullable=true)
+     */
+    private $roles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+
+    /**
     *
     *@ORM\OneToMany(targetEntity="FestiViteBundle\Entity\Offre", mappedBy="utilisateurprofessionnel")
     *
     */
     private $offres;
-
-    /**
-     * Set motDePasse
-     *
-     * @param string $motDePasse
-     *
-     * @return UtilisateurProfessionnel
-     */
-    public function setMotDePasse($motDePasse)
-    {
-        $this->motDePasse = $motDePasse;
-
-        return $this;
-    }
-
-    /**
-     * Get motDePasse
-     *
-     * @return string
-     */
-    public function getMotDePasse()
-    {
-        return $this->motDePasse;
-    }
 
     /**
      * Set adresse
@@ -261,4 +252,90 @@ class UtilisateurProfessionnel
     {
         return $this->offres;
     }
+
+
+    /**
+    * Set roles
+    *
+    * @param string $roles
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setRoles($roles)
+   {
+       $this->roles = $roles;
+
+       return $this;
+   }
+
+   /**
+    * Get roles
+    *
+    * @return array
+    */
+   public function getRoles()
+   {
+       $decoupe = explode('|',$this->roles);
+       foreach ($decoupe as $key => $value) {
+         $value = trim($value);
+       }
+       return $decoupe;
+   }
+
+   /**
+    * Set salt
+    *
+    * @param string $salt
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setSalt($salt)
+   {
+       $this->salt = $salt;
+
+       return $this;
+   }
+
+   /**
+    * Get salt
+    *
+    * @return string
+    */
+   public function getSalt()
+   {
+       return $this->salt;
+   }
+
+   public function eraseCredentials(){
+
+   }
+
+   /**
+    * Set password
+    *
+    * @param string $password
+    *
+    * @return UtilisateurProfessionnel
+    */
+   public function setPassword($password)
+   {
+       $this->password = $password;
+
+       return $this;
+   }
+
+   /**
+    * Get password
+    *
+    * @return string
+    */
+   public function getPassword()
+   {
+       return $this->password;
+   }
+
+   public function getUsername(){
+     return $this->adresseMail;
+   }
+
 }
