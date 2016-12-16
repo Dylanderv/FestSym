@@ -63,7 +63,6 @@ class DefaultController extends Controller
 
 
         $utils = $repository
-<<<<<<< HEAD
           ->createQueryBuilder('a')
           ->leftJoin('a.offres', 'prof')
           ->addSelect('prof')
@@ -94,46 +93,6 @@ class DefaultController extends Controller
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
           $em->flush();*/
-=======
-        ->createQueryBuilder('a')
-        ->leftJoin('a.offres', 'b')
-        ->addSelect('b')
-        ->getQuery()
-        ->getResult();
-        $utils = $utils[0]->getOffres();
-
-
-
-
-
-
-
-
-
-        /*$uti = new UtilisateurProfessionnel();
-        $uti->setMotDePasse("123456789");
-        $uti->setAdresse("3 rue des pommiers");
-        $uti->setNumeroDeTelephone("041424258475");
-        $uti->setNomSociete("Entreprise 1");
-        $uti->setDateCreation(new \DateTime("now"));
-        $uti->setAdresseMail("aaa@entreprise1.fr");
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($uti);
-        $em->flush();*/
-
-        /*$uti = new Offre();
-        $uti->setType("TypeB");
-        $uti->setPrix("1234567878579");
-        $uti->setDescription("aaa");
-        $uti->setImage("Entreprise745");
-
-        $utils = $repository->findAll();
-        $utils[0]->addOffre($uti);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($uti);
-        $em->flush();*/
->>>>>>> master
 
         /*$repositoryUtil = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         $repositoryOffre = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
