@@ -9,9 +9,17 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_PREST, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        main:
+        chain_provider:
+          chain:
+            providers: [prest, main]
+        prest:
           entity:
             class:  FestiViteBundle\Entity\Utilisateur
+            property: adresseMail
+
+        main:
+          entity:
+            class:  FestiViteBundle\Entity\UtilisateurProfessionnel
             property: adresseMail
 
     firewalls:
@@ -21,7 +29,6 @@ security:
         main:
             pattern:      ^/
             anonymous:    true
-            provider:     main
             form_login:
                 login_path: login
                 check_path: login_check
@@ -29,6 +36,8 @@ security:
             logout:
                 path:       logout
                 target:     /accueil
+
+
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
