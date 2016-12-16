@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FestiVite - Inscription/Connexion</title>
+
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
+    <style rel="stylesheet" text="text/css">
+      .chevronCurrent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(36deg, 0deg);
+        -moz-transform: skew(36deg, 0deg);
+        -ms-transform: skew(36deg, 0deg);
+        -o-transform: skew(36deg, 0deg);
+        transform: skew(36deg, 0deg);
+      }
+      .chevronCurrent::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(-36deg, 0deg);
+        -moz-transform: skew(-36deg, 0deg);
+        -ms-transform: skew(-36deg, 0deg);
+        -o-transform: skew(-36deg, 0deg);
+        transform: skew(-36deg, 0deg);
+      }​
+    </style>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+    <!-- Banniere -->
+    <div id="cpabo">
+
+    </div>
+    <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="main"><img id="logolarge" src="css/image/logo/logo150.png" alt="FestiVite" /><img id="logorond" src="css/image/logo/logoround.png" alt="FestiVite" /></a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar" >
+          <ul class="nav navbar-nav">
+            <!--Mon compte-->
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Mon compte <span class="caret"></span></p></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Mes Infos</a></li>
+              <li><a href="#">Mon historique</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Contact</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+            </ul>
+            <!--/Mon compte-->
+
+            <!--Mes amis-->
+            <li><a href="#"><p>Mes Amis</p></a></li>
+            <!--/Mes amis-->
+
+            <!--Mes soirées-->
+            <li><a href="#"><p>Mes Soirées</p></a></li>
+            <!--/Mes soirées-->
+
+            <!--Partenaire-->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Partenaire<span class="caret"></span></p></a>
+              <ul class="dropdown-menu">
+                <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
+              </ul>
+            </li>
+            <!--/Partenaire-->
+          </ul>
+          <!--/fin des items de la navbar-->
+        </div><!--/.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Debut du corps -->
+      <div id="main">
+        <div class="hidden-xs"id="imagecreersoiree"><div></div></div>
+        <div  id="#myEtape" class="container">
+            <!--Chevrons etape-->
+        <nav class="navbar navbar-static-top" id="etapecreersoiree">
+            <ul class="nav navbar-nav">
+              <li><div id="chevron1" class="chevron chevronCurrent" >
+                <p class="numetape">
+                  Etape 1
+                </p>
+              </div></li>
+              <li><div id="chevron2" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 2
+                </p>
+              </div></li>
+              <li><div id="chevron3" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 3
+                </p>
+              </div></li>
+              <li><div id="chevron4" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 4
+                </p>
+              </div></li>
+              <li><div id="chevron5" class="chevron hidden-xs" >
+                <p class="numetape">
+                  Etape 5
+                </p>
+              </div></li>
+            </ul>
+          </nav>
+            <!--FIN Chevrons etape-->
+        <!--Deubut formulaire-->
+            <div id="etape1"> <!--Choix du titre soiree -->
+                <div class="row formule">
+                    <h1 class="titreEtape">Titre de votre soirée</h1>
+                    <div id="champtitre">
+                        <div></div>
+                        <input type="text" name="name" value="" placeholder="Titre Soirée">
+                        <div></div>
+                    </div>
+                </div>
+            </div> <!--FIN Choix du titre soiree -->
+
+            <div id="etape2" class="starthidden text-center">
+                <h1 class="titreEtape">Besoin de quelqu'un ?</h1>
+                <!--Titre-->
+                <div class="row col-xs-8 col-xs-offset-2">
+                    <div class="col-xs-12"></div>
+                    <p class="col-xs-12">Ajouter des PNJ</p>
+                    <div class="col-xs-12"></div>
+                </div>
+                <!--Bouton ajout-->
+                <div class="row col-xs-8 col-xs-offset-2">
+                    <a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                </div>
+                <!--Choixdefaut-->
+                <div class="row">
+                    <span class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Je suis fort tout seul</span>
+                </div>
+            </div>
+          <div id="etape3" class="starthidden">
+              <h1 class="titreEtape">Quand ça ?</h1>
+          </div>
+          <div id="etape4" class="starthidden">
+              <h1 class="titreEtape">Où ça ?</h1>
+          </div>
+          <div id="etape5" class="starthidden">
+          </div>
+
+          <button id="etapePrecedente" type="button" class="starthidden formbtn">
+             <span class="glyphicon glyphicon-chevron-left"></span>
+             Précédent
+          </button>
+          <button id="etapeSuivante" type="button" class="formbtn">
+            Suivant
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+          <button id="Finaliser" type="button" class="starthidden formbtn" name="Finaliser">
+            Finaliser
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+        </div>
+        </div>
+        <div id="push">
+
+        </div>
+      </div>
+
+      <footer id="footer">
+        <div class="row">
+          <img src="css/image/logo/logo150.png" alt="FestiVite" />
+        </div>
+        <div class="row">
+          <h5>
+            <p>&copy; 2016 Festivite, Inc.</p>
+          </h5>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="css/js/creersoiree.js"></script>
+        <script src="css/js/formsoiree.js"></script>
+        <script src="css/js/navbar.js"></script>
+  </body>
+</html>
