@@ -155,8 +155,13 @@ class DefaultController extends Controller
              array('form' => $form->createView()));
     }
 
-    public function prestataire(){
+    public function prestataireAction(){
         return $this->render('FestiViteBundle:Default:prestataire.html.twig');
     }
+
+    public function redirectAction(){
+      $usr= $this->get('security.context')->getToken()->getUser();
+    }
+
 
 }
