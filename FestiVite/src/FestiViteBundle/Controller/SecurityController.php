@@ -14,10 +14,15 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SecurityController extends Controller{
     public function loginAction(Request $request){
+        //CONNEXION
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_PREST')) {
+            return $this->redirectToRoute('festi_vite_prestataire');
+        } else if($this->get('security.authorization_checker')->isGranted('ROLE_USER')){
             return $this->redirectToRoute('festi_vite_main');
         }
+
+        //INSCRIPTION
         // Le service authentication_utils permet de récupérer le nom d'utilisateur
         // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
         // (mauvais mot de passe par exemple)

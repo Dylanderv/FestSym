@@ -18,6 +18,10 @@ festi_vite_recherche:
     path:     /rechercheprestataire
     defaults: { _controller: FestiViteBundle:Default:recherche }
 
+festi_vite_prestataire:
+    path:    /prestataire
+    defaults: { _controller: FestiViteBundle:Default:prestataire}
+
 festi_test:
     path:     /test
     defaults: { _controller: FestiViteBundle:Default:test }
