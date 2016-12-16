@@ -32,7 +32,7 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
-                default_target_path: festi_vite_main
+                default_target_path: /redirect
             logout:
                 path:       logout
                 target:     /accueil
