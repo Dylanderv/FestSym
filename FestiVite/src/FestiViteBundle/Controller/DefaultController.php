@@ -57,7 +57,13 @@ class DefaultController extends Controller
         //$utils = $repository->createQueryBuilder('a')->getQuery()->getResult();
         //$repository2 = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         //$repository2->createQueryBuilder('prof');
+
+
+
+
+
         $utils = $repository
+<<<<<<< HEAD
           ->createQueryBuilder('a')
           ->leftJoin('a.offres', 'prof')
           ->addSelect('prof')
@@ -88,7 +94,57 @@ class DefaultController extends Controller
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
           $em->flush();*/
+=======
+        ->createQueryBuilder('a')
+        ->leftJoin('a.offres', 'b')
+        ->addSelect('b')
+        ->getQuery()
+        ->getResult();
+        $utils = $utils[0]->getOffres();
 
+
+
+
+
+
+
+
+
+        /*$uti = new UtilisateurProfessionnel();
+        $uti->setMotDePasse("123456789");
+        $uti->setAdresse("3 rue des pommiers");
+        $uti->setNumeroDeTelephone("041424258475");
+        $uti->setNomSociete("Entreprise 1");
+        $uti->setDateCreation(new \DateTime("now"));
+        $uti->setAdresseMail("aaa@entreprise1.fr");
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($uti);
+        $em->flush();*/
+
+        /*$uti = new Offre();
+        $uti->setType("TypeB");
+        $uti->setPrix("1234567878579");
+        $uti->setDescription("aaa");
+        $uti->setImage("Entreprise745");
+
+        $utils = $repository->findAll();
+        $utils[0]->addOffre($uti);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($uti);
+        $em->flush();*/
+>>>>>>> master
+
+        /*$repositoryUtil = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
+        $repositoryOffre = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
+        $utils = $repositoryUtil->findAll();
+        $offre = $repositoryOffre->findAll();*/
+        //$utils = $utils[0]->getUtilisateurProfessionnel();
+        /*s $utils[0]->addOffre($uti);
+        //var_dump($utils[0]->getOffres());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($uti);
+        $em->flush();*/
         /*$utils = $repository->findAll();
         var_dump($utils[0]);
         $aaa = $utils[0]->getOffres();
