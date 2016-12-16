@@ -63,7 +63,7 @@ class DefaultController extends Controller
           ->addSelect('prof')
           ->getQuery()
           ->getResult();
-        var_dump($utils);
+        //var_dump($utils);
 
           /*$uti = new UtilisateurProfessionnel();
           $uti->setMotDePasse("123456789");
@@ -96,7 +96,7 @@ class DefaultController extends Controller
         //$utils = OffreRepository::getOffreWithUtilProf();
         /*var_dump($uti);
         var_dump($utils[0]);*/
-        return $this->render('FestiViteBundle:Default:testDylan.html.twig');
+        return $this->render('FestiViteBundle:Default:testDylan.html.twig', array("utils" => $utils));
     }
 
     public function createsoireeAction(Request $request){
