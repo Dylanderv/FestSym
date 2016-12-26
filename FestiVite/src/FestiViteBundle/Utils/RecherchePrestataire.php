@@ -4,10 +4,10 @@ namespace FestiViteBundle\Utils;
 
 class RecherchePrestataire
 {
-  private $motcle = null;
+  private $motcle = ' ';
   private $tri = "Nouveauté";
-  private $disponibilite = null;
-  private $type = null;
+  private $disponibilite = ' ';
+  private $type = ' ';
 
   function getMotCle(){
     return $this->motcle;
@@ -34,7 +34,7 @@ class RecherchePrestataire
   }
 
   function setDisponibilite($disponibilite){
-    $this->disponibilite = $disponibilite
+    $this->disponibilite = $disponibilite;
   }
 
   function setType($type){

@@ -14,14 +14,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use FestiViteBundle\Repository\OffreRepository;
 use FestiViteBundle\Entity\UtilisateurProfessionnel;
 use FestiViteBundle\Entity\Offre;
+use FestiViteBundle\Utils\RecherchePrestataire;
 
 
 
-class DefaultController extends Controller
-{
+
+    class DefaultController extends Controller
+    {
     public function mainAction()
     {
         return $this->render('FestiViteBundle:Default:main.html.twig');
@@ -44,7 +47,38 @@ class DefaultController extends Controller
 
     public function rechercheAction()
     {
-        return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig');
+        $recherche = new RecherchePrestataire();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
+        $formBuilder
+            ->add('motcle', TextType::class)
+            ->add('tri',ChoiceType::class,
+            array('choices' => array(
+                    'Pertinence' => 'Pertinence',
+                    'Nouveauté' => 'Nouveauté',
+                    'Prix' => 'Prix'),
+            'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
+
+            ->add('disponibilite', ChoiceType::class,
+                array('choices' => array(
+                    'Disponibilite' => '',
+                    'Lundi' => 'Lundi',
+                    'Mardi' => 'Mardi',
+                    'Mercredi' => 'Mercredi',
+                    'Jeudi' => 'Jeudi',
+                    'Vendredi' => 'Vendredi',
+                    'Samedi' => 'Samedi',
+                    'Dimanche' => 'Dimanche')))
+                    
+            ->add('type', ChoiceType::class,
+                array('choices' => array(
+                    'Type' => '')))
+
+            ->add('Rechercher', SubmitType::class)
+        ;
+        $form = $formBuilder->getForm();
+
+        return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
+            array('form' => $form->createView()));
     }
 
     public function testAction()
