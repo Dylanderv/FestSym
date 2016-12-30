@@ -54,7 +54,7 @@ use FestiViteBundle\Utils\RecherchePrestataire;
             ->add('tri',ChoiceType::class,
             array('choices' => array(
                     'Pertinence' => 'pertinence',
-                    'Nouveauté' => 'date',
+                    'Nouveauté' => 'dateAjout',
                     'Prix' => 'prix'),
             'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
 

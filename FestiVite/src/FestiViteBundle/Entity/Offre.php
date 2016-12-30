@@ -20,6 +20,13 @@ class Offre
     private $type;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjout", type="date", nullable=true)
+     */
+    private $dateAjout;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="Prix", type="decimal", precision=9, scale=0, nullable=false)
