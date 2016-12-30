@@ -45,7 +45,7 @@ use FestiViteBundle\Utils\RecherchePrestataire;
         return $this->render('FestiViteBundle:Default:moncompte.html.twig');
     }
 
-    public function rechercheAction()
+    public function rechercheAction(Request $request)
     {
         $recherche = new RecherchePrestataire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
@@ -53,14 +53,15 @@ use FestiViteBundle\Utils\RecherchePrestataire;
             ->add('motcle', TextType::class)
             ->add('tri',ChoiceType::class,
             array('choices' => array(
-                    'Pertinence' => 'Pertinence',
-                    'Nouveauté' => 'Nouveauté',
-                    'Prix' => 'Prix'),
+                    'Pertinence' => 'pertinence',
+                    'Nouveauté' => 'date',
+                    'Prix' => 'prix'),
             'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
 
             ->add('disponibilite', ChoiceType::class,
                 array('choices' => array(
-                    'Disponibilite' => '',
+                    '- Disponibilite -' => '',
+                    'Default' => '',
                     'Lundi' => 'Lundi',
                     'Mardi' => 'Mardi',
                     'Mercredi' => 'Mercredi',
@@ -68,14 +69,32 @@ use FestiViteBundle\Utils\RecherchePrestataire;
                     'Vendredi' => 'Vendredi',
                     'Samedi' => 'Samedi',
                     'Dimanche' => 'Dimanche')))
-                    
+
             ->add('type', ChoiceType::class,
                 array('choices' => array(
-                    'Type' => '')))
+                    '- Type -' => '',
+                    'Default' => '')))
 
             ->add('Rechercher', SubmitType::class)
         ;
         $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $advert dans la base de données, par exemple
+                var_dump($recherche);
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
+                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
+            }
+        }
+
 
         return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
             array('form' => $form->createView()));
@@ -84,7 +103,7 @@ use FestiViteBundle\Utils\RecherchePrestataire;
     public function testAction()
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
-        //$utils = $repository->findAll();
+        $utils = $repository->findAll();
         /*
         $repository->findBy(
         array $critere,
@@ -99,14 +118,14 @@ use FestiViteBundle\Utils\RecherchePrestataire;
 
 
 
-
+/*
 
         $utils = $repository
           ->createQueryBuilder('a')
           ->leftJoin('a.offres', 'prof')
           ->addSelect('prof')
           ->getQuery()
-          ->getResult();
+          ->getResult();*/
         //var_dump($utils);
 
           /*$uti = new UtilisateurProfessionnel();
@@ -120,10 +139,10 @@ use FestiViteBundle\Utils\RecherchePrestataire;
           $em->persist($uti);
           $em->flush();*/
 
-          /*$uti = new Offre();
+          $uti = new Offre();
           $uti->setType("TypeA");
           $uti->setPrix("123456789");
-          $uti->setDescription("aaa");
+          $uti->setDescription("Avion du chocolat sans fraises");
           $uti->setImage("Entreprise 3");
 
           $utils = $repository->findAll();
@@ -131,7 +150,7 @@ use FestiViteBundle\Utils\RecherchePrestataire;
           //var_dump($utils[0]->getOffres());
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
-          $em->flush();*/
+          $em->flush();
 
         /*$repositoryUtil = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         $repositoryOffre = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
