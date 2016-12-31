@@ -194,4 +194,28 @@ class Offre
     {
         return $this->utilisateurprofessionnel;
     }
+
+    /**
+     * Set dateAjout
+     *
+     * @param string $dateAjout
+     *
+     * @return Offre
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjout
+     *
+     * @return date
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
+    }
 }

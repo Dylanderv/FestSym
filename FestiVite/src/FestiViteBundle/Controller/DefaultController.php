@@ -19,6 +19,7 @@ use FestiViteBundle\Repository\OffreRepository;
 use FestiViteBundle\Entity\UtilisateurProfessionnel;
 use FestiViteBundle\Entity\Offre;
 use FestiViteBundle\Utils\RecherchePrestataire;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -50,12 +51,12 @@ use FestiViteBundle\Utils\RecherchePrestataire;
         $recherche = new RecherchePrestataire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
         $formBuilder
-            ->add('motcle', TextType::class)
+            ->add('motcle', TextType::class, array('required' => false))
             ->add('tri',ChoiceType::class,
             array('choices' => array(
-                    'Pertinence' => 'pertinence',
-                    'Nouveauté' => 'dateAjout',
-                    'Prix' => 'prix'),
+                    'Nouveauté' => 'dateAjout desc',
+                    'Prix Croissant' => 'prix',
+                    'Prix Decroissant' => 'prix desc'),
             'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
 
             ->add('disponibilite', ChoiceType::class,
@@ -208,8 +209,49 @@ use FestiViteBundle\Utils\RecherchePrestataire;
              array('form' => $form->createView()));
     }
 
-    public function prestataireAction(){
-        return $this->render('FestiViteBundle:Default:prestataire.html.twig');
+    public function prestataireAction(Request $request){
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        if($usr !=  'anon.' && $usr->getRoles()[0] == "ROLE_PREST"){
+            $offre = new Offre();
+            $offre->setDateAjout(new \DateTime());
+            $usr->addOffre($offre);
+            $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $offre);
+
+            $formBuilder
+                ->add('Type', TextType::class)
+                ->add('prix', MoneyType::class)
+                ->add('description', TextType::class)
+                ->add('valider', SubmitType::class)
+            ;
+            $form = $formBuilder->getForm();
+            //LAISSEZ LES COMMENTAIRES BANDE DE CHIBRES MOUS
+            // Si la requête est en POST
+            if ($request->isMethod('POST')) {
+                // On fait le lien Requête <-> Formulaire
+                // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+                $form->handleRequest($request);
+                // On vérifie que les valeurs entrées sont correctes
+                // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+                if ($form->isValid()) {
+                    // On enregistre notre objet $advert dans la base de données, par exemple
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($offre);
+                    $em->flush();
+                    $request->getSession()->getFlashBag()->add('notice', 'Offre bien enrengistrée');
+                    // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                    return $this->redirectToRoute('festi_vite_prestataire',
+                        array('form' => $form->createView()));
+                }
+            }
+            return $this->render('FestiViteBundle:Default:prestataire.html.twig',
+                 array('form' => $form->createView()));
+        }else{
+            return new Response(
+            "<html><body>Vous n'avez pas accès à cette page</body></html>"
+        );
+        }
+
+
     }
 
     public function redirectAction(){

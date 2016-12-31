@@ -5,7 +5,7 @@ namespace FestiViteBundle\Utils;
 class RecherchePrestataire
 {
   private $motcle = ' ';
-  private $tri = "Nouveauté";
+  private $tri = 'dateAjout desc';
   private $disponibilite = '';
   private $type = '';
 
