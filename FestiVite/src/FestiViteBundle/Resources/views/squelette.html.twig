@@ -42,27 +42,29 @@
 
           <div class="navbar-collapse collapse" id="navbar" >
             <ul class="nav navbar-nav">
-              <!--Mon compte-->
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Mes Infos</a></li>
-                <li><a href="#">Mon historique</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Contact</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-              </ul>
-              <!--/Mon compte-->
 
-              <!--Mes amis-->
-              <li><a href="#">Mes Amis</a></li>
-              <!--/Mes amis-->
+              {% if user != 'anon.' %}
+                  <!--Mon compte-->
+                  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Mes Infos</a></li>
+                    <li><a href="#">Mon historique</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Contact</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                  </ul>
+                  <!--/Mon compte-->
 
-              <!--Mes soirées-->
-              <li><a href="#">Mes Soirées</a></li>
-              <!--/Mes soirées-->
+                  <!--Mes amis-->
+                  <li><a href="#">Mes Amis</a></li>
+                  <!--/Mes amis-->
 
+                  <!--Mes soirées-->
+                  <li><a href="#">Mes Soirées</a></li>
+                  <!--/Mes soirées-->
+              {% endif %}
               <!--Partenaire-->
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Partenaire<span class="caret"></span></a>

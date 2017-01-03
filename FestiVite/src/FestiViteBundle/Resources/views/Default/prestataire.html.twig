@@ -5,6 +5,10 @@
         <title> La page qui sert au prestataire pour renseigner leurs infos</title>
     </head>
     <body>
+        {{ dump(enreg) }}
+        {% if enreg is defined %}
+          <p>{{ enreg }}</p>
+        {% endif %}
         {{ form(form) }}
     </body>
 </html>
