@@ -20,6 +20,13 @@ class Offre
     private $type;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjout", type="date", nullable=true)
+     */
+    private $dateAjout;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="Prix", type="decimal", precision=9, scale=0, nullable=false)
@@ -186,5 +193,29 @@ class Offre
     public function getUtilisateurProfessionnel()
     {
         return $this->utilisateurprofessionnel;
+    }
+
+    /**
+     * Set dateAjout
+     *
+     * @param string $dateAjout
+     *
+     * @return Offre
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjout
+     *
+     * @return date
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
     }
 }

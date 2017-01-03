@@ -4,12 +4,12 @@ namespace FestiViteBundle\Utils;
 
 class RecherchePrestataire
 {
-  private $motcle = null;
-  private $tri = "Nouveauté";
-  private $disponibilite = null;
-  private $type = null;
+  private $motcle = ' ';
+  private $tri = 'dateAjout desc';
+  private $disponibilite = '';
+  private $type = '';
 
-  function getMotCle(){
+  function getMotcle(){
     return $this->motcle;
   }
 
@@ -25,8 +25,8 @@ class RecherchePrestataire
     return $this->type;
   }
 
-  function setMotCle($motCle){
-    $this->motCle = $motCle;
+  function setMotcle($motcle){
+    $this->motcle = $motcle;
   }
 
   function setTri($tri){
@@ -34,11 +34,38 @@ class RecherchePrestataire
   }
 
   function setDisponibilite($disponibilite){
-    $this->disponibilite = $disponibilite
+    $this->disponibilite = $disponibilite;
   }
 
   function setType($type){
     $this->type = $type;
+  }
+
+  function getRecherche($em){
+      $expl = explode(' ', $this->motcle);
+      $request = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE";
+      foreach($expl as $key => $value) {
+          if($key == 0){
+              $request = $request." A.description LIKE '%".$value."%'";
+          }else{
+              $request = $request." AND A.description LIKE '%".$value."%'";
+          }
+      }
+
+      if($this->tri != 'pertinence'){
+          $request = $request.' ORDER BY A.'.$this->tri;
+      }
+      var_dump($request);
+
+      /*if($this->motcle != ' '){
+          $request = $aa."o.description LIKE '".$mot."'";
+      }
+      var_dump($request);*/
+
+
+      $query = $em->createQuery($request);
+      var_dump($query->getResult());
+      return $query->getResult();
   }
 
 

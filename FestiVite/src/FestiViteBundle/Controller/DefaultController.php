@@ -14,14 +14,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use FestiViteBundle\Repository\OffreRepository;
 use FestiViteBundle\Entity\UtilisateurProfessionnel;
 use FestiViteBundle\Entity\Offre;
+use FestiViteBundle\Utils\RecherchePrestataire;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
-class DefaultController extends Controller
-{
+
+    class DefaultController extends Controller
+    {
     public function mainAction()
     {
         return $this->render('FestiViteBundle:Default:main.html.twig');
@@ -42,15 +46,65 @@ class DefaultController extends Controller
         return $this->render('FestiViteBundle:Default:moncompte.html.twig');
     }
 
-    public function rechercheAction()
+    public function rechercheAction(Request $request)
     {
-        return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig');
+        $recherche = new RecherchePrestataire();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
+        $formBuilder
+            ->add('motcle', TextType::class, array('required' => false))
+            ->add('tri',ChoiceType::class,
+            array('choices' => array(
+                    'Nouveauté' => 'dateAjout desc',
+                    'Prix Croissant' => 'prix',
+                    'Prix Decroissant' => 'prix desc'),
+            'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
+
+            ->add('disponibilite', ChoiceType::class,
+                array('choices' => array(
+                    '- Disponibilite -' => '',
+                    'Default' => '',
+                    'Lundi' => 'Lundi',
+                    'Mardi' => 'Mardi',
+                    'Mercredi' => 'Mercredi',
+                    'Jeudi' => 'Jeudi',
+                    'Vendredi' => 'Vendredi',
+                    'Samedi' => 'Samedi',
+                    'Dimanche' => 'Dimanche')))
+
+            ->add('type', ChoiceType::class,
+                array('choices' => array(
+                    '- Type -' => '',
+                    'Default' => '')))
+
+            ->add('Rechercher', SubmitType::class)
+        ;
+        $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $advert dans la base de données, par exemple
+                var_dump($recherche);
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
+                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
+            }
+        }
+
+
+        return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
+            array('form' => $form->createView()));
     }
 
     public function testAction()
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
-        //$utils = $repository->findAll();
+        $utils = $repository->findAll();
         /*
         $repository->findBy(
         array $critere,
@@ -65,14 +119,14 @@ class DefaultController extends Controller
 
 
 
-
+/*
 
         $utils = $repository
           ->createQueryBuilder('a')
           ->leftJoin('a.offres', 'prof')
           ->addSelect('prof')
           ->getQuery()
-          ->getResult();
+          ->getResult();*/
         //var_dump($utils);
 
           /*$uti = new UtilisateurProfessionnel();
@@ -86,10 +140,10 @@ class DefaultController extends Controller
           $em->persist($uti);
           $em->flush();*/
 
-          /*$uti = new Offre();
+          $uti = new Offre();
           $uti->setType("TypeA");
           $uti->setPrix("123456789");
-          $uti->setDescription("aaa");
+          $uti->setDescription("Avion du chocolat sans fraises");
           $uti->setImage("Entreprise 3");
 
           $utils = $repository->findAll();
@@ -97,7 +151,7 @@ class DefaultController extends Controller
           //var_dump($utils[0]->getOffres());
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
-          $em->flush();*/
+          $em->flush();
 
         /*$repositoryUtil = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         $repositoryOffre = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
@@ -155,12 +209,60 @@ class DefaultController extends Controller
              array('form' => $form->createView()));
     }
 
-    public function prestataireAction(){
-        return $this->render('FestiViteBundle:Default:prestataire.html.twig');
+    public function prestataireAction(Request $request){
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        if($usr !=  'anon.' && $usr->getRoles()[0] == "ROLE_PREST"){
+            $offre = new Offre();
+            $offre->setDateAjout(new \DateTime());
+            $usr->addOffre($offre);
+            $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $offre);
+
+            $formBuilder
+                ->add('Type', TextType::class)
+                ->add('prix', MoneyType::class)
+                ->add('description', TextType::class)
+                ->add('valider', SubmitType::class)
+            ;
+            $form = $formBuilder->getForm();
+            //LAISSEZ LES COMMENTAIRES BANDE DE CHIBRES MOUS
+            // Si la requête est en POST
+            if ($request->isMethod('POST')) {
+                // On fait le lien Requête <-> Formulaire
+                // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+                $form->handleRequest($request);
+                // On vérifie que les valeurs entrées sont correctes
+                // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+                if ($form->isValid()) {
+                    // On enregistre notre objet $advert dans la base de données, par exemple
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($offre);
+                    $em->flush();
+                    $request->getSession()->getFlashBag()->add('notice', 'Offre bien enrengistrée');
+                    // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                    return $this->redirectToRoute('festi_vite_prestataire',
+                        array('form' => $form->createView()));
+                }
+            }
+            return $this->render('FestiViteBundle:Default:prestataire.html.twig',
+                 array('form' => $form->createView()));
+        }else{
+            return new Response(
+            "<html><body>Vous n'avez pas accès à cette page</body></html>"
+        );
+        }
+
+
     }
 
     public function redirectAction(){
-      $usr= $this->get('security.context')->getToken()->getUser();
+      $usr = $this->get('security.token_storage')->getToken()->getUser();
+      var_dump($usr->getRoles());
+      if($usr->getRoles()[0] == "ROLE_PREST"){
+        return $this->redirectToRoute('festi_vite_prestataire');
+      } else if ($usr->getRoles()[0] == "ROLE_USER"){
+        return $this->redirectToRoute('festi_vite_main');
+      }
+      return $this->render('FestiViteBundle:Default:testRedirect.html.twig', array("user" => $usr));
     }
 
 

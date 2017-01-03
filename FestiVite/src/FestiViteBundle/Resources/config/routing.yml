@@ -38,6 +38,6 @@ festi_test_connection:
     path:     /test/connection
     defaults: { _controller: FestiViteBundle:Default:connection }
 
-festi_test:
-    path:     /test/redirect
-    defaults: { _controller: FestiViteBundle:Default:redirect }
+festi_redirect:
+  path:       /redirect
+  defaults: { _controller: FestiViteBundle:Default:redirect}

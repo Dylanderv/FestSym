@@ -1,3 +1,5 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,61 +24,8 @@
 
   <body>
     <div id="wrap">
-
-
-      <!-- Banniere / Menu de navigation -->
-        <nav class="navbar navbar-default navbar-static-top subnav" role="navigation" id="topnavbar">
-            <div class="container">
-
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="main"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
-              </div>
-
-              <div class="navbar-collapse collapse" id="navbar" >
-                <ul class="nav navbar-nav">
-                  <!--Mon compte-->
-                  <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Mon compte <span class="caret"></span></p></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Mes Infos</a></li>
-                    <li><a href="#">Mon historique</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Contact</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Deconnexion<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                  </ul>
-                  <!--/Mon compte-->
-
-                  <!--Mes amis-->
-                  <li><a href="#"><p>Mes Amis</p></a></li>
-                  <!--/Mes amis-->
-
-                  <!--Mes soirées-->
-                  <li><a href="#"><p>Mes Soirées</p></a></li>
-                  <!--/Mes soirées-->
-
-                  <!--Partenaire-->
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><p>Partenaire<span class="caret"></span></p></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="rechercheprestataire">Rechercher<span class="glyphicon glyphicon-search pull-right"></a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Favoris<span class="glyphicon glyphicon-star pull-right"></a></li>
-                    </ul>
-                  </li>
-                  <!--/Partenaire-->
-                </ul>
-                <!--/fin des items de la navbar-->
-              </div><!--/.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-
+{% endblock %}
+{% block apr %}
       <!-- Debut du corps -->
       <div class="container" id="main">
         <!--Barre de recherche-->
@@ -84,50 +33,45 @@
           <h1 class="titre1">Rechercher des Prestataires</h1>
         </div>
         <div id="rechercheprestataire" class="row container">
-          <form class="row col-sm-8 col-xs-12">
+          {{ form_start(form, {'attr': {'class': 'form-horizontal col-xs-12 container'}})}}
             <div class="form-group col-sm-7 col-xs-12">
-              <input type="text" placeholder="Mot-Clés" class="form-control">
+              {{ form_errors(form.motcle) }}
+              {{ form_widget(form.motcle, {'attr': {'class': 'form-control', 'placeholder':'Mot-Clés'}}) }}
             </div>
-            <button type="submit" class="btn btn-primary col-sm-4 col-xs-6">Rechercher<span class="glyphicon glyphicon-search pull-right"></button>
-          </form>
-          <div id="rechercheavance" class="dropdown pull-right col-sm-4 col-xs-12">
-            <a id="showrechavan" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recherche avancée <span class="glyphicon glyphicon-plus"></span></a>
-          </div>
-          <div class="row starthidden container">
-            <form class="form-horizontal col-xs-12 container">
+            {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary col-sm-4 col-xs-6'}}) }}
+            <!-- On a plus la petite loupe pour rechercher   <button type="submit" class="btn btn-primary col-sm-4 col-xs-6">Rechercher<span class="glyphicon glyphicon-search pull-right"></button>!-->
+
+              <div id="rechercheavance" class="dropdown pull-right col-sm-4 col-xs-12">
+                <a id="showrechavan" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recherche avancée <span class="glyphicon glyphicon-plus"></span></a>
+              </div>
+              <div class="row starthidden container">
               <div class="form-group">
-                <label for="textarea" class="col-sm-3 control-label">Trier par : </label>
+                {{ form_errors(form.tri) }}
+                {{ form_label(form.tri, "Trier par : ", {'label_attr': {'class' : 'col-lg-3 control-label'}}) }}
                 <div class="col-sm-9 row">
-                  <span class="col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10"><input type="radio" name="tri" value=""> Pertinence</span>
-                  <span class="col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10"><input type="radio" name="tri" value=""> Nouveauté</span>
-                  <span class="col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10"><input type="radio" name="tri" value=""> Prix</span>
-                </div>
+                  {{ form_widget(form.tri, {'attr': {'class': ''}}) }}
+                  <!-- col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10 (ça fait un truc bizarre donc je met rien) !-->
+                  </div>
               </div>
               <div class="form-group">
-                <label for="textarea" class="col-sm-3 control-label">Disponibilité : </label>
+                {{ form_errors(form.disponibilite) }}
+                {{ form_label(form.disponibilite, "Disponibilité : ", {'label_attr': {'class' : 'col-lg-3 control-label'}}) }}
                 <div class="col-sm-9">
                   <div class="row">
-                    <select name="lieu" class="form-control col-sm-7">
-                      <option value="" disabled selected="">Disponibilité</option>
-                      <!--...-->
-                      <option value=""></option>
-                    </select>
+                    {{ form_widget(form.disponibilite, {'attr': {'class': 'form-control col-sm-7'}}) }}
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="textarea" class="col-sm-3 control-label">Type : </label>
+                {{ form_errors(form.type) }}
+                {{ form_label(form.type, "Type : ", {'label_attr': {'class' : 'col-sm-3 control-label'}}) }}
                 <div class="col-sm-9">
                   <div class="row">
-                    <select name="lieu" class="form-control col-sm-7">
-                      <option value="" disabled selected="">Type</option>
-                      <!--...-->
-                      <option value=""></option>
-                    </select>
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control col-sm-7'}}) }}
                   </div>
                 </div>
               </div>
-            </form>
+            {{form_end(form)}}
           </div>
           <script>
             $( "div:visible" ).click(function() {
@@ -145,18 +89,12 @@
       </div><!--Corps-->
       <div id="push"></div>
     </div>
-    <!--un commentaire-->
+    {{ form(form) }}
+{% endblock %}
 
-      <footer id="footer">
-        <div class="row">
-          <img src="css/image/logo/logo150.png" alt="FestiVite" />
-        </div>
-        <div class="row">
-          <h5>
-            <p>&copy; 2016 Festivite, Inc.</p>
-          </h5>
-        </div>
-      </footer>
+
+
+{% block script %}
     </div>
 
 
@@ -172,3 +110,4 @@
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+{% endblock %}
