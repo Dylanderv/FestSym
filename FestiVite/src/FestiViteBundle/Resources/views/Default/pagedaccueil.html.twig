@@ -123,9 +123,9 @@
                   {{ form_label(form.dateNaissance, "Date de naissance : ", {'label_attr': {'class' : 'col-lg-3 control-label'}}) }}
                   {{ form_errors(form.dateNaissance) }}
                   <div class="col-lg-9">
-                    {{ form_widget(form.dateNaissance.day, {'attr': {'class': ' col-sm-3 col-xs-3'}}) }}
-                    {{ form_widget(form.dateNaissance.month, {'attr': {'class': ' col-sm-3 col-xs-3'}}) }}
-                    {{ form_widget(form.dateNaissance.year, {'attr': {'class': ' col-sm-3 col-xs-3'}}) }}
+                    {{ form_widget(form.dateNaissance.day, {'attr': {'class': ' col-sm-3 col-xs-12'}}) }}
+                    {{ form_widget(form.dateNaissance.month, {'attr': {'class': ' col-sm-offset-1 col-sm-3 col-xs-12'}}) }}
+                    {{ form_widget(form.dateNaissance.year, {'attr': {'class': ' col-sm-offset-1 col-sm-3 col-xs-12'}}) }}
                 </div>
               </div>
 
@@ -133,7 +133,7 @@
                 {{ form_widget(form.valider, {'attr': {'class': 'pull-right btn btn-success'}}) }}
               </div>
             {{ form_end(form)}}
-        </div>    
+        </div>
           </div>
 
           <!--Visite et demande-->

@@ -81,7 +81,7 @@
     height: 60px;
     margin-bottom: 20px;
 }
-#etape2 > div > div:first-child{
+.etapeform > div:first-child{
     position: absolute;
     background-color: #051C2C;
     -webkit-transform: skew(-20deg, 0deg);
@@ -94,7 +94,10 @@
     height: 60px;
     z-index: -1;
 }
-#etape2 > div > p{
+.etapeform{
+    margin-bottom: 60px;
+}
+.etapeform > p{
     position: absolute;
     font-size: 1.3em;
     color: white;
@@ -109,7 +112,7 @@
     font-size: 50px;
     color: #051C2C;
 }
-#etape2 > div >div:last-child{
+.etapeform >div:last-child{
     position: absolute;
     background-color: #EB7F20;
     -webkit-transform: skew(40deg, 0deg);
@@ -123,7 +126,9 @@
     width: 110%;
     z-index: -2;
 }
-
+#etape3 form{
+    height: 100px;
+}
 .choixdefaut{
   border: 5px solid #EB7F20;
   color: #EB7F20;
@@ -133,14 +138,11 @@
   margin-bottom: 10px;
 }
 
-#etape3 > div article{
-    background-color: #051C2C;
+#Finaliser,
+#etapePrecedente,
+#etapePrecedente{
+    z-index: -10000;
 }
-
-#etape3 > div article > select{
-
-}
-
 @media screen and (max-width: 1201px){
     .numetape{
         transform: translateY(80%);
