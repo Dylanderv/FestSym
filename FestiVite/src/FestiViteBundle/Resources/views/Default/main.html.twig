@@ -113,11 +113,18 @@
           <section class="row container" id="creerSoiree1">
             <!--Classique-->
             <div id="formule1" class="col-md-6 col-xs-12">
-              <a href="creersoireeclassique">
+
+              <a href="{% if user != 'anon.' %}creersoireeclassique{% endif %}">
+
                 <div class="col-xs-10 col-xs-offset-1">
                   <h1 class="centrerformulecontent">CLASSIQUE</h1>
                   <p class='starthidden centrerformulecontent'>
+                    {% if user != 'anon.' %}
                     Organisez vous même la soirée de vos rêves pour vous et vos amis !
+                    {% endif %}
+                    {% if user == 'anon.' %}
+                    <font color="teal">Connectez vous</font> pour organiser vous même la soirée de vos rêves pour vous et vos amis !
+                    {% endif %}
                   </p>
                 </div>
               </a>
@@ -125,12 +132,18 @@
 
             <!--Aventure-->
               <div id="formule2" class="col-md-6 col-xs-12">
-                <a href="creersoireeaventure">
+                <a href="{% if user != 'anon.' %}creersoireeaventure{% endif %}">
                   <div class="col-xs-10 col-xs-offset-1">
                     <h1 class="centrerformulecontent">A L'AVENTURE</h1>
                     <p class='starthidden centrerformulecontent'>
-                      Partez a l'aventure !
-                     Faites de nouvelles connaissances et passez un agréable moment a moindre frais !
+                    {% if user != 'anon.' %}
+                     Partez a l'aventure !
+                    Faites de nouvelles connaissances et passez un agréable moment a moindre frais !
+                    {% endif %}
+                    {% if user == 'anon.' %}
+                    <font color="teal">Connectez vous</font> pour partir a l'aventure !
+                    {% endif %}
+
                     </p>
                   </div>
                 </a>

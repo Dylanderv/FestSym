@@ -64,7 +64,6 @@ class RecherchePrestataire
 
 
       $query = $em->createQuery($request);
-      var_dump($query->getResult());
       return $query->getResult();
   }
 
