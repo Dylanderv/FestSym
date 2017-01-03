@@ -43,7 +43,7 @@ $("#etapePrecedente").click(function() {
   }
 
 });
-$('#etape2 > div > a > span').hover(function() {
+$('#etape4 > div > a > span').hover(function() {
       $(this).stop().animate({ fontSize : '60px' });
 },
 function() {
