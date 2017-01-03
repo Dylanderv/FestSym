@@ -76,11 +76,6 @@
     border: none;
 }
 
-#etape2 > div:first-of-type {
-    position: relative;
-    height: 60px;
-    margin-bottom: 20px;
-}
 .etapeform > div:first-child{
     position: absolute;
     background-color: #051C2C;
@@ -105,12 +100,13 @@
     top: 50%;
     left: 0;
     right: 0;
-    transform: translateY(-50%);
+    transform: translateY(50%);
     z-index: 1;
 }
-#etape2 > div > a > span {
+#etape4 > div > a > span {
     font-size: 50px;
     color: #051C2C;
+    margin-top: 20px;
 }
 .etapeform >div:last-child{
     position: absolute;
@@ -126,7 +122,7 @@
     width: 110%;
     z-index: -2;
 }
-#etape3 form{
+#etape4 {
     height: 100px;
 }
 .choixdefaut{

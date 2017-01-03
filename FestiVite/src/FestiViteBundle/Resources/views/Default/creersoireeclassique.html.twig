@@ -97,93 +97,96 @@
           </nav>
             <!--FIN Chevrons etape-->
         <!--Deubut formulaire-->
-            <div id="etape1"> <!--Choix du titre soiree -->
-                <div class="row formule">
-                    <h1 class="titreEtape">Titre de votre soirée</h1>
-                    <div id="champtitre">
-                        <div></div>
-                        <input type="text" name="name" value="" placeholder="Titre Soirée">
-                        <div></div>
+            <form class="row" action="index.html" method="post">
+
+
+                <div id="etape1"> <!--Choix du titre soiree -->
+                    <div class="row formule">
+                        <h1 class="titreEtape">Titre de votre soirée</h1>
+                        <div id="champtitre">
+                            <div></div>
+                            <input type="text" name="name" value="" placeholder="Titre Soirée">
+                            <div></div>
+                        </div>
+                    </div>
+                </div> <!--FIN Choix du titre soiree -->
+
+                <div id="etape2" class="starthidden text-center">
+                    <h1 class="titreEtape">Où ça ?</h1>
+                    <div class="etapeform row col-xs-8 col-xs-offset-2">
+                        <div class="col-xs-12"></div>
+                        <p class="col-xs-12">Ville</p>
+                        <div class="col-xs-12"></div>
+                    </div>
+                    <input type="text" name="name" value="" placeholder="Ville">
+                </div>
+
+                <div id="etape3" class="starthidden">
+                  <h1 class="titreEtape">Quand ça ?</h1>
+                  <div class="etapeform row col-xs-8 col-xs-offset-2">
+                      <div class="col-xs-12"></div>
+                      <p class="col-xs-12">Date</p>
+                      <div class="col-xs-12"></div>
+                  </div>
+                          <div class="col-sm-3 col-xs-12">
+                              <!--emplacement pour la date-->
+                              A completer
+                          </div>
+                          <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+                              <!--emplacement pour la date-->
+                          </div>
+                          <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+                              <!--emplacement pour la date-->
+                          </div>
+                  <div class="etapeform row col-xs-8 col-xs-offset-2">
+                      <div class="col-xs-12"></div>
+                      <p class="col-xs-12">Heure</p>
+                      <div class="col-xs-12"></div>
+                  </div>
+                          <div class="col-sm-12 col-xs-12">
+                              <input type="text" name="name" value="" placeholder="Heure">
+                          </div>
+
+                </div>
+
+                <div id="etape4" class="starthidden">
+                    <h1 class="titreEtape">Besoin de quelqu'un ?</h1>
+                    <!--Titre-->
+                    <div class="etapeform row col-xs-8 col-xs-offset-2">
+                        <div class="col-xs-12"></div>
+                        <p class="col-xs-12">Ajouter des PNJ</p>
+                        <div class="col-xs-12"></div>
+                    </div>
+                    <!--Bouton ajout-->
+                    <div class="row col-xs-8 col-xs-offset-2">
+                        <a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                    </div>
+                    <!--Choixdefaut-->
+                    <div class="row">
+                        <span class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Je suis fort tout seul</span>
                     </div>
                 </div>
-            </div> <!--FIN Choix du titre soiree -->
 
-            <div id="etape2" class="starthidden text-center">
-                <h1 class="titreEtape">Besoin de quelqu'un ?</h1>
-                <!--Titre-->
-                <div class="etapeform row col-xs-8 col-xs-offset-2">
-                    <div class="col-xs-12"></div>
-                    <p class="col-xs-12">Ajouter des PNJ</p>
-                    <div class="col-xs-12"></div>
+                <div id="etape5" class="starthidden">
+                    <div class="">
+                        
+                    </div>
                 </div>
-                <!--Bouton ajout-->
-                <div class="row col-xs-8 col-xs-offset-2">
-                    <a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>
-                </div>
-                <!--Choixdefaut-->
-                <div class="row">
-                    <span class="choixdefaut col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">Je suis fort tout seul</span>
-                </div>
+            </form>
+            <div class="row">
+                <button id="etapePrecedente" type="button" class="starthidden formbtn">
+                   <span class="glyphicon glyphicon-chevron-left"></span>
+                   Précédent
+                </button>
+                <button id="etapeSuivante" type="button" class="formbtn">
+                  Suivant
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+                <button id="Finaliser" type="button" class="starthidden formbtn" name="Finaliser">
+                  Finaliser
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
             </div>
-            <div id="etape3" class="starthidden">
-              <h1 class="titreEtape">Quand ça ?</h1>
-              <div class="etapeform row col-xs-8 col-xs-offset-2">
-                  <div class="col-xs-12"></div>
-                  <p class="col-xs-12">Date</p>
-                  <div class="col-xs-12"></div>
-              </div>
-              <form class="row col-xs-8 col-xs-offset-2">
-                      <div class="col-sm-3 col-xs-12">
-                          <!--emplacement pour la date-->
-                          RIEN
-                      </div>
-                      <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                          <!--emplacement pour la date-->
-                      </div>
-                      <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                          <!--emplacement pour la date-->
-                      </div>
-              </form>
-              <div class="etapeform row col-xs-8 col-xs-offset-2">
-                  <div class="col-xs-12"></div>
-                  <p class="col-xs-12">Heure</p>
-                  <div class="col-xs-12"></div>
-              </div>
-              <form class="row col-xs-8 col-xs-offset-2">
-                      <div class="col-sm-3 col-xs-12">
-                          <!--emplacement pour l'heure-->
-                          RIEN
-                      </div>
-                      <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                          <!--emplacement pour l'heure'-->
-                      </div>
-                      <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                          <!--emplacement pour l'heure-->
-                      </div>
-              </form>
-
-            </div>
-            <div id="etape4" class="starthidden">
-              <h1 class="titreEtape">Où ça ?</h1>
-          </div>
-            <div id="etape5" class="starthidden">
-                <div class="">
-                    zerfgerg
-                </div>
-            </div>
-
-          <button id="etapePrecedente" type="button" class="starthidden formbtn">
-             <span class="glyphicon glyphicon-chevron-left"></span>
-             Précédent
-          </button>
-          <button id="etapeSuivante" type="button" class="formbtn">
-            Suivant
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </button>
-          <button id="Finaliser" type="button" class="starthidden formbtn" name="Finaliser">
-            Finaliser
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </button>
         </div>
         </div>
         <div id="push">
