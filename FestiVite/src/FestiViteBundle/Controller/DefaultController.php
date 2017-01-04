@@ -28,22 +28,22 @@ use Symfony\Component\HttpFoundation\Response;
     {
     public function mainAction()
     {
-        return $this->render('FestiViteBundle:Default:main.html.twig');
+        return $this->render('FestiViteBundle:Default:main.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function creersoireeclassiqueAction()
     {
-        return $this->render('FestiViteBundle:Default:creersoireeclassique.html.twig');
+        return $this->render('FestiViteBundle:Default:creersoireeclassique.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function creersoireeaventureAction()
     {
-        return $this->render('FestiViteBundle:Default:creersoireeaventure.html.twig');
+        return $this->render('FestiViteBundle:Default:creersoireeaventure.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function moncompteAction()
     {
-        return $this->render('FestiViteBundle:Default:moncompte.html.twig');
+        return $this->render('FestiViteBundle:Default:moncompte.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function rechercheAction(Request $request)
@@ -88,17 +88,16 @@ use Symfony\Component\HttpFoundation\Response;
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
                 // On enregistre notre objet $advert dans la base de données, par exemple
-                var_dump($recherche);
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
-                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
+                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
             }
         }
 
 
         return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
-            array('form' => $form->createView()));
+            array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function testAction()
@@ -170,7 +169,7 @@ use Symfony\Component\HttpFoundation\Response;
         //$utils = OffreRepository::getOffreWithUtilProf();
         /*var_dump($uti);
         var_dump($utils[0]);*/
-        return $this->render('FestiViteBundle:Default:testDylan.html.twig', array("utils" => $utils));
+        return $this->render('FestiViteBundle:Default:testDylan.html.twig', array("utils" => $utils, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function createsoireeAction(Request $request){
@@ -206,7 +205,7 @@ use Symfony\Component\HttpFoundation\Response;
             }
         }
         return $this->render('FestiViteBundle:Default:testCreationSoiree.html.twig',
-             array('form' => $form->createView()));
+             array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function prestataireAction(Request $request){
@@ -240,11 +239,11 @@ use Symfony\Component\HttpFoundation\Response;
                     $request->getSession()->getFlashBag()->add('notice', 'Offre bien enrengistrée');
                     // On redirige vers la page de visualisation de l'annonce nouvellement créée
                     return $this->redirectToRoute('festi_vite_prestataire',
-                        array('form' => $form->createView()));
+                        array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
                 }
             }
             return $this->render('FestiViteBundle:Default:prestataire.html.twig',
-                 array('form' => $form->createView()));
+                 array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
         }else{
             return new Response(
             "<html><body>Vous n'avez pas accès à cette page</body></html>"

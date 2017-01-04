@@ -59,7 +59,8 @@ class SecurityController extends Controller{
                     'last_username' => $authenticationUtils->getLastUsername(),
                     'error'         => $authenticationUtils->getLastAuthenticationError(),
                     'form'          => $form->createView(),
-                    'enreg'         => "Vous êtes bien enregistré, veuillez vous connecter."
+                    'enreg'         => "Vous êtes bien enregistré, veuillez vous connecter.",
+                    'user' => $this->get('security.token_storage')->getToken()->getUser()
                   ));
             }
         }
@@ -67,7 +68,8 @@ class SecurityController extends Controller{
         return $this->render('FestiViteBundle:Default:pagedaccueil.html.twig', array(
             'last_username' => $authenticationUtils->getLastUsername(),
             'error'         => $authenticationUtils->getLastAuthenticationError(),
-            'form'          => $form->createView()
+            'form'          => $form->createView(),
+            'user' => $this->get('security.token_storage')->getToken()->getUser()
           ));
     }
 }

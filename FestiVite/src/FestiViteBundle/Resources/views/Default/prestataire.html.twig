@@ -22,6 +22,10 @@
 
 
     <body>
+        {{ dump(enreg) }}
+        {% if enreg is defined %}
+          <p>{{ enreg }}</p>
+        {% endif %}
         {{ form(form) }}
         
     </body>
