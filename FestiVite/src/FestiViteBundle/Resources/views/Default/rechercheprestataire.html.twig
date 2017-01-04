@@ -31,10 +31,11 @@
 {% block apr %}
       <!-- Debut du corps -->
       <div class="container" id="main">
-        <!--Barre de recherche-->
+
         <div class="row">
           <h1 class="titre1">Rechercher des Prestataires</h1>
         </div>
+        <!--Barre de recherche-->
         <div id="rechercheprestataire" class="row container">
           {{ form_start(form, {'attr': {'class': 'form-horizontal col-xs-12 container'}})}}
             <div class="form-group col-sm-7 col-xs-12">
@@ -50,29 +51,19 @@
               <div class="row starthidden container">
               <div class="form-group">
                 {{ form_errors(form.tri) }}
-                {{ form_label(form.tri, "Trier par : ", {'label_attr': {'class' : 'col-lg-3 control-label'}}) }}
-                <div class="col-sm-9 row">
-                  {{ form_widget(form.tri, {'attr': {'class': ''}}) }}
-                  <!-- col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10 (ça fait un truc bizarre donc je met rien) !-->
-                  </div>
+                {{ form_label(form.tri, "Trier par : ", {'label_attr': {'class' : 'col-xs-12'}}) }}
+                {{ form_widget(form.tri, {'attr': {'class': 'col-xs-12'}}) }}
+                <!-- col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10 (ça fait un truc bizarre donc je met rien) !-->
               </div>
               <div class="form-group">
                 {{ form_errors(form.disponibilite) }}
-                {{ form_label(form.disponibilite, "Disponibilité : ", {'label_attr': {'class' : 'col-lg-3 control-label'}}) }}
-                <div class="col-sm-9">
-                  <div class="row">
-                    {{ form_widget(form.disponibilite, {'attr': {'class': 'form-control col-sm-7'}}) }}
-                  </div>
-                </div>
+                {{ form_label(form.disponibilite, "Disponibilité : ", {'label_attr': {'class' : 'col-xs-3 hidden-xs'}}) }}
+                {{ form_widget(form.disponibilite, {'attr': {'class': 'col-sm-7 col-xs-12'}}) }}
               </div>
               <div class="form-group">
                 {{ form_errors(form.type) }}
-                {{ form_label(form.type, "Type : ", {'label_attr': {'class' : 'col-sm-3 control-label'}}) }}
-                <div class="col-sm-9">
-                  <div class="row">
-                    {{ form_widget(form.type, {'attr': {'class': 'form-control col-sm-7'}}) }}
-                  </div>
-                </div>
+                {{ form_label(form.type, "Type : ", {'label_attr': {'class' : 'col-xs-3 hidden-xs'}}) }}
+                {{ form_widget(form.type, {'attr': {'class': 'col-sm-7 col-xs-12'}}) }}
               </div>
             {{form_end(form)}}
           </div>
@@ -88,9 +79,39 @@
               }
             });
           </script>
-        </div>
-      </div><!--Corps-->
-      <div id="push"></div>
+            </div><!--/Barre de recherche-->
+            <div class="backg">
+
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+            </div>
+        </div><!--/Corps-->
+        <div id="push"></div>
     </div>
     {{ form(form) }}
 {% endblock %}

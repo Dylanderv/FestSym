@@ -28,6 +28,7 @@ section{
   height: auto !important;
   height: 100%;
   margin: 0px auto -150px;
+
 }
 #main{
   /*padding-top: 20px;*/
@@ -300,6 +301,49 @@ section{
 .starthidden{
   display: none;
 }
+
+.blockpresta{
+    margin: 30px 0px;
+    border: solid 5px #051C2C;
+    color: white;
+    position: relative;
+}
+.blockpresta a{
+    color: #051C2C;
+}
+.blockpresta p,
+.blockpresta h3{
+    margin: 5px;
+    text-align: left;
+    width: 60%;
+}
+
+.blockpresta p{
+    color: #051C2C;
+    height: 60px;
+}
+
+.blockpresta .prix{
+    width: 65%;
+    -webkit-transform: skew(-30deg, 0deg);
+    -moz-transform: skew(-30deg, 0deg);
+    -o-transform: skew(-30deg, 0deg);
+    transform: skew(-30deg, 0deg);
+    padding: 1px;
+    text-align: right;
+    background-color: orange;
+    height: 20px;
+    color: #051C2C;
+}
+
+.imagepresta{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+}
+
 /*Fin recherche prestataire*/
 /*Carousel (le truc cool)*/
 .carousel {
@@ -441,6 +485,12 @@ section{
   padding: 0px;
 }
 
+
+@media screen and (max-width: 1200px) {
+    .imagepresta{
+        width: 25%;
+    }
+}
 @media screen and (max-width: 1000px) {
   .navbar-header #logolarge{
     display:none;
@@ -449,6 +499,9 @@ section{
     width: 70px;
     height: 70px;
     display: inline-block;
+  }
+  .imagepresta{
+      width: 30%;
   }
 }
 /*Pour les smartphone*/
@@ -472,7 +525,6 @@ section{
   }
   h3{
     font-weight: bold;
-    font-size: 0.8em;
   }
   #creerSoiree > div{
     height: 100px;
@@ -482,4 +534,16 @@ section{
     max-width: 80%;
   }
 
+  .imagepresta{
+      display: none;
+  }
+  .blockpresta p,
+  .blockpresta h3{
+      width: 90%;
+  }
+
+  .blockpresta .prix{
+      width: 90%;
+
+  }
 }
