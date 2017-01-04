@@ -134,10 +134,14 @@
   margin-bottom: 10px;
 }
 
-#Finaliser,
+#suivantajout,
 #etapePrecedente,
 #etapePrecedente{
     z-index: -10000;
+}
+#suivantajout a{
+    text-decoration: none;
+    color: #FFF;
 }
 @media screen and (max-width: 1201px){
     .numetape{

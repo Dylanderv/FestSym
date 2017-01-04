@@ -344,6 +344,13 @@ section{
     height: 100%;
 }
 
+.ajoutbtn{
+    position: absolute;
+    top: 10px;
+    right: 21%;
+    font-size: 35px;
+    color: #051C2C;
+}
 /*Fin recherche prestataire*/
 /*Carousel (le truc cool)*/
 .carousel {
