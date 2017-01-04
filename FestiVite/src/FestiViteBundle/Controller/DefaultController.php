@@ -20,6 +20,7 @@ use FestiViteBundle\Entity\UtilisateurProfessionnel;
 use FestiViteBundle\Entity\Offre;
 use FestiViteBundle\Utils\RecherchePrestataire;
 use Symfony\Component\HttpFoundation\Response;
+use FestiViteBundle\Utils\Sha256Salted;
 
 
 
@@ -102,8 +103,9 @@ use Symfony\Component\HttpFoundation\Response;
 
     public function testAction()
     {
+      /*
         $repository = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
-        $utils = $repository->findAll();
+        $utils = $repository->findAll();*/
         /*
         $repository->findBy(
         array $critere,
@@ -139,7 +141,7 @@ use Symfony\Component\HttpFoundation\Response;
           $em->persist($uti);
           $em->flush();*/
 
-          $uti = new Offre();
+        /*  $uti = new Offre();
           $uti->setType("TypeA");
           $uti->setPrix("123456789");
           $uti->setDescription("Avion du chocolat sans fraises");
@@ -150,7 +152,7 @@ use Symfony\Component\HttpFoundation\Response;
           //var_dump($utils[0]->getOffres());
           $em = $this->getDoctrine()->getManager();
           $em->persist($uti);
-          $em->flush();
+          $em->flush();*/
 
         /*$repositoryUtil = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:UtilisateurProfessionnel');
         $repositoryOffre = $this->getDoctrine()->getManager()->getRepository('FestiViteBundle:Offre');
@@ -169,7 +171,11 @@ use Symfony\Component\HttpFoundation\Response;
         //$utils = OffreRepository::getOffreWithUtilProf();
         /*var_dump($uti);
         var_dump($utils[0]);*/
-        return $this->render('FestiViteBundle:Default:testDylan.html.twig', array("utils" => $utils, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+        echo("boje\n");
+        echo(Sha256Salted::encodePassword("boje", "2015846938586cf1bcb4aca"));
+        echo("\n");
+        echo("157bf0432b5519ba565a6b69e8bd46d9fb0eacba522409da6bff78a36c3d4ea4");
+        return $this->render('FestiViteBundle:Default:testDylan.html.twig');
     }
 
     public function createsoireeAction(Request $request){

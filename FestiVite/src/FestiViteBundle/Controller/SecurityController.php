@@ -51,12 +51,18 @@ class SecurityController extends Controller{
 
             //On fixe un salt unique au nouvel utilisateur
             $newCompte->setSalt(uniqid(mt_rand()));
-            //On récupère un objet-service qui va servire a encoder le mdp
-            $encoder = new Sha256Salted();
-            //On encode le mdp du nouvel utilisateur avec son salt et l'algo sha256
+
+            $encoderFactory = $this->get('security.encoder_factory');
+            $encoder = $encoderFactory->getEncoder($newCompte);
+
             $password = $encoder->encodePassword($newCompte->getPassword(), $newCompte->getSalt());
-            //On enregistre le nouveau mdp encodé
+
             $newCompte->setPassword($password);
+
+
+            //On récupère un objet-service qui va servire a encoder le mdp
+            //On encode le mdp du nouvel utilisateur avec son salt et l'algo sha256
+            //On enregistre le nouveau mdp encodé
             var_dump($newCompte->getPassword());
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
@@ -84,4 +90,5 @@ class SecurityController extends Controller{
             'user' => $this->get('security.token_storage')->getToken()->getUser()
           ));
     }
+
 }
