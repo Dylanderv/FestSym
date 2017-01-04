@@ -47,6 +47,11 @@ use FestiViteBundle\Utils\Sha256Salted;
         return $this->render('FestiViteBundle:Default:moncompte.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
+    public function ajoutprestataireAction()
+    {
+        return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+    }
+
     public function rechercheAction(Request $request)
     {
         $recherche = new RecherchePrestataire();

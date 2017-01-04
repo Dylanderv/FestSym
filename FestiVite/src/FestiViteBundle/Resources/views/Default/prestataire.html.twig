@@ -1,14 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title> La page qui sert au prestataire pour renseigner leurs infos</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>FestiVite - Prestataire</title>
+
+        <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+        <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+        <link href="css/festivite.css" rel="stylesheet">
+        <link href="css/festiviteform.css" rel="stylesheet">
     </head>
+
+
     <body>
         {{ dump(enreg) }}
         {% if enreg is defined %}
           <p>{{ enreg }}</p>
         {% endif %}
         {{ form(form) }}
+        
     </body>
 </html>
