@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 class SecurityController extends Controller{
     public function loginAction(Request $request){
@@ -45,6 +46,16 @@ class SecurityController extends Controller{
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
             $form->handleRequest($request);
+            //Tentative d'encodage de mot de passe
+
+            //On fixe un salt unique au nouvel utilisateur
+            $newCompte->setSalt(uniqid(mt_rand()));
+            //On récupère un objet-service qui va servire a encoder le mdp
+            $encoder = new Sha256Salted();
+            //On encode le mdp du nouvel utilisateur avec son salt et l'algo sha256
+            $password = $encoder->encodePassword($newCompte->getPassword(), $newCompte->getSalt());
+            //On enregistre le nouveau mdp encodé
+            $newCompte->setPassword($password);
             var_dump($newCompte->getPassword());
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
