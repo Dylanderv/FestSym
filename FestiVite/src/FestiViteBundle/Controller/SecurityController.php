@@ -4,6 +4,7 @@
 namespace FestiViteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use FestiViteBundle\Utils\Sha256Salted;
 use FestiViteBundle\Entity\Utilisateur;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
