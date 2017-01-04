@@ -41,3 +41,7 @@ festi_test_connection:
 festi_redirect:
   path:       /redirect
   defaults: { _controller: FestiViteBundle:Default:redirect}
+
+festi_vite_recherche:
+    path:     /ajoutprestataire
+    defaults: { _controller: FestiViteBundle:Default:ajoutprestataire }

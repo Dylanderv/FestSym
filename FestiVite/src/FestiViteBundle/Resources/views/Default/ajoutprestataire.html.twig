@@ -1,0 +1,137 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
+{% if offre is defined %}
+{{dump(offre)}}
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FestiVite</title>
+
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="wrap">
+{% endblock %}
+{% block apr %}
+      <!-- Debut du corps -->
+      <div class="container" id="main">
+
+        <div class="row">
+          <h1 class="titre1">Rechercher des Prestataires</h1>
+        </div>
+        <!--Barre de recherche-->
+        <div id="rechercheprestataire" class="row container">
+          {{ form_start(form, {'attr': {'class': 'form-horizontal col-xs-12 container'}})}}
+            <div class="form-group col-sm-7 col-xs-12">
+              {{ form_errors(form.motcle) }}
+              {{ form_widget(form.motcle, {'attr': {'class': 'form-control', 'placeholder':'Mot-Clés'}}) }}
+            </div>
+            {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary col-sm-4 col-xs-6'}}) }}
+            <!-- On a plus la petite loupe pour rechercher   <button type="submit" class="btn btn-primary col-sm-4 col-xs-6">Rechercher<span class="glyphicon glyphicon-search pull-right"></button>!-->
+
+              <div id="rechercheavance" class="dropdown pull-right col-sm-4 col-xs-12">
+                <a id="showrechavan" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recherche avancée <span class="glyphicon glyphicon-plus"></span></a>
+              </div>
+              <div class="row starthidden container">
+              <div class="form-group">
+                {{ form_errors(form.tri) }}
+                {{ form_label(form.tri, "Trier par : ", {'label_attr': {'class' : 'col-xs-12'}}) }}
+                {{ form_widget(form.tri, {'attr': {'class': 'col-xs-12'}}) }}
+                <!-- col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10 (ça fait un truc bizarre donc je met rien) !-->
+              </div>
+              <div class="form-group">
+                {{ form_errors(form.disponibilite) }}
+                {{ form_label(form.disponibilite, "Disponibilité : ", {'label_attr': {'class' : 'col-xs-3 hidden-xs'}}) }}
+                {{ form_widget(form.disponibilite, {'attr': {'class': 'col-sm-7 col-xs-12'}}) }}
+              </div>
+              <div class="form-group">
+                {{ form_errors(form.type) }}
+                {{ form_label(form.type, "Type : ", {'label_attr': {'class' : 'col-xs-3 hidden-xs'}}) }}
+                {{ form_widget(form.type, {'attr': {'class': 'col-sm-7 col-xs-12'}}) }}
+              </div>
+            {{form_end(form)}}
+          </div>
+          <script>
+            $( "div:visible" ).click(function() {
+              $( this ).css();
+            });
+            $( "#showrechavan" ).click(function() {
+              if ($( "div.starthidden" ).is(':visible')){
+                $( "div.starthidden" ).hide( "fast" );
+              } else {
+                $( "div.starthidden" ).show( "fast" );
+              }
+            });
+          </script>
+            </div><!--/Barre de recherche-->
+            <div class="backg">
+
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+                <!--block resultat-->
+                <div class="blockpresta">
+                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
+                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                    <p> <!--nombre de caractere affiché limité-->
+                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
+                    </p>
+                    <p class="prix">Un prix €</p>
+                </div><!--block resultat-->
+            </div>
+        </div><!--/Corps-->
+        <div id="push"></div>
+    </div>
+    {{ form(form) }}
+{% endblock %}
+
+
+
+{% block script %}
+    </div>
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+{% endblock %}
