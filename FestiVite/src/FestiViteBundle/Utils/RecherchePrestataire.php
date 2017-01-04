@@ -57,12 +57,6 @@ class RecherchePrestataire
       }
       var_dump($request);
 
-      /*if($this->motcle != ' '){
-          $request = $aa."o.description LIKE '".$mot."'";
-      }
-      var_dump($request);*/
-
-
       $query = $em->createQuery($request);
       return $query->getResult();
   }

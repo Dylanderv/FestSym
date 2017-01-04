@@ -12,12 +12,12 @@ security:
         chain_provider:
           chain:
             providers: [prest, main]
-        prest:
+        main:
           entity:
             class:  FestiViteBundle\Entity\Utilisateur
             property: adresseMail
 
-        main:
+        prest:
           entity:
             class:  FestiViteBundle\Entity\UtilisateurProfessionnel
             property: adresseMail
