@@ -49,3 +49,7 @@ festi_vite_ajoutprestataire:
 festi_vite_finaliserclassique:
     path:     /finaliserclassique
     defaults: { _controller: FestiViteBundle:Default:finaliserclassique }
+
+festi_vite_panierclassique:
+    path:     /panierclassique
+    defaults: { _controller: FestiViteBundle:Default:panierclassique }
