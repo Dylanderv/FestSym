@@ -505,7 +505,8 @@ div > ul{
     .imagepresta{
         width: 25%;
     }
-    .ajoutbtn{
+    .ajoutbtn,
+    .supprbtn{
         right: 26%;
     }
 }
@@ -523,7 +524,8 @@ div > ul{
       width: 30%;
   }
 
-  .ajoutbtn{
+  .ajoutbtn,
+  .supprbtn{
       right: 32%;
   }
 }
@@ -573,7 +575,8 @@ div > ul{
       width: 90%;
 
   }
-  .ajoutbtn{
+  .ajoutbtn,
+  .supprbtn{
       right: 10px;
   }
 }

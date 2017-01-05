@@ -204,6 +204,7 @@
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
 @media screen and (max-width: 1201px){
     .numetape{
         transform: translateY(80%);
