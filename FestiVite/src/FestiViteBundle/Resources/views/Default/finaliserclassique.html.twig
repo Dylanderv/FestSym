@@ -87,7 +87,10 @@
 
         <!--block resultat-->
         {% if panier is defined %}
-          {{ dump(panier) }}
+          <p> Nom : {{nom}}</p>
+          <p> Ville : {{adresse}}</p>
+          <p> Date : {{dateTime}}</p>
+          <p> Prix : {{prix}}</p>
           {% for key,value in panier %}
             <div class="blockpresta">
                 <h3><a href="#">{{ value[0].getType() }}</a></h3>
@@ -96,29 +99,30 @@
                   {{ value[0].getDescription() }}
                 </p>
                 <p class="prix">{{ value[0].getPrix() }} €</p>
-
-                <form action="/finaliserclassique" method="post">
-                  <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
-                  <input type="text" name="supp" value="{{key}}" hidden />
-                  <button type="submit" value="" class="glyphicon  glyphicon-remove-circle supprbtn"></button>
-                </form>
             </div>
           {% endfor %}
-        {% else %}
-          {{ "askip y a pas de panier" }}
-        {% endif %}
+          {% endif %}
             <div class="row">
-                <form class="col-xs-6" action="" method="post">
-                    <a href="ajoutprestataire"><button id="etapePrecedente" type="button" class="formbtn" href="">
-                       <span class="glyphicon glyphicon-chevron-left"></span>
-                       Précédent
-                    </button></a>
+                <form action="/creersoireeclassique" method="post" class="col-xs-6">
+                  <input type="text" name="nom" value="{{nom}}" hidden />
+                  <input type="text" name="adresse" value="{{adresse}}" hidden />
+                  <input type="text" name="dateTime" value="{{dateTime}}" hidden />
+                  <input type="text" name="id" value="{% for key,value in panier %}{% if key == 0 %}{{value[0].getIdOffre()}}{% endif %}{%if key > 0 %}|{{value[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                  <button id="etapePrecedente" type="submit" class="formbtn" href="">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Precedent
+                  </button>
                 </form>
-                    <form class="col-xs-6" action="" method="post">
-                    <a href="finclassique"><button id="Finaliser" type="button" class="formbtn" name="ajout">
+                <form action="/finclassique" method="post" class="col-xs-6">
+                  <input type="text" name="nom" value="{{nom}}" hidden />
+                  <input type="text" name="prix" value="{{prix}}" hidden />
+                  <input type="text" name="adresse" value="{{adresse}}" hidden />
+                  <input type="text" name="dateTime" value="{{dateTime}}" hidden />
+                  <input type="text" name="id" value="{% for key,value in panier %}{% if key == 0 %}{{value[0].getIdOffre()}}{% endif %}{%if key > 0 %}|{{value[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                  <button id="Finaliser" type="submit" class="formbtn" href="">
                       Payer
                       <span class="glyphicon glyphicon-credit-card"></span>
-                    </button></a>
+                    </button>
                 </form>
             </div>
         </div><!--/Corps-->

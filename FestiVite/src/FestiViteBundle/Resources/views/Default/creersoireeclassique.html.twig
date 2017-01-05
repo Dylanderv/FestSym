@@ -1,6 +1,6 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{{ dump(request) }}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -117,26 +117,26 @@
                             <div class="col-sm-offset-5 col-sm-2 col-xs-12 paddingless">
                                 <!--emplacement pour la date-->
                                 Date :
-                                {{ form_widget(form.dateSoiree.date.day) }}
+                                {{ form_widget(form.dateDebut.date.day) }}
                             </div>
                             <div class="col-sm-2 col-xs-12 paddingless">
                                 <!--emplacement pour la date-->
-                                {{ form_widget(form.dateSoiree.date.month) }}
+                                {{ form_widget(form.dateDebut.date.month) }}
                             </div>
                             <div class="col-sm-2 col-xs-12 paddingless">
                                 <!--emplacement pour la date-->
-                                {{ form_widget(form.dateSoiree.date.year) }}
+                                {{ form_widget(form.dateDebut.date.year) }}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-offset-5 col-sm-1 col-xs-12 paddingless">
                                 <!--emplacement pour la date-->
                                 Heure :
-                                {{ form_widget(form.dateSoiree.time.hour) }}:
+                                {{ form_widget(form.dateDebut.time.hour) }}:
                             </div>
                             <div class="col-sm-1 col-xs-12 paddingless">
                                 <!--emplacement pour la date-->
-                                {{ form_widget(form.dateSoiree.time.minute) }}
+                                {{ form_widget(form.dateDebut.time.minute) }}
                             </div>
                         </div>
 
@@ -144,16 +144,9 @@
                 </div>
 
                 <div class="row">
-<<<<<<< Updated upstream
-                  <input type="text" value="{{idOffre}}">
+                    {{ form_widget(form.idOffres,{'attr': {'class': 'formbtn'}})}}
                   {{ form_widget(form.Suivant,{'attr': {'class': 'formbtn'}, 'label':'Suivant >'})}}
-
-=======
-                  {{ form_widget(form.Suivant, {'attr': {'class': 'formbtn'}})}}
-                  <span class="glyphicon glyphicon-chevron-right"></span>
->>>>>>> Stashed changes
                 </div>
-                <input type="text" value="{{idOffre}}" hidden>
             {{ form_end(form) }}
 
         </div>

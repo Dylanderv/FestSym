@@ -16,12 +16,14 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use FestiViteBundle\Repository\OffreRepository;
 use FestiViteBundle\Entity\UtilisateurProfessionnel;
 use FestiViteBundle\Entity\Offre;
+use FestiViteBundle\Entity\SelectOffre;
 use FestiViteBundle\Utils\RecherchePrestataire;
 use Symfony\Component\HttpFoundation\Response;
-use FestiViteBundle\Utils\Sha256Salted;
+use FestiViteBundle\Utils\CreationSoiree;
 
 
 
@@ -35,21 +37,22 @@ use FestiViteBundle\Utils\Sha256Salted;
 
     public function creersoireeclassiqueAction(Request $request)
     {
-      $soiree = new Soiree();
+      $soiree = new CreationSoiree();
       $nom = $request->request->get('nom');
       $idOffre = '';
       if(isset($nom)){
         $soiree->setNom($request->request->get('nom'));
         $soiree->setAdresse($request->request->get('adresse'));
-        $soiree->setDateSoiree(new \DateTime($request->request->get('dateTime')));
-        $idOffre = $request->request->get('id');
+        $soiree->setDateDebut(new \DateTime($request->request->get('dateTime')));
+        $soiree->setIdOffres($request->request->get('id'));
       }
 
       $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
       $formBuilder
           ->add('nom', TextType::class)
-          ->add('dateSoiree', DateTimeType::class)
+          ->add('dateDebut', DateTimeType::class)
           ->add('adresse', TextType::class)
+          ->add('idOffres', HiddenType::class)
           ->add('Suivant', SubmitType::class)
       ;
       $form = $formBuilder->getForm();
@@ -69,7 +72,12 @@ use FestiViteBundle\Utils\Sha256Salted;
 
     public function mesfetesAction()
     {
-        return $this->render('FestiViteBundle:Default:mesfetes.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $requete = "SELECT A FROM FestiViteBundle\Entity\Soiree A WHERE A.adresseMail ='".$usr->getAdresseMail()."'";
+        $query = $em->createQuery($requete);
+        $soiree = $query->getResult();
+        return $this->render('FestiViteBundle:Default:mesfetes.html.twig', array('soiree' => $soiree, 'user' => $usr));
     }
 
     public function finaliserclassiqueAction(Request $request)
@@ -79,44 +87,59 @@ use FestiViteBundle\Utils\Sha256Salted;
         //$id = $request->request->get("id");
 
         $idOffre = explode("|", $request->request->get("id"));
+        $prix = 0;
         if($idOffre != ''){
           $em = $this->getDoctrine()->getManager();
           foreach ($idOffre as $key => $value) {
             $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$value;
             $query = $em->createQuery($requete);
             $panier[] = $query->getResult();
+            $prix = $prix + $query->getResult()[0]->getPrix();
           }
-      }
+        }
 
-        return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('panier' => $panier, 'request' => $request, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+        $dateTime = $request->request->get('dateTime');
+        $nom = $request->request->get('nom');
+        $adresse = $request->request->get('adresse');
+        $idOffres = $request->request->get('idOffres');
+
+
+        return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('prix' => $prix, 'idOffres' => $idOffres, 'request' => $request, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'request' => $request, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function finclassiqueAction(Request $request){
         $soiree = new Soiree();
-        $nom = $request->request->get('nom');
-        $idOffre = '';
-        if(isset($nom)){
-          $soiree->setNom($request->request->get('nom'));
-          $soiree->setAdresse($request->request->get('adresse'));
-          $soiree->setDateSoiree(new \DateTime($request->request->get('dateTime')));
-          $idOffre = $request->request->get('id');
+        $soiree->setNom($request->request->get('nom'));
+        $soiree->setDateCreation(new \DateTime());
+        $soiree->setDateSoiree(new \DateTime($request->request->get('dateTime')));
+        $soiree->setAdresse($request->request->get('adresse'));
+        $usr = $this->get('security.token_storage')->getToken()->getUser();
+        $soiree->setAdresseMail($usr->getAdresseMail());
+        $soiree->setPrix($request->request->get('prix'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($soiree);
+        $em->flush();
+        $idOffre = explode("|", $request->request->get("id"));
+        if($idOffre != ''){
+            if($idOffre[0] != ''){
+                foreach($idOffre as $key => $value){
+                    $selectOffre = new SelectOffre();
+                    $selectOffre->setQuantite(1);
+                    $selectOffre->setIdsoiree($soiree->getIdSoiree());
+                    $selectOffre->setIdoffre($value);
+                    $em->persist($selectOffre);
+                    $em->flush();
+                }
+            }
         }
 
-        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
-        $formBuilder
-            ->add('nom', TextType::class)
-            ->add('dateSoiree', DateTimeType::class)
-            ->add('adresse', TextType::class)
-            ->add('Suivant', SubmitType::class)
-        ;
-        $form = $formBuilder->getForm();
-        return $this->render('FestiViteBundle:Default:finclassique.html.twig', array('idOffre' => $idOffre, 'request' => $request, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+
+        return $this->render('FestiViteBundle:Default:finclassique.html.twig', array('user' => $usr));
     }
 
     public function panierclassiqueAction(Request $request)
     {
         $panier = '';
-        var_dump($request->request->get("id"));
         //$id = $request->request->get("id");
         $idOffre = explode("|", $request->request->get("id"));
         $supp = $request->request->get("supp");
@@ -133,17 +156,23 @@ use FestiViteBundle\Utils\Sha256Salted;
 
         }
         if($idOffre != ''){
-          $em = $this->getDoctrine()->getManager();
-          foreach ($idOffre as $key => $value) {
-            $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$value;
-            $query = $em->createQuery($requete);
-            $panier[] = $query->getResult();
-          }
+            if($idOffre[0] != ''){
+              $em = $this->getDoctrine()->getManager();
+              foreach ($idOffre as $key => $value) {
+                $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$value;
+                $query = $em->createQuery($requete);
+                $panier[] = $query->getResult();
+              }
+            }
         }
 
+        $dateTime = $request->request->get('dateTime');
+        $nom = $request->request->get('nom');
+        $adresse = $request->request->get('adresse');
+        $idOffres = $request->request->get('idOffres');
 
 
-        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('request' => $request, 'panier' => $panier, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('idOffres' => $idOffres, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function rechercheAction(Request $request)
@@ -244,19 +273,22 @@ use FestiViteBundle\Utils\Sha256Salted;
         $dateTime = '';
         $nom = '';
         $adresse = '';
+        $idOffres = '';
         if(isset($postForm)){
-          $dateTime = $postForm['dateSoiree']['date']['year']."-".
-                      $postForm['dateSoiree']['date']['month']."-".
-                      $postForm['dateSoiree']['date']['day'].
+          $dateTime = $postForm['dateDebut']['date']['year']."-".
+                      $postForm['dateDebut']['date']['month']."-".
+                      $postForm['dateDebut']['date']['day'].
                       " ".
-                      $postForm['dateSoiree']['time']['hour'].":".
-                      $postForm['dateSoiree']['time']['minute'];
+                      $postForm['dateDebut']['time']['hour'].":".
+                      $postForm['dateDebut']['time']['minute'];
          $nom = $postForm['nom'];
          $adresse = $postForm['adresse'];
+         $idOffres = $postForm['idOffres'];
        }else if(isset($postNom)){
          $dateTime = $request->request->get('dateTime');
          $nom = $request->request->get('nom');
          $adresse = $request->request->get('adresse');
+         $idOffres = $request->request->get('idOffres');
        }
 
         if ($request->isMethod('POST')) {
@@ -271,11 +303,11 @@ use FestiViteBundle\Utils\Sha256Salted;
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-                    array('nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+                    array('idOffres' => $idOffres, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
             }
         }
         return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-            array('request' => $request, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
+            array('idOffres' => $idOffres, 'request' => $request, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
     }
 
     public function testAction()
@@ -438,7 +470,7 @@ use FestiViteBundle\Utils\Sha256Salted;
 
     public function redirectAction(){
       $usr = $this->get('security.token_storage')->getToken()->getUser();
-      var_dump($usr->getRoles());
+
       if($usr->getRoles()[0] == "ROLE_PREST"){
         return $this->redirectToRoute('festi_vite_prestataire');
       } else if ($usr->getRoles()[0] == "ROLE_USER"){

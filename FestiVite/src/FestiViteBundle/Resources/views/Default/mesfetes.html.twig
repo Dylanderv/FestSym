@@ -39,22 +39,23 @@
         <div class="row">
           <h1 class="titre1">Mes fêtes</h1>
         </div>
-
+        {% for key,value in soiree %}
         <div class="blockfete">
-            <h2>Titre Fête <!--Remplacer par le vrai Titre--></h2>
+            <h2>{{value.getNom()}} <!--Remplacer par le vrai Titre--></h2>
             <ul>
                 <li>
-                    Lieu: <!--récuperer le lieu-->
+
+                    Lieu: {{value.getAdresse()}}<!--récuperer le lieu-->
                 </li>
                 <li>
-                    Date: <!--récuperer le date jj - mmm - yyyy -->
+                    Date: {{value.getDateSoiree.format('d-m-Y')}}<!--récuperer le date jj - mmm - yyyy -->
                 </li>
                 <li>
-                    Horaire: <!--récuperer l'heure -->
+                    Horaire: {{value.getDateSoiree.format('H:i')}} <!--récuperer l'heure -->
                 </li>
             </ul>
         </div>
-
+        {% endfor %}
 
         </div><!--/Corps-->
         <div id="push"></div>
