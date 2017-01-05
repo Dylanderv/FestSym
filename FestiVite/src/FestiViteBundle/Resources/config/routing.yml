@@ -45,3 +45,7 @@ festi_redirect:
 festi_vite_ajoutprestataire:
     path:     /ajoutprestataire
     defaults: { _controller: FestiViteBundle:Default:ajoutprestataire }
+
+festi_vite_finaliserclassique:
+    path:     /finaliserclassique
+    defaults: { _controller: FestiViteBundle:Default:finaliserclassique }
