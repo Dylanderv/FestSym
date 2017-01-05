@@ -103,11 +103,12 @@ use FestiViteBundle\Utils\Sha256Salted;
 
 
         return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
-            array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+            array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function ajoutprestataireAction(Request $request)
     {
+        $panier[] = '';
         $recherche = new RecherchePrestataire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
         $formBuilder
@@ -140,10 +141,20 @@ use FestiViteBundle\Utils\Sha256Salted;
         ;
         $form = $formBuilder->getForm();
 
+var_dump($request);
+        if(isset($request->request)){
+          var_dump($request);
+          $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =";
+          /*var_dump($requete);
+          $query = $this->getDoctrine()->getManager()->createQuery($requete);
+          $panier[] = $query->getResult();*/
+        }
+        $panier = $request;
         if ($request->isMethod('POST')) {
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
             $form->handleRequest($request);
+
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
@@ -151,11 +162,11 @@ use FestiViteBundle\Utils\Sha256Salted;
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+                    array('panier' => $panier, 'form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
             }
         }
         return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-            array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+            array('panier' => $panier, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
     }
 
     public function testAction()

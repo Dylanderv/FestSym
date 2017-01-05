@@ -1,8 +1,5 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{% if offre is defined %}
-{{dump(offre)}}
-{% endif %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,6 +26,8 @@
     <div id="wrap">
 {% endblock %}
 {% block apr %}
+  <div id="cpabo">
+  </div>
       <!-- Debut du corps -->
       <div class="container" id="main">
 
@@ -83,32 +82,18 @@
             <div class="backg">
 
                 <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
+                {% for key,value in offre %}
+                  <div class="blockpresta">
+                      <h3><a href="#">{{ value.getType() }}</a></h3>
+                      <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                      <p> <!--nombre de caractere affiché limité-->
+                        {{ value.getDescription() }}
+                      </p>
+                      <p class="prix">{{ value.getPrix() }} €</p>
+                      <a href="#"><span class="glyphicon glyphicon-plus-sign ajoutbtn"></a>
+                  </div>
+                {% endfor %}
                 <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
-                <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
             </div>
         </div><!--/Corps-->
         <div id="push"></div>

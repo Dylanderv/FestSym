@@ -1,7 +1,7 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{% if offre is defined %}
-{{dump(offre)}}
+{% if panier is defined %}
+  {{ dump(panier) }}
 {% endif %}
 <!DOCTYPE html>
 <html lang="en">
@@ -135,22 +135,30 @@
             </div><!--/Barre de recherche-->
             <div class="backg">
                 <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                    <a href="#"><span class="glyphicon glyphicon-plus-sign ajoutbtn"></a>
-                </div><!--/block resultat-->
+                {% for key,value in offre %}
+                  <div class="blockpresta">
+                      <h3><a href="#">{{ value.getType() }}</a></h3>
+                      <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                      <p> <!--nombre de caractere affiché limité-->
+                        {{ value.getDescription() }}
+                      </p>
+                      <p class="prix">{{ value.getPrix() }} €</p>
+
+                      <form action="/ajoutprestataire" method="post">
+                        <input type="text" name="id" value="{{value.getIdOffre()}}" hidden />
+                        <button type="submit" value="{{ value.getIdOffre() }}" class="glyphicon glyphicon-plus-sign ajoutbtn"></button>
+                      </form>
+                  </div>
+                {% endfor %}
+                <!--/block resultat-->
+
             </div>
             <div class="row">
-                <a href="creersoireeclassique"><button id="" type="button" class="formbtn" href="">
+                <a href="/creersoireeclassique"><button id="" type="button" class="formbtn" href="">
                    <span class="glyphicon glyphicon-chevron-left"></span>
                    Précédent
                 </button></a>
-                <a href="finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
+                <a href="/finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
                   Suivant
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </button></a>
