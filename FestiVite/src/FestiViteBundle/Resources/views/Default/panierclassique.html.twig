@@ -1,7 +1,7 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{% if panier is defined %}
-  {{ dump(panier) }}
+{% if offre is defined %}
+  {{ dump(offre) }}
 {% endif %}
 <!DOCTYPE html>
 <html lang="en">
@@ -38,29 +38,34 @@
         </div>
             <div class="backg">
                 <!--block resultat-->
-                {% for key,value in offre %}
-                  <div class="blockpresta">
-                      <h3><a href="#">{{ value.getType() }}</a></h3>
-                      <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                      <p> <!--nombre de caractere affiché limité-->
-                        {{ value.getDescription() }}
-                      </p>
-                      <p class="prix">{{ value.getPrix() }} €</p>
+                {% if panier is defined %}
+                  {% for key,value in panier %}
+                    <div class="blockpresta">
+                        <h3><a href="#">{{ value[0].getType() }}</a></h3>
+                        <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                        <p> <!--nombre de caractere affiché limité-->
+                          {{ value[0].getDescription() }}
+                        </p>
+                        <p class="prix">{{ value[0].getPrix() }} €</p>
 
-                      <form action="/ajoutprestataire" method="post">
-                        <input type="text" name="id" value="{{value.getIdOffre()}}" hidden />
-                        <button type="submit" value="{{ value.getIdOffre() }}" class="glyphicon  glyphicon-remove-circle supprbtn"></button>
-                      </form>
-                  </div>
-                {% endfor %}
+                        <form action="/panierclassique" method="post">
+                          <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                          <input type="text" name="supp" value="{{key}}" hidden />
+                          <button type="submit" value="" class="glyphicon  glyphicon-remove-circle supprbtn"></button>
+                        </form>
+                    </div>
+                  {% endfor %}
+                {% endif %}
                 <!--/block resultat-->
 
             </div>
             <div class="row">
-                <a href="/creersoireeclassique"><button id="" type="button" class="formbtn" href="">
-                   <span class="glyphicon glyphicon-share-alt"></span>
-                   Retour à ma Fête
-                </button></a>
+
+              <form action="/ajoutprestataire" method="post">
+                <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                <button type="submit" value="" class="formbtn" ><span class="glyphicon glyphicon-share-alt"></span>
+                Retour à ma Fête</button>
+              </form>
             </div>
         </div><!--/Corps-->
         <div id="push"></div>
