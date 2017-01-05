@@ -88,7 +88,25 @@
           <!--FIN Chevrons etape-->
         </div>
 
+        <!--block resultat-->
+        {% if panier is defined %}
+          {% for key,value in panier %}
+            <div class="blockpresta">
+                <h3><a href="#">{{ value[0].getType() }}</a></h3>
+                <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
+                <p> <!--nombre de caractere affiché limité-->
+                  {{ value[0].getDescription() }}
+                </p>
+                <p class="prix">{{ value[0].getPrix() }} €</p>
 
+                <form action="/finaliserclassique" method="post">
+                  <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                  <input type="text" name="supp" value="{{key}}" hidden />
+                  <button type="submit" value="" class="glyphicon  glyphicon-remove-circle supprbtn"></button>
+                </form>
+            </div>
+          {% endfor %}
+        {% endif %}
             <div class="row">
                 <a href="ajoutprestataire"><button type="button" class="formbtn" href="">
                    <span class="glyphicon glyphicon-chevron-left"></span>

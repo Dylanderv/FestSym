@@ -91,7 +91,7 @@
         <div id="panier">
           <form action="/panierclassique" method="post">
             <input type="text" name="id" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
-            <button type="submit"><p>Mon Panier <span class="glyphicon glyphicon-shopping-cart"></span></p></button>
+            <button type="submit"><p>Mon Panier <span class="glyphicon glyphicon-shopping-cart"></span><span id ="nbpanier">{% if panier is defined %}{{ panier|length }}{% else %}{{0}}{% endif %}</span></p></button>
           </form>
         </div><!--/Mon panier-->
         <!--Barre de recherche-->
@@ -161,14 +161,17 @@
 
             </div>
             <div class="row">
-                <a href="/creersoireeclassique"><button id="" type="button" class="formbtn" href="">
+                <a href="/creersoireeclassique"><button id="etapePrecedente" type="button" class="formbtn" href="">
                    <span class="glyphicon glyphicon-chevron-left"></span>
                    Précédent
                 </button></a>
-                <a href="/finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
-                  Suivant
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </button></a>
+                <form action="/finaliserclassique" method="post">
+                    <input type="text" name="id2" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
+                    <button id="suivantajout" type="submit" class="formbtn" name="ajout">
+                        Suivant
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </form>
             </div>
         </div><!--/Corps-->
         <div id="push"></div>

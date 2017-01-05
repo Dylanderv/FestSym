@@ -164,25 +164,41 @@
   margin-bottom: 10px;
 }
 
-#panier{
+#panier form{
     width: 20%;
     margin-left: 40%;
 }
-#panier > a {
+#panier form > button > a {
     text-decoration: none;
 }
-#panier > a:hover {
+#panier form > button > a:hover {
     text-decoration: none;
 }
-
-#panier > a> p{
+#panier p{
+    margin: 0;
+}
+#panier form > button{
     border: 4px solid #051C2C;
     color: #051C2C;
     border-radius: 3px;
     font-size: 20px;
     padding: 5px 10px;
+    background-color: transparent;
 }
-
+#panier form > button:hover{
+    border-color: #EB7F20;
+    color: #EB7F20;
+}
+#nbpanier{
+    margin-left: 5px;
+    border: 2px solid #051C2C;
+    border-radius: 3px;
+    padding: 0px 5px;
+    color: #EB7F20;
+}
+#panier form > button:hover #nbpanier{
+    border-color: #EB7F20;
+}
 #suivantajout,
 #etapePrecedente{
     z-index: -10000;
@@ -191,7 +207,9 @@
     text-decoration: none;
     color: #FFF;
 }
-#suivantajout:hover,
+#suivantajout:hover{
+    background-color: #051C2C;
+}
 #etapePrecedente:hover{
     background-color: #051C2C;
 }

@@ -387,6 +387,14 @@ section{
 .supprbtn{
     color: #CF000F;
 }
+
+.ajoutbtn:hover{
+    font-size: 45px;
+}
+
+.supprbtn:hover{
+    font-size: 45px;
+}
 /*Fin recherche prestataire*/
 /*Carousel (le truc cool)*/
 .carousel {
