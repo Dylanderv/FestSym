@@ -54,7 +54,10 @@ use FestiViteBundle\Utils\Sha256Salted;
 
     public function panierclassiqueAction()
     {
-        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+        $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A";
+        $query = $this->getDoctrine()->getManager()->createQuery($requete);
+        $panier = $query->getResult();
+        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('offre' => $panier, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function rechercheAction(Request $request)
