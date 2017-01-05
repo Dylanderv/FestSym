@@ -148,7 +148,7 @@
                       <p class="prix">{{ value.getPrix() }} €</p>
 
                       <form action="/ajoutprestataire" method="post">
-                        <input type="text" name="id" value="{{value.getIdOffre()}}" hidden />
+                        <input type="text" name="id" value="{{value.getIdOffre()}}{% for key,value in panier %}|{{value}}{% endfor %}" hidden />
                         <button type="submit" value="{{ value.getIdOffre() }}" class="glyphicon glyphicon-plus-sign ajoutbtn"></button>
                       </form>
                   </div>

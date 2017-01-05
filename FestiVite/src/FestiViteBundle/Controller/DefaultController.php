@@ -108,7 +108,7 @@ use FestiViteBundle\Utils\Sha256Salted;
 
     public function ajoutprestataireAction(Request $request)
     {
-        $panier[] = '';
+        $panier = '';
         $recherche = new RecherchePrestataire();
         $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
         $formBuilder
@@ -140,14 +140,13 @@ use FestiViteBundle\Utils\Sha256Salted;
             ->add('Rechercher', SubmitType::class)
         ;
         $form = $formBuilder->getForm();
-
+        $id = $request->request->get("id");
         if(isset($id)){
-          $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$request->request->get("id");
-          var_dump($requete);
-          /*$query = $this->getDoctrine()->getManager()->createQuery($requete);
-          $panier[] = $query->getResult();*/
+            //$requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$request->request->get("id");
+            //$query = $this->getDoctrine()->getManager()->createQuery($requete);
+            $panier = explode('|', $id);
         }
-        $panier = $request;
+
         if ($request->isMethod('POST')) {
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
