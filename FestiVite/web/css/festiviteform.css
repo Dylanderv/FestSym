@@ -23,7 +23,37 @@
   margin: 0px 20px;
   background-color: white;
   z-index: -1;
+  position: relative;
 }
+#etapecreersoiree > ul {
+    margin-left: 20%;
+}
+
+#etapecreersoiree > div{
+    position: absolute;
+    top : 0;
+    right: 0;
+    border: 5px solid #051C2C;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-size: 18px;
+    width: 200px;
+    color: #051C2C;
+    z-index: 1000;
+}
+
+#etapecreersoiree > div > span{
+    transform: translateY(4px);
+    font-size: 30px;
+    width: 10%;
+}
+
+#etapecreersoiree > div > p{
+    text-align: left;
+    width: 70%;
+    display: inline-block;
+}
+
 
 .chevron,
 .chevronCurrent {
@@ -39,7 +69,7 @@
 #champtitre{
     position: relative;
     margin: 50px 0px;
-    border-bottom: 120px solid #051C2C;
+    border-bottom: 100px solid #051C2C;
     border-right: 150px solid transparent;
     height: 0;
 }
@@ -58,7 +88,7 @@
     top: 10px;
     left: 0;
     right: 0;
-    border-top: 120px solid #EB7F20;
+    border-top: 100px solid #EB7F20;
     border-right: 120px solid transparent;
     height: 0;
     width: 120%;
@@ -90,10 +120,10 @@
     z-index: -1;
 }
 .etapeform{
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 .etapeform > p{
-    position: absolute;
     font-size: 1.3em;
     color: white;
     letter-spacing: 0.2em;
@@ -103,11 +133,7 @@
     transform: translateY(50%);
     z-index: 1;
 }
-#etape4 > div > a > span {
-    font-size: 50px;
-    color: #051C2C;
-    margin-top: 20px;
-}
+
 .etapeform >div:last-child{
     position: absolute;
     background-color: #EB7F20;
@@ -122,9 +148,6 @@
     width: 110%;
     z-index: -2;
 }
-#etape4 {
-    height: 100px;
-}
 .choixdefaut{
   border: 5px solid #EB7F20;
   color: #EB7F20;
@@ -134,10 +157,18 @@
   margin-bottom: 10px;
 }
 
-#Finaliser,
+#suivantajout,
 #etapePrecedente,
 #etapePrecedente{
     z-index: -10000;
+}
+#suivantajout a{
+    text-decoration: none;
+    color: #FFF;
+}
+#Finaliser{
+    color: black;
+    background-color: #FFCC33;
 }
 @media screen and (max-width: 1201px){
     .numetape{
@@ -163,6 +194,25 @@
     .chevron,
     .chevronCurrent{
         width: 110px;
+    }
+    .chevronCurrent{
+        z-index: 1;
+    }
+    #etapecreersoiree > ul{
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 400px){
+    #etapecreersoiree > div > p{
+        display: none;
+    }
+
+    #etapecreersoiree > div > span{
+        width: auto;
+    }
+
+    #etapecreersoiree > div {
+        width: auto;
     }
 }
 .chevron::before {

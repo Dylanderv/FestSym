@@ -47,9 +47,9 @@ use FestiViteBundle\Utils\Sha256Salted;
         return $this->render('FestiViteBundle:Default:moncompte.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
-    public function ajoutprestataireAction()
+    public function finaliserclassiqueAction()
     {
-        return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+        return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function rechercheAction(Request $request)
@@ -103,6 +103,58 @@ use FestiViteBundle\Utils\Sha256Salted;
 
 
         return $this->render('FestiViteBundle:Default:rechercheprestataire.html.twig',
+            array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+    }
+
+    public function ajoutprestataireAction(Request $request)
+    {
+        $recherche = new RecherchePrestataire();
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $recherche);
+        $formBuilder
+            ->add('motcle', TextType::class, array('required' => false))
+            ->add('tri',ChoiceType::class,
+            array('choices' => array(
+                    'Nouveauté' => 'dateAjout desc',
+                    'Prix Croissant' => 'prix',
+                    'Prix Decroissant' => 'prix desc'),
+            'choices_as_values' => true,'multiple'=>false,'expanded'=>true))
+
+            ->add('disponibilite', ChoiceType::class,
+                array('choices' => array(
+                    '- Disponibilite -' => '',
+                    'Default' => '',
+                    'Lundi' => 'Lundi',
+                    'Mardi' => 'Mardi',
+                    'Mercredi' => 'Mercredi',
+                    'Jeudi' => 'Jeudi',
+                    'Vendredi' => 'Vendredi',
+                    'Samedi' => 'Samedi',
+                    'Dimanche' => 'Dimanche')))
+
+            ->add('type', ChoiceType::class,
+                array('choices' => array(
+                    '- Type -' => '',
+                    'Default' => '')))
+
+            ->add('Rechercher', SubmitType::class)
+        ;
+        $form = $formBuilder->getForm();
+
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $advert dans la base de données, par exemple
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
+                    array('form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+            }
+        }
+        return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
             array('form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 

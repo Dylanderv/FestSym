@@ -23,17 +23,70 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="css/festivite.css" rel="stylesheet">
     <link href="css/festiviteform.css" rel="stylesheet">
+    <style rel="stylesheet" text="text/css">
+      .chevronCurrent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(36deg, 0deg);
+        -moz-transform: skew(36deg, 0deg);
+        -ms-transform: skew(36deg, 0deg);
+        -o-transform: skew(36deg, 0deg);
+        transform: skew(36deg, 0deg);
+      }
+      .chevronCurrent::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(-36deg, 0deg);
+        -moz-transform: skew(-36deg, 0deg);
+        -ms-transform: skew(-36deg, 0deg);
+        -o-transform: skew(-36deg, 0deg);
+        transform: skew(-36deg, 0deg);
+      }​
+    </style>
   </head>
 
   <body>
     <div id="wrap">
+        <div id="cpabo"></div>
 {% endblock %}
 {% block apr %}
       <!-- Debut du corps -->
       <div class="container" id="main">
 
         <div class="row">
-          <h1 class="titre1">Rechercher des Prestataires</h1>
+          <h1 class="titre1">Ajouter des Prestataires</h1>
+          <!--Chevrons etape-->
+          <div id="etapecreersoiree">
+              <ul class="nav navbar-nav">
+                <li><div id="chevron1" class="chevron hidden-xs" >
+                  <p class="numetape">
+                    Etape 1
+                  </p>
+                </div></li>
+                <li><div id="chevron2" class="chevron chevronCurrent" >
+                  <p class="numetape">
+                    Etape 2
+                  </p>
+                </div></li>
+                <li><div id="chevron3" class="chevron hidden-xs" >
+                  <p class="numetape">
+                    Etape 3
+                  </p>
+                </div></li>
+              </ul>
+              <div><a href="main"><p>Mon panier</p><span class="glyphicon glyphicon-shopping-cart"></span></a></div>
+          </div>
+          <!--FIN Chevrons etape-->
         </div>
         <!--Barre de recherche-->
         <div id="rechercheprestataire" class="row container">
@@ -81,7 +134,6 @@
           </script>
             </div><!--/Barre de recherche-->
             <div class="backg">
-
                 <!--block resultat-->
                 <div class="blockpresta">
                     <h3><a href="#">Un nom d'offre de prestataire</a></h3>
@@ -90,25 +142,18 @@
                         Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
                     </p>
                     <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
-                <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
-                <!--block resultat-->
-                <div class="blockpresta">
-                    <h3><a href="#">Un nom d'offre de prestataire</a></h3>
-                    <img class="imagepresta" src="css/image/FestiVite4.png" alt="imagepresta"/>
-                    <p> <!--nombre de caractere affiché limité-->
-                        Une description d'offre. Blabla lorem ipsum ça mere la description continue blabla bla bla.... MDR MORT DE LOL MERE DE CLEMENT elle pue vraime...
-                    </p>
-                    <p class="prix">Un prix €</p>
-                </div><!--block resultat-->
+                    <a href="#"><span class="glyphicon glyphicon-plus-sign ajoutbtn"></a>
+                </div><!--/block resultat-->
+            </div>
+            <div class="row">
+                <a href="creersoireeclassique"><button id="" type="button" class="formbtn" href="">
+                   <span class="glyphicon glyphicon-chevron-left"></span>
+                   Précédent
+                </button></a>
+                <a href="finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
+                  Suivant
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button></a>
             </div>
         </div><!--/Corps-->
         <div id="push"></div>
@@ -132,6 +177,8 @@
     <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="css/js/creersoiree.js"></script>
+    <script src="css/js/navbar.js"></script>
   </body>
 </html>
 {% endblock %}

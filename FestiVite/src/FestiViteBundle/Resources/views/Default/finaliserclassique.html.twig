@@ -1,0 +1,128 @@
+{% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
+{% block avnt %}
+{% if offre is defined %}
+{{dump(offre)}}
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FestiVite</title>
+
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
+    <style rel="stylesheet" text="text/css">
+      .chevronCurrent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(36deg, 0deg);
+        -moz-transform: skew(36deg, 0deg);
+        -ms-transform: skew(36deg, 0deg);
+        -o-transform: skew(36deg, 0deg);
+        transform: skew(36deg, 0deg);
+      }
+      .chevronCurrent::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50%;
+        width: 100%;
+        background: #051C2C;
+        -webkit-transform: skew(-36deg, 0deg);
+        -moz-transform: skew(-36deg, 0deg);
+        -ms-transform: skew(-36deg, 0deg);
+        -o-transform: skew(-36deg, 0deg);
+        transform: skew(-36deg, 0deg);
+      }​
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap">
+        <div id="cpabo"></div>
+{% endblock %}
+{% block apr %}
+      <!-- Debut du corps -->
+      <div class="container" id="main">
+
+        <div class="row">
+          <h1 class="titre1">Finaliser</h1>
+          <!--Chevrons etape-->
+          <div id="etapecreersoiree">
+              <ul class="nav navbar-nav">
+                <li><div id="chevron1" class="chevron hidden-xs" >
+                  <p class="numetape">
+                    Etape 1
+                  </p>
+                </div></li>
+                <li><div id="chevron2" class="chevron hidden-xs" >
+                  <p class="numetape">
+                    Etape 2
+                  </p>
+                </div></li>
+                <li><div id="chevron3" class="chevron chevronCurrent" >
+                  <p class="numetape">
+                    Etape 3
+                  </p>
+                </div></li>
+              </ul>
+          </div>
+          <!--FIN Chevrons etape-->
+        </div>
+
+
+            <div class="row">
+                <a href="ajoutprestataire"><button type="button" class="formbtn" href="">
+                   <span class="glyphicon glyphicon-chevron-left"></span>
+                   Précédent
+                </button></a>
+                <a href="#"><button id="Finaliser" type="button" class="formbtn" name="ajout">
+                  Payer
+                  <span class="glyphicon glyphicon-euro"></span>
+                </button></a>
+            </div>
+        </div><!--/Corps-->
+        <div id="push"></div>
+    </div>
+
+{% endblock %}
+
+
+
+{% block script %}
+    </div>
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="css/js/creersoiree.js"></script>
+    <script src="css/js/navbar.js"></script>
+  </body>
+</html>
+{% endblock %}
