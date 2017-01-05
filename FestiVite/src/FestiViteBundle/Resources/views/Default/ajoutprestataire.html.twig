@@ -165,7 +165,7 @@
 
             </div>
             <div class="row">
-<<<<<<< HEAD
+
               <form action="/creersoireeclassique" method="post">
                 <input type="text" name="nom" value="{{nom}}" hidden />
                 <input type="text" name="adresse" value="{{adresse}}" hidden />
@@ -177,15 +177,6 @@
                 </button>
               </form>
 
-                <a href="/finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
-                  Suivant
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </button></a>
-=======
-                <a href="/creersoireeclassique"><button id="etapePrecedente" type="button" class="formbtn" href="">
-                   <span class="glyphicon glyphicon-chevron-left"></span>
-                   Précédent
-                </button></a>
                 <form action="/finaliserclassique" method="post">
                     <input type="text" name="id" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
                     <button id="suivantajout" type="submit" class="formbtn" name="ajout">
@@ -193,7 +184,7 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                 </form>
->>>>>>> 28a7432340a003da9b93208e35aace44c0ede3ff
+
             </div>
         </div><!--/Corps-->
         <div id="push"></div>
