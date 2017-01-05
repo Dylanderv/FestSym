@@ -95,7 +95,7 @@
                         <!--Choix du titre soiree -->
                         <div id="champtitre" class="row col-xs-8 col-xs-offset-2">
                             <div></div>
-                            {{ form_widget(form.nom, {'attr': {'placeholder': 'Titre Soirée'}}) }}
+                            {{ form_widget(form.nom, {'attr': {'placeholder': 'Titre Fête'}}) }}
                             <div></div>
                         </div>
 
@@ -113,23 +113,40 @@
                             <p class="col-xs-12">Date & Heure</p>
                             <div class="col-xs-12"></div>
                         </div>
-                        <div class="col-sm-3 col-xs-12">
-                            <!--emplacement pour la date-->
-                            {{ form_widget(form.dateSoiree) }}
+                        <div class="row">
+                            <div class="col-sm-offset-5 col-sm-2 col-xs-12 paddingless">
+                                <!--emplacement pour la date-->
+                                Date :
+                                {{ form_widget(form.dateSoiree.date.day) }}
+                            </div>
+                            <div class="col-sm-2 col-xs-12 paddingless">
+                                <!--emplacement pour la date-->
+                                {{ form_widget(form.dateSoiree.date.month) }}
+                            </div>
+                            <div class="col-sm-2 col-xs-12 paddingless">
+                                <!--emplacement pour la date-->
+                                {{ form_widget(form.dateSoiree.date.year) }}
+                            </div>
                         </div>
-                        <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                            <!--emplacement pour la date-->
+                        <div class="row">
+                            <div class="col-sm-offset-5 col-sm-1 col-xs-12 paddingless">
+                                <!--emplacement pour la date-->
+                                Heure :
+                                {{ form_widget(form.dateSoiree.time.hour) }}:
+                            </div>
+                            <div class="col-sm-1 col-xs-12 paddingless">
+                                <!--emplacement pour la date-->
+                                {{ form_widget(form.dateSoiree.time.minute) }}
+                            </div>
                         </div>
-                        <div class="col-sm-offset-1 col-sm-3 col-xs-12">
-                            <!--emplacement pour la date-->
-                        </div>
+
                     </div>
                 </div>
 
                 <div class="row">
                   <input type="text" value="{{idOffre}}">
-                  {{ form_widget(form.Suivant, {'attr': {'class': 'formbtn'}})}}
-                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  {{ form_widget(form.Suivant,{'attr': {'class': 'formbtn'}, 'label':'Suivant >'})}}
+
                 </div>
 
             {{ form_end(form) }}

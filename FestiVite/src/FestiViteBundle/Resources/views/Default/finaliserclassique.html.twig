@@ -108,14 +108,18 @@
           {{ "askip y a pas de panier" }}
         {% endif %}
             <div class="row">
-                <a href="ajoutprestataire"><button type="button" class="formbtn" href="">
-                   <span class="glyphicon glyphicon-chevron-left"></span>
-                   Précédent
-                </button></a>
-                <a href="#"><button id="Finaliser" type="button" class="formbtn" name="ajout">
-                  Payer
-                  <span class="glyphicon glyphicon-credit-card"></span>
-                </button></a>
+                <form class="col-xs-6" action="" method="post">
+                    <a href="ajoutprestataire"><button id="etapePrecedente" type="button" class="formbtn" href="">
+                       <span class="glyphicon glyphicon-chevron-left"></span>
+                       Précédent
+                    </button></a>
+                </form>
+                    <form class="col-xs-6" action="" method="post">
+                    <a href="finclassique"><button id="Finaliser" type="button" class="formbtn" name="ajout">
+                      Payer
+                      <span class="glyphicon glyphicon-credit-card"></span>
+                    </button></a>
+                </form>
             </div>
         </div><!--/Corps-->
         <div id="push"></div>

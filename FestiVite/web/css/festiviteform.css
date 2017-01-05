@@ -217,6 +217,14 @@
     color: black;
     background-color: #FFCC33;
 }
+#Finaliser:hover{
+    background-color: black;
+    color:#FFCC33;
+}
+.paddingless{
+    padding: 0;
+    width: auto;
+}
 
 .glyphicon-share-alt{
     -webkit-transform: rotate(180deg);

@@ -37,7 +37,7 @@ section{
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0px auto -150px;
+  margin: 0px auto -110px;
 
 }
 #main{
@@ -45,9 +45,13 @@ section{
   text-align: center;
   margin-bottom: 20px;
 }
-#push,
+#push{
+  height: 110px;
+}
+
 #footer {
-  height: 150px;
+  height: 110px;
+  padding-top: 5px;
 }
 #footer{
   color: white;
@@ -59,6 +63,7 @@ section{
 }
 #footer > div > img{
   height: 100px;
+  border-right: 1px solid white;
 }
 #footer a{
   padding: 0px;
@@ -290,7 +295,6 @@ section{
   background-color: #051C2C
 }
 /*Fin nav*/
-
 /*Pour la recherche prestataire*/
 #rechercheprestataire{
   border-radius: 0px;
@@ -317,8 +321,12 @@ section{
 #rechercheavance > a:hover{
   text-decoration: none;
 }
+#showrechavan:hover{
+    color: #051C2C;
+}
 #showrechavan:hover,
-#showrechavan:visited{
+#showrechavan:visited,
+#showrechavan:focus{
     text-decoration: none;
 }
 .starthidden{
@@ -543,7 +551,23 @@ div > ul{
 #banner a{
   padding: 0px;
 }
+/*Page Mes Fetes*/
+.blockfete{
+    border: 5px solid #051C2C;
+    background-image: url(image/FestiVite4blur.png);
+    background-size: cover;
+    margin: 10px 0px;
+}
+#blockinfo ul,
+.blockfete ul{
+    text-align: left;
+    list-style: none;
+    font-size: 20px;
+    font-weight: normal;
+}
 
+
+/*Fin Page Mes Fetes*/
 
 @media screen and (max-width: 1200px) {
     .imagepresta{
@@ -630,7 +654,6 @@ div > ul{
 
   .blockpresta .prix{
       width: 90%;
-
   }
   .ajoutbtn,
   .supprbtn{

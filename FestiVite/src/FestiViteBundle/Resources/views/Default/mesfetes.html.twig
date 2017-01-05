@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FestiVite - Inscription/Connexion</title>
+    <title>FestiVite</title>
 
     <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,34 +17,58 @@
     <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
-
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="css/festivite.css" rel="stylesheet">
+    <link href="css/festiviteform.css" rel="stylesheet">
   </head>
 
   <body>
     <div id="wrap">
-    <!-- Banniere -->
-      <div id="banner">
-          <a class="navbar-brand" href="#"><img src="css/image/logo/logo150.png" alt="FestiVite" /></a>
-      </div>
+        <div id="cpabo"></div>
 {% endblock %}
 {% block apr %}
-    <!-- script utile ? -->
-      <script type="text/javascript">
-      $('#topnavbar').affix({
-        offset: {
-          top: $('#banner').height()
-        }
-      });
-    </script>
-
-    <!-- Debut du corps -->
+      <!-- Debut du corps -->
       <div class="container" id="main">
 
-      </div>
-  </div>
+          <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+          <!--bonsoir Dylan, tu dois récupérer la liste des fetes de l'utilisateur-->
+          <!--Pour chaque liste (boucle for) tu crée un nouveau blockfete comme pour l'exemple-->
+          <!--Tu dois aussi trier l'affichage si possible sur la date de la fete (la plus tot en haut)-->
+          <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+        <div class="row">
+          <h1 class="titre1">Mes fêtes</h1>
+        </div>
+
+        <div class="blockfete">
+            <h2>Titre Fête <!--Remplacer par le vrai Titre--></h2>
+            <ul>
+                <li>
+                    Lieu: <!--récuperer le lieu-->
+                </li>
+                <li>
+                    Date: <!--récuperer le date jj - mmm - yyyy -->
+                </li>
+                <li>
+                    Horaire: <!--récuperer l'heure -->
+                </li>
+            </ul>
+        </div>
+
+
+        </div><!--/Corps-->
+        <div id="push"></div>
+    </div>
+
 {% endblock %}
+
+
+
 {% block script %}
+    </div>
+
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -54,6 +78,8 @@
     <script src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="css/js/creersoiree.js"></script>
+    <script src="css/js/navbar.js"></script>
   </body>
 </html>
 {% endblock %}

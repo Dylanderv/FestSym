@@ -62,9 +62,14 @@ use FestiViteBundle\Utils\Sha256Salted;
         return $this->render('FestiViteBundle:Default:creersoireeaventure.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
-    public function moncompteAction()
+    public function mesinfosAction()
     {
-        return $this->render('FestiViteBundle:Default:moncompte.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+        return $this->render('FestiViteBundle:Default:mesinfos.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+    }
+
+    public function mesfetesAction()
+    {
+        return $this->render('FestiViteBundle:Default:mesfetes.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function finaliserclassiqueAction(Request $request)
@@ -84,6 +89,28 @@ use FestiViteBundle\Utils\Sha256Salted;
       }
 
         return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('panier' => $panier, 'request' => $request, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+    }
+
+    public function finclassiqueAction(Request $request){
+        $soiree = new Soiree();
+        $nom = $request->request->get('nom');
+        $idOffre = '';
+        if(isset($nom)){
+          $soiree->setNom($request->request->get('nom'));
+          $soiree->setAdresse($request->request->get('adresse'));
+          $soiree->setDateSoiree(new \DateTime($request->request->get('dateTime')));
+          $idOffre = $request->request->get('id');
+        }
+
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
+        $formBuilder
+            ->add('nom', TextType::class)
+            ->add('dateSoiree', DateTimeType::class)
+            ->add('adresse', TextType::class)
+            ->add('Suivant', SubmitType::class)
+        ;
+        $form = $formBuilder->getForm();
+        return $this->render('FestiViteBundle:Default:finclassique.html.twig', array('idOffre' => $idOffre, 'request' => $request, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function panierclassiqueAction(Request $request)

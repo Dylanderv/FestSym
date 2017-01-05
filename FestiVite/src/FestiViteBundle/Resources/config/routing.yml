@@ -10,9 +10,9 @@ festi_vite_creersoiree:
     path:     /creersoireeaventure
     defaults: { _controller: FestiViteBundle:Default:creersoireeaventure }
 
-festi_vite_moncompte:
-    path:     /moncompte
-    defaults: { _controller: FestiViteBundle:Default:moncompte }
+festi_vite_mesinfos:
+    path:     /mesinfos
+    defaults: { _controller: FestiViteBundle:Default:mesinfos }
 
 festi_vite_accueil:
     path:     /accueil
@@ -50,6 +50,14 @@ festi_vite_finaliserclassique:
     path:     /finaliserclassique
     defaults: { _controller: FestiViteBundle:Default:finaliserclassique }
 
+festi_vite_finclassique:
+    path:     /finclassique
+    defaults: { _controller: FestiViteBundle:Default:finclassique }
+
 festi_vite_panierclassique:
     path:     /panierclassique
     defaults: { _controller: FestiViteBundle:Default:panierclassique }
+
+festi_vite_mesfetes:
+    path:     /mesfetes
+    defaults: { _controller: FestiViteBundle:Default:mesfetes }

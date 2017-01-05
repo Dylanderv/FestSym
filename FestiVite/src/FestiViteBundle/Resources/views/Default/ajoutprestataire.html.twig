@@ -166,18 +166,18 @@
             </div>
             <div class="row">
 
-              <form action="/creersoireeclassique" method="post">
+              <form action="/creersoireeclassique" method="post" class="col-xs-6">
                 <input type="text" name="nom" value="{{nom}}" hidden />
                 <input type="text" name="adresse" value="{{adresse}}" hidden />
                 <input type="text" name="dateTime" value="{{dateTime}}" hidden />
                 <input type="text" name="id" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{%if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
-                <button type="submit" class="formbtn" href="">
-                  Precedent
+                <button id="etapePrecedente" type="submit" class="formbtn" href="">
                   <span class="glyphicon glyphicon-chevron-left"></span>
+                  Precedent
                 </button>
               </form>
 
-                <form action="/finaliserclassique" method="post">
+                <form action="/finaliserclassique" method="post" class="col-xs-6">
                     <input type="text" name="id" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
                     <button id="suivantajout" type="submit" class="formbtn" name="ajout">
                         Suivant
