@@ -141,12 +141,10 @@ use FestiViteBundle\Utils\Sha256Salted;
         ;
         $form = $formBuilder->getForm();
 
-var_dump($request);
-        if(isset($request->request)){
-          var_dump($request);
-          $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =";
-          /*var_dump($requete);
-          $query = $this->getDoctrine()->getManager()->createQuery($requete);
+        if(isset($request->request->get("id"))){
+          $requete = "SELECT A FROM FestiViteBundle\Entity\Offre A WHERE A.idoffre =".$request->request->get("id");
+          var_dump($requete);
+          /*$query = $this->getDoctrine()->getManager()->createQuery($requete);
           $panier[] = $query->getResult();*/
         }
         $panier = $request;
