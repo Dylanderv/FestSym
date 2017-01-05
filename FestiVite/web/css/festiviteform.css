@@ -184,13 +184,16 @@
 }
 
 #suivantajout,
-#etapePrecedente,
 #etapePrecedente{
     z-index: -10000;
 }
 #suivantajout a{
     text-decoration: none;
     color: #FFF;
+}
+#suivantajout:hover,
+#etapePrecedente:hover{
+    background-color: #051C2C;
 }
 #Finaliser{
     color: black;
