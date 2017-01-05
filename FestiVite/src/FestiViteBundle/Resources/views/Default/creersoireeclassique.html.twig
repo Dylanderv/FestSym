@@ -1,5 +1,6 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
+{{ dump(request) }}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,15 +88,14 @@
         </div>
             <!--FIN Chevrons etape-->
         <!--Deubut formulaire-->
-            <form class="row" action="index.html" method="post">
-
+            {{ form_start(form, {'attr': {'action': '/ajoutprestataire', 'class': 'row', 'method': 'form'}}) }}
 
                 <div>
                     <div class="row formule">
                         <!--Choix du titre soiree -->
                         <div id="champtitre" class="row col-xs-8 col-xs-offset-2">
                             <div></div>
-                            <input type="text" name="name" value="" placeholder="Titre Soirée">
+                            {{ form_widget(form.nom, {'attr': {'placeholder': 'Titre Soirée'}}) }}
                             <div></div>
                         </div>
 
@@ -105,42 +105,34 @@
                             <div class="col-xs-12"></div>
                         </div>
                         <div class="col-sm-12 col-xs-12">
-                            <input type="text" name="name" value="" placeholder="Ville">
+                            {{ form_widget(form.adresse, {'attr': {'placeholder': 'Ville'}}) }}
                         </div>
 
                         <div class="etapeform row col-xs-8 col-xs-offset-2">
                             <div class="col-xs-12"></div>
-                            <p class="col-xs-12">Date</p>
+                            <p class="col-xs-12">Date & Heure</p>
                             <div class="col-xs-12"></div>
                         </div>
                         <div class="col-sm-3 col-xs-12">
                             <!--emplacement pour la date-->
-                            A completer
+                            {{ form_widget(form.dateSoiree) }}
                         </div>
                         <div class="col-sm-offset-1 col-sm-3 col-xs-12">
                             <!--emplacement pour la date-->
                         </div>
                         <div class="col-sm-offset-1 col-sm-3 col-xs-12">
                             <!--emplacement pour la date-->
-                        </div>
-                        <div class="etapeform row col-xs-8 col-xs-offset-2">
-                            <div class="col-xs-12"></div>
-                            <p class="col-xs-12">Heure</p>
-                            <div class="col-xs-12"></div>
-                        </div>
-                        <div class="col-sm-12 col-xs-12">
-                            <input type="text" name="name" value="" placeholder="Heure">
                         </div>
                     </div>
                 </div>
 
-            </form>
-            <div class="row">
-                <a href="ajoutprestataire"><button id="suivantajout" type="button" class="formbtn" name="ajout">
-                  Suivant
+                <div class="row">
+                  {{ form_widget(form.Suivant, {'attr': {'class': 'formbtn'}})}}
                   <span class="glyphicon glyphicon-chevron-right"></span>
-                </button></a>
-            </div>
+                </div>
+
+            {{ form_end(form) }}
+
         </div>
         </div>
         <div id="push">

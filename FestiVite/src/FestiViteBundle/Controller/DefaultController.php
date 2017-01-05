@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use FestiViteBundle\Repository\OffreRepository;
 use FestiViteBundle\Entity\UtilisateurProfessionnel;
@@ -32,9 +33,28 @@ use FestiViteBundle\Utils\Sha256Salted;
         return $this->render('FestiViteBundle:Default:main.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
-    public function creersoireeclassiqueAction()
+    public function creersoireeclassiqueAction(Request $request)
     {
-        return $this->render('FestiViteBundle:Default:creersoireeclassique.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+      $soiree = new Soiree();
+      $nom = $request->request->get('nom');
+      $idOffre = '';
+      if(isset($nom)){
+        $soiree->setNom($request->request->get('nom'));
+        $soiree->setAdresse($request->request->get('adresse'));
+        $soiree->setDateSoiree(new \DateTime($request->request->get('dateTime')));
+        $idOffre = $request->request->get('id');
+      }
+
+      $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $soiree);
+      $formBuilder
+          ->add('nom', TextType::class)
+          ->add('dateSoiree', DateTimeType::class)
+          ->add('adresse', TextType::class)
+          ->add('Suivant', SubmitType::class)
+      ;
+      $form = $formBuilder->getForm();
+
+        return $this->render('FestiViteBundle:Default:creersoireeclassique.html.twig', array('idOffre' => $idOffre, 'request' => $request, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function creersoireeaventureAction()
@@ -82,7 +102,7 @@ use FestiViteBundle\Utils\Sha256Salted;
 
 
 
-        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('panier' => $panier, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+        return $this->render('FestiViteBundle:Default:panierclassique.html.twig', array('request' => $request, 'panier' => $panier, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function rechercheAction(Request $request)
@@ -178,6 +198,26 @@ use FestiViteBundle\Utils\Sha256Salted;
             $panier = explode('|', $id);
         }
 
+        $postForm = $request->request->get('form');
+        $postNom = $request->request->get('nom');
+        $dateTime = '';
+        $nom = '';
+        $adresse = '';
+        if(isset($postForm)){
+          $dateTime = $postForm['dateSoiree']['date']['year']."-".
+                      $postForm['dateSoiree']['date']['month']."-".
+                      $postForm['dateSoiree']['date']['day'].
+                      " ".
+                      $postForm['dateSoiree']['time']['hour'].":".
+                      $postForm['dateSoiree']['time']['minute'];
+         $nom = $postForm['nom'];
+         $adresse = $postForm['adresse'];
+       }else if(isset($postNom)){
+         $dateTime = $request->request->get('dateTime');
+         $nom = $request->request->get('nom');
+         $adresse = $request->request->get('adresse');
+       }
+
         if ($request->isMethod('POST')) {
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
@@ -190,11 +230,11 @@ use FestiViteBundle\Utils\Sha256Salted;
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-                    array('panier' => $panier, 'form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
+                    array('nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager()), 'user' => $this->get('security.token_storage')->getToken()->getUser()));
             }
         }
         return $this->render('FestiViteBundle:Default:ajoutprestataire.html.twig',
-            array('panier' => $panier, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
+            array('request' => $request, 'nom' => $nom, 'adresse' => $adresse, 'dateTime' => $dateTime, 'panier' => $panier, 'form' => $form->createView(), 'user' => $this->get('security.token_storage')->getToken()->getUser(), 'offre' => $recherche->getRecherche($this->getDoctrine()->getManager())));
     }
 
     public function testAction()

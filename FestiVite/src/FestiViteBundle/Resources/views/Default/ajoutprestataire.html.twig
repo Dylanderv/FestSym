@@ -1,8 +1,6 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{% if panier is defined %}
-  {{ dump(panier) }}
-{% endif %}
+{{ dump(request) }}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -90,6 +88,9 @@
         <!--Mon panier-->
         <div id="panier">
           <form action="/panierclassique" method="post">
+            <input type="text" name="nom" value="{{nom}}" hidden />
+            <input type="text" name="adresse" value="{{adresse}}" hidden />
+            <input type="text" name="dateTime" value="{{dateTime}}" hidden />
             <input type="text" name="id" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
             <button type="submit"><p>Mon Panier <span class="glyphicon glyphicon-shopping-cart"></span></p></button>
           </form>
@@ -152,6 +153,9 @@
                       <p class="prix">{{ value.getPrix() }} €</p>
 
                       <form action="/ajoutprestataire" method="post">
+                        <input type="text" name="nom" value="{{nom}}" hidden />
+                        <input type="text" name="adresse" value="{{adresse}}" hidden />
+                        <input type="text" name="dateTime" value="{{dateTime}}" hidden />
                         <input type="text" name="id" value="{{value.getIdOffre()}}{% for key,value in panier %}|{{value}}{% endfor %}" hidden />
                         <button type="submit" class="glyphicon glyphicon-plus-sign ajoutbtn"></button>
                       </form>
@@ -161,10 +165,17 @@
 
             </div>
             <div class="row">
-                <a href="/creersoireeclassique"><button id="" type="button" class="formbtn" href="">
-                   <span class="glyphicon glyphicon-chevron-left"></span>
-                   Précédent
-                </button></a>
+              <form action="/creersoireeclassique" method="post">
+                <input type="text" name="nom" value="{{nom}}" hidden />
+                <input type="text" name="adresse" value="{{adresse}}" hidden />
+                <input type="text" name="dateTime" value="{{dateTime}}" hidden />
+                <input type="text" name="id" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{%if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
+                <button type="submit" class="formbtn" href="">
+                  Precedent
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+              </form>
+
                 <a href="/finaliserclassique"><button id="" type="button" class="formbtn" name="ajout">
                   Suivant
                   <span class="glyphicon glyphicon-chevron-right"></span>
