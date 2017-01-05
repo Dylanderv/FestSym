@@ -335,6 +335,11 @@ section{
     color: #051C2C;
 }
 
+.blockpresta > form > button{
+    border: 0;
+    background-color: transparent;
+}
+
 .imagepresta{
     position: absolute;
     top: 0;
