@@ -380,18 +380,6 @@ section{
 div > ul{
     margin-left: 20%;
 }
-#imagecreersoiree{
-  width: 100%;
-  height: 150px;
-  background-image: url(image/logo/logofinal.png);
-  background-size: cover;
-}
-#imagecreersoiree div{
-  width: inherit;
-  height: inherit;
-  background-color: white;
-  opacity: 0.6;
-}
 
 #creerSoiree1{
   margin: 20px 0px;
@@ -504,7 +492,11 @@ div > ul{
     .imagepresta{
         width: 25%;
     }
+    .ajoutbtn{
+        right: 26%;
+    }
 }
+
 @media screen and (max-width: 1000px) {
   .navbar-header #logolarge{
     display:none;
@@ -516,6 +508,10 @@ div > ul{
   }
   .imagepresta{
       width: 30%;
+  }
+
+  .ajoutbtn{
+      right: 32%;
   }
 }
 /*Pour les smartphone*/
@@ -563,5 +559,8 @@ div > ul{
   .blockpresta .prix{
       width: 90%;
 
+  }
+  .ajoutbtn{
+      right: 10px;
   }
 }

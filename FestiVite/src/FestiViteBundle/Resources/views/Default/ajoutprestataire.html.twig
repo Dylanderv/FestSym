@@ -84,10 +84,13 @@
                   </p>
                 </div></li>
               </ul>
-              <div><a href="main"><p>Mon panier</p><span class="glyphicon glyphicon-shopping-cart"></span></a></div>
           </div>
           <!--FIN Chevrons etape-->
         </div>
+        <!--Mon panier-->
+        <div id="panier">
+            <a href="#"><p>Mon Panier <span class="glyphicon glyphicon-shopping-cart"></span></p></a>
+        </div><!--/Mon panier-->
         <!--Barre de recherche-->
         <div id="rechercheprestataire" class="row container">
           {{ form_start(form, {'attr': {'class': 'form-horizontal col-xs-12 container'}})}}
@@ -95,10 +98,10 @@
               {{ form_errors(form.motcle) }}
               {{ form_widget(form.motcle, {'attr': {'class': 'form-control', 'placeholder':'Mot-Clés'}}) }}
             </div>
-            {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary col-sm-4 col-xs-6'}}) }}
+            {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary col-sm-2 col-xs-6'}}) }}
             <!-- On a plus la petite loupe pour rechercher   <button type="submit" class="btn btn-primary col-sm-4 col-xs-6">Rechercher<span class="glyphicon glyphicon-search pull-right"></button>!-->
 
-              <div id="rechercheavance" class="dropdown pull-right col-sm-4 col-xs-12">
+              <div id="rechercheavance" class="dropdown pull-right col-sm-2 col-xs-12">
                 <a id="showrechavan" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recherche avancée <span class="glyphicon glyphicon-plus"></span></a>
               </div>
               <div class="row starthidden container">
