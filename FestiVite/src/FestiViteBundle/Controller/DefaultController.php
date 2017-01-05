@@ -50,22 +50,10 @@ use FestiViteBundle\Utils\Sha256Salted;
     public function finaliserclassiqueAction(Request $request)
     {
         $panier = '';
-        var_dump($request->request->get("id2"));
+        //var_dump($request->request->get("id"));
         //$id = $request->request->get("id");
-        $idOffre = explode("|", $request->request->get("id2"));
-        $supp = $request->request->get("supp");
-        if(isset($supp)){
-          $offre = '';
-          foreach ($idOffre as $key => $value) {
-            if($key != $supp){
-              $offre[] = $value;
-            }
-          }
-          if(isset($offre)){
-            $idOffre = $offre;
-          }
 
-        }
+        $idOffre = explode("|", $request->request->get("id"));
         if($idOffre != ''){
           $em = $this->getDoctrine()->getManager();
           foreach ($idOffre as $key => $value) {
@@ -73,9 +61,9 @@ use FestiViteBundle\Utils\Sha256Salted;
             $query = $em->createQuery($requete);
             $panier[] = $query->getResult();
           }
-        }
+      }
 
-        return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('user' => $this->get('security.token_storage')->getToken()->getUser()));
+        return $this->render('FestiViteBundle:Default:finaliserclassique.html.twig', array('panier' => $panier, 'request' => $request, 'user' => $this->get('security.token_storage')->getToken()->getUser()));
     }
 
     public function panierclassiqueAction(Request $request)

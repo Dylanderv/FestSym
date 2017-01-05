@@ -166,7 +166,7 @@
                    Précédent
                 </button></a>
                 <form action="/finaliserclassique" method="post">
-                    <input type="text" name="id2" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
+                    <input type="text" name="id" class="formbtn" value="{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% endfor %}" hidden />
                     <button id="suivantajout" type="submit" class="formbtn" name="ajout">
                         Suivant
                     <span class="glyphicon glyphicon-chevron-right"></span>

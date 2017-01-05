@@ -1,8 +1,5 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-{% if offre is defined %}
-{{dump(offre)}}
-{% endif %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -90,6 +87,7 @@
 
         <!--block resultat-->
         {% if panier is defined %}
+          {{ dump(panier) }}
           {% for key,value in panier %}
             <div class="blockpresta">
                 <h3><a href="#">{{ value[0].getType() }}</a></h3>
@@ -106,6 +104,8 @@
                 </form>
             </div>
           {% endfor %}
+        {% else %}
+          {{ "askip y a pas de panier" }}
         {% endif %}
             <div class="row">
                 <a href="ajoutprestataire"><button type="button" class="formbtn" href="">
