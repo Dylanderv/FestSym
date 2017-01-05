@@ -61,7 +61,7 @@
 
               <form action="/ajoutprestataire" method="post">
                 <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
-                <button type="submit" value="" class="formbtn" ><span class="glyphicon glyphicon-share-alt"></span>
+                <button type="submit" value="" class="formbtn" id="etapePrecedente"><span class="glyphicon glyphicon-share-alt"></span>
                 Retour à ma Fête</button>
               </form>
             </div>
