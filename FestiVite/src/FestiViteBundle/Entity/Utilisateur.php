@@ -15,7 +15,7 @@ class Utilisateur implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse_mail", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Adresse_mail", type="string", length=255, nullable=false , unique=true)
      */
     private $adresseMail;
 

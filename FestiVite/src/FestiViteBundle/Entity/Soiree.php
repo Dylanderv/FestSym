@@ -84,8 +84,6 @@ class Soiree
      */
     private $idsoiree;
 
-
-
     /**
      * Set nom
      *

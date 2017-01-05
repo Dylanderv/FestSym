@@ -144,11 +144,16 @@
                 </div>
 
                 <div class="row">
+<<<<<<< Updated upstream
                   <input type="text" value="{{idOffre}}">
                   {{ form_widget(form.Suivant,{'attr': {'class': 'formbtn'}, 'label':'Suivant >'})}}
 
+=======
+                  {{ form_widget(form.Suivant, {'attr': {'class': 'formbtn'}})}}
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+>>>>>>> Stashed changes
                 </div>
-
+                <input type="text" value="{{idOffre}}" hidden>
             {{ form_end(form) }}
 
         </div>
