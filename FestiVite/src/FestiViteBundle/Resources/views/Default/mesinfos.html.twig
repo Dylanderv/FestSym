@@ -41,16 +41,16 @@
         <div id="blockinfo">
             <ul>
                 <li>
-                    Nom: <!--récuperer le nom-->
+                    Nom: {{ user.getNom()}}
                 </li>
                 <li>
-                    Prénom: <!--récuperer le prenom -->
+                    Prénom: {{ user.getPrenom()}}
                 </li>
                 <li>
-                    Date de naissance: <!--récuperer la date de naissance -->
+                    Date de naissance: {{ user.getDateNaissance().format('d-m-Y')}}
                 </li>
                 <li>
-                    Email: <!--récuperer la date de naissance -->
+                    Email: {{ user.getAdresseMail()}}
                 </li>
             </ul>
         </div>

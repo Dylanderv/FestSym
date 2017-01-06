@@ -87,6 +87,17 @@ section{
   border-radius: 0px;
 }
 
+#demandepresta h3{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+}
+
+#demandepresta p{
+    
+}
+
 /*Titres main*/
 #alaventure{
   background-color: #051C2C;

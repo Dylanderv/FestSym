@@ -1,6 +1,6 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
-
+{{ dump(request) }}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,7 +87,6 @@
         </div>
         <!--Mon panier-->
         <div id="panier">
-            <p>{% for key,value in panier %}{% if key == 0 %}{{value}}{% endif %}{% if key > 0 %}|{{value}}{% endif %}{% if idOffres is defined %}|{% endif %}{% endfor %}{{idOffres}}</p>
           <form action="/panierclassique" method="post">
             <input type="text" name="nom" value="{{nom}}" hidden />
             <input type="text" name="adresse" value="{{adresse}}" hidden />

@@ -1,5 +1,6 @@
 {% extends 'FestiViteBundle:Default:navfoot.html.twig' %}
 {% block avnt %}
+{{ dump(request) }}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,6 +47,9 @@
                         <p class="prix">{{ value[0].getPrix() }} €</p>
 
                         <form action="/panierclassique" method="post">
+                          <input type="text" name="nom" value="{{nom}}" hidden />
+                          <input type="text" name="adresse" value="{{adresse}}" hidden />
+                          <input type="text" name="dateTime" value="{{dateTime}}" hidden />
                           <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
                           <input type="text" name="supp" value="{{key}}" hidden />
                           <button type="submit" value="" class="glyphicon  glyphicon-remove-circle supprbtn"></button>
@@ -62,7 +66,7 @@
                 <input type="text" name="nom" value="{{nom}}" hidden />
                 <input type="text" name="adresse" value="{{adresse}}" hidden />
                 <input type="text" name="dateTime" value="{{dateTime}}" hidden />
-                <input type="text" name="id" value="{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}" hidden />
+                <input type="text" name="id" value="{% if panier != '' %}{% for keyPanier,valuePanier in panier %}{% if keyPanier == 0 %}{{valuePanier[0].getIdOffre()}}{% endif %}{% if keyPanier > 0 %}|{{valuePanier[0].getIdOffre()}}{% endif %}{% endfor %}{% endif %}" hidden />
                 <button type="submit" value="" class="formbtn" id="etapePrecedente"><span class="glyphicon glyphicon-share-alt"></span>
                 Retour à ma Fête</button>
               </form>
