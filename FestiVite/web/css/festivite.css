@@ -95,7 +95,12 @@ section{
 }
 
 #demandepresta p{
-    
+    font-weight: normal;
+    text-align: left;
+}
+
+#demandepresta h4{
+    text-decoration: underline;
 }
 
 /*Titres main*/
